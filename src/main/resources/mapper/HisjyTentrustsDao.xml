@@ -1,0 +1,1500 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leon.dbbatchdeal.dao.HisjyTentrustsDao">
+
+    <resultMap id="BaseResultMap" type="com.leon.dbbatchdeal.entity.HisjyTentrusts">
+        <!--@Table hisjy_tentrusts-->
+        <result property="businessDate" column="business_date" jdbcType="INTEGER"/>
+        <result property="entrustSerialNo" column="entrust_serial_no" jdbcType="INTEGER"/>
+        <result property="batchSerialNo" column="batch_serial_no" jdbcType="INTEGER"/>
+        <result property="reportSerialNo" column="report_serial_no" jdbcType="INTEGER"/>
+        <result property="companyId" column="company_id" jdbcType="INTEGER"/>
+        <result property="fundId" column="fund_id" jdbcType="INTEGER"/>
+        <result property="confirmCodeno" column="confirm_codeno" jdbcType="VARCHAR"/>
+        <result property="assetId" column="asset_id" jdbcType="INTEGER"/>
+        <result property="combiId" column="combi_id" jdbcType="INTEGER"/>
+        <result property="marketNo" column="market_no" jdbcType="INTEGER"/>
+        <result property="reportCode" column="report_code" jdbcType="VARCHAR"/>
+        <result property="interCode" column="inter_code" jdbcType="INTEGER"/>
+        <result property="bindSeat" column="bind_seat" jdbcType="VARCHAR"/>
+        <result property="stockholderId" column="stockholder_id" jdbcType="VARCHAR"/>
+        <result property="tradeSeat" column="trade_seat" jdbcType="VARCHAR"/>
+        <result property="investType" column="invest_type" jdbcType="VARCHAR"/>
+        <result property="entrustDirection" column="entrust_direction" jdbcType="INTEGER"/>
+        <result property="reportDirection" column="report_direction" jdbcType="VARCHAR"/>
+        <result property="entrustPriceType" column="entrust_price_type" jdbcType="VARCHAR"/>
+        <result property="entrustPrice" column="entrust_price" jdbcType="NUMERIC"/>
+        <result property="entrustAmount" column="entrust_amount" jdbcType="NUMERIC"/>
+        <result property="entrustBalance" column="entrust_balance" jdbcType="NUMERIC"/>
+        <result property="cancelAmount" column="cancel_amount" jdbcType="NUMERIC"/>
+        <result property="businAmount" column="busin_amount" jdbcType="NUMERIC"/>
+        <result property="businBalance" column="busin_balance" jdbcType="NUMERIC"/>
+        <result property="totalDealAmount" column="total_deal_amount" jdbcType="NUMERIC"/>
+        <result property="totalDealBalance" column="total_deal_balance" jdbcType="NUMERIC"/>
+        <result property="prebuyFrozenBalance" column="prebuy_frozen_balance" jdbcType="NUMERIC"/>
+        <result property="entrustStatus" column="entrust_status" jdbcType="VARCHAR"/>
+        <result property="entrustLaunchType" column="entrust_launch_type" jdbcType="VARCHAR"/>
+        <result property="businTimes" column="busin_times" jdbcType="INTEGER"/>
+        <result property="entrustTime" column="entrust_time" jdbcType="INTEGER"/>
+        <result property="lastDealTime" column="last_deal_time" jdbcType="INTEGER"/>
+        <result property="operatorNo" column="operator_no" jdbcType="INTEGER"/>
+        <result property="revokeCause" column="revoke_cause" jdbcType="VARCHAR"/>
+        <result property="reportSerialNoBranch" column="report_serial_no_branch" jdbcType="VARCHAR"/>
+        <result property="recNum" column="rec_num" jdbcType="INTEGER"/>
+        <result property="tranReff" column="tran_reff" jdbcType="VARCHAR"/>
+        <result property="tradePlatformId" column="trade_platform_id" jdbcType="INTEGER"/>
+        <result property="cancelFlag" column="cancel_flag" jdbcType="VARCHAR"/>
+        <result property="cancelSerialNo" column="cancel_serial_no" jdbcType="INTEGER"/>
+        <result property="appendEntrustXhFlag" column="append_entrust_xh_flag" jdbcType="VARCHAR"/>
+        <result property="mac" column="mac" jdbcType="VARCHAR"/>
+        <result property="ipAddress" column="ip_address" jdbcType="VARCHAR"/>
+        <result property="volserialNo" column="volserial_no" jdbcType="VARCHAR"/>
+        <result property="wsCpu" column="ws_cpu" jdbcType="VARCHAR"/>
+        <result property="schemeCode" column="scheme_code" jdbcType="VARCHAR"/>
+        <result property="schemeInsCode" column="scheme_ins_code" jdbcType="VARCHAR"/>
+        <result property="algoOrdid" column="algo_ordid" jdbcType="VARCHAR"/>
+        <result property="insId" column="ins_id" jdbcType="INTEGER"/>
+        <result property="indexDailyModify" column="index_daily_modify" jdbcType="INTEGER"/>
+        <result property="insStockId" column="ins_stock_id" jdbcType="INTEGER"/>
+        <result property="capitalAccountNo" column="capital_account_no" jdbcType="VARCHAR"/>
+        <result property="branchCode" column="branch_code" jdbcType="VARCHAR"/>
+        <result property="sysBranchCode" column="sys_branch_code" jdbcType="VARCHAR"/>
+        <result property="tradeInterfaceType" column="trade_interface_type" jdbcType="INTEGER"/>
+        <result property="arbitrageSerialNo" column="arbitrage_serial_no" jdbcType="INTEGER"/>
+        <result property="engagedNo" column="engaged_no" jdbcType="VARCHAR"/>
+        <result property="rivalSeat" column="rival_seat" jdbcType="VARCHAR"/>
+        <result property="rivalStockholderId" column="rival_stockholder_id" jdbcType="VARCHAR"/>
+        <result property="sysDate" column="sys_date" jdbcType="INTEGER"/>
+        <result property="sysTime" column="sys_time" jdbcType="INTEGER"/>
+        <result property="externalOrdid" column="external_ordid" jdbcType="INTEGER"/>
+        <result property="thirdRemark" column="third_remark" jdbcType="VARCHAR"/>
+        <result property="voteSenateNo" column="vote_senate_no" jdbcType="VARCHAR"/>
+        <result property="stockName" column="stock_name" jdbcType="VARCHAR"/>
+        <result property="tradeCurrencyNo" column="trade_currency_no" jdbcType="VARCHAR"/>
+        <result property="fundName" column="fund_name" jdbcType="VARCHAR"/>
+        <result property="assetName" column="asset_name" jdbcType="VARCHAR"/>
+        <result property="combiName" column="combi_name" jdbcType="VARCHAR"/>
+        <result property="capitalAccountType" column="capital_account_type" jdbcType="VARCHAR"/>
+        <result property="positionStr" column="position_str" jdbcType="VARCHAR"/>
+        <result property="traceFlag" column="trace_flag" jdbcType="VARCHAR"/>
+        <result property="closeDirection" column="close_direction" jdbcType="VARCHAR"/>
+        <result property="optionCoveredFlag" column="option_covered_flag" jdbcType="VARCHAR"/>
+        <result property="linkman" column="linkman" jdbcType="VARCHAR"/>
+        <result property="phoneNo" column="phone_no" jdbcType="VARCHAR"/>
+        <result property="clearSpeed" column="clear_speed" jdbcType="INTEGER"/>
+        <result property="validFlag" column="valid_flag" jdbcType="VARCHAR"/>
+        <result property="rivalTradercode" column="rival_tradercode" jdbcType="VARCHAR"/>
+        <result property="hgDealDate" column="hg_deal_date" jdbcType="INTEGER"/>
+        <result property="quoterRequestNo" column="quoter_request_no" jdbcType="VARCHAR"/>
+        <result property="originalDealNo" column="original_deal_no" jdbcType="VARCHAR"/>
+        <result property="contractNo" column="contract_no" jdbcType="VARCHAR"/>
+        <result property="hgDays" column="hg_days" jdbcType="NUMERIC"/>
+        <result property="reportFlag" column="report_flag" jdbcType="VARCHAR"/>
+        <result property="legalGhDate" column="legal_gh_date" jdbcType="INTEGER"/>
+        <result property="actualGhDate" column="actual_gh_date" jdbcType="INTEGER"/>
+        <result property="hgInterest" column="hg_interest" jdbcType="NUMERIC"/>
+        <result property="hgcontinueFlag" column="hgcontinue_flag" jdbcType="VARCHAR"/>
+        <result property="thirdFlag" column="third_flag" jdbcType="VARCHAR"/>
+        <result property="firstSettleDate" column="first_settle_date" jdbcType="INTEGER"/>
+        <result property="useDays" column="use_days" jdbcType="INTEGER"/>
+        <result property="boardType" column="board_type" jdbcType="VARCHAR"/>
+        <result property="terminalInfoSlitExt" column="terminal_info_slit_ext" jdbcType="VARCHAR"/>
+        <result property="orderId" column="order_id" jdbcType="NUMERIC"/>
+        <result property="dfdStatus" column="dfd_status" jdbcType="VARCHAR"/>
+        <result property="autoDropFlag" column="auto_drop_flag" jdbcType="VARCHAR"/>
+        <result property="reportStatus" column="report_status" jdbcType="VARCHAR"/>
+        <result property="bulkunderweightFlag" column="bulkunderweight_flag" jdbcType="VARCHAR"/>
+        <result property="cashgroupProp" column="cashgroup_prop" jdbcType="VARCHAR"/>
+        <result property="minVolume" column="min_volume" jdbcType="NUMERIC"/>
+        <result property="compactId" column="compact_id" jdbcType="VARCHAR"/>
+        <result property="stockType" column="stock_type" jdbcType="INTEGER"/>
+        <result property="restrictedFlag" column="restricted_flag" jdbcType="VARCHAR"/>
+        <result property="inReportCode" column="in_report_code" jdbcType="VARCHAR"/>
+        <result property="inStockName" column="in_stock_name" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select business_date,
+               entrust_serial_no,
+               batch_serial_no,
+               report_serial_no,
+               company_id,
+               fund_id,
+               confirm_codeno,
+               asset_id,
+               combi_id,
+               market_no,
+               report_code,
+               inter_code,
+               bind_seat,
+               stockholder_id,
+               trade_seat,
+               invest_type,
+               entrust_direction,
+               report_direction,
+               entrust_price_type,
+               entrust_price,
+               entrust_amount,
+               entrust_balance,
+               cancel_amount,
+               busin_amount,
+               busin_balance,
+               total_deal_amount,
+               total_deal_balance,
+               prebuy_frozen_balance,
+               entrust_status,
+               entrust_launch_type,
+               busin_times,
+               entrust_time,
+               last_deal_time,
+               operator_no,
+               revoke_cause,
+               report_serial_no_branch,
+               rec_num,
+               tran_reff,
+               trade_platform_id,
+               cancel_flag,
+               cancel_serial_no,
+               append_entrust_xh_flag,
+               mac,
+               ip_address,
+               volserial_no,
+               ws_cpu,
+               scheme_code,
+               scheme_ins_code,
+               algo_ordid,
+               ins_id,
+               index_daily_modify,
+               ins_stock_id,
+               capital_account_no,
+               branch_code,
+               sys_branch_code,
+               trade_interface_type,
+               arbitrage_serial_no,
+               engaged_no,
+               rival_seat,
+               rival_stockholder_id,
+               sys_date,
+               sys_time,
+               external_ordid,
+               third_remark,
+               vote_senate_no,
+               stock_name,
+               trade_currency_no,
+               fund_name,
+               asset_name,
+               combi_name,
+               capital_account_type,
+               position_str,
+               trace_flag,
+               close_direction,
+               option_covered_flag,
+               linkman,
+               phone_no,
+               clear_speed,
+               valid_flag,
+               rival_tradercode,
+               hg_deal_date,
+               quoter_request_no,
+               original_deal_no,
+               contract_no,
+               hg_days,
+               report_flag,
+               legal_gh_date,
+               actual_gh_date,
+               hg_interest,
+               hgcontinue_flag,
+               third_flag,
+               first_settle_date,
+               use_days,
+               board_type,
+               terminal_info_slit_ext,
+               order_id,
+               dfd_status,
+               auto_drop_flag,
+               report_status,
+               bulkunderweight_flag,
+               cashgroup_prop,
+               min_volume,
+               compact_id,
+               stock_type,
+               restricted_flag,
+               in_report_code,
+               in_stock_name
+        from hisjy_tentrusts
+        where business_date = #{businessDate}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit"  resultMap="BaseResultMap">
+        select
+        business_date, entrust_serial_no, batch_serial_no, report_serial_no, company_id, fund_id, confirm_codeno,
+        asset_id, combi_id, market_no, report_code, inter_code, bind_seat, stockholder_id, trade_seat, invest_type,
+        entrust_direction, report_direction, entrust_price_type, entrust_price, entrust_amount, entrust_balance,
+        cancel_amount, busin_amount, busin_balance, total_deal_amount, total_deal_balance, prebuy_frozen_balance,
+        entrust_status, entrust_launch_type, busin_times, entrust_time, last_deal_time, operator_no, revoke_cause,
+        report_serial_no_branch, rec_num, tran_reff, trade_platform_id, cancel_flag, cancel_serial_no,
+        append_entrust_xh_flag, mac, ip_address, volserial_no, ws_cpu, scheme_code, scheme_ins_code, algo_ordid, ins_id,
+        index_daily_modify, ins_stock_id, capital_account_no, branch_code, sys_branch_code, trade_interface_type,
+        arbitrage_serial_no, engaged_no, rival_seat, rival_stockholder_id, sys_date, sys_time, external_ordid,
+        third_remark, vote_senate_no, stock_name, trade_currency_no, fund_name, asset_name, combi_name,
+        capital_account_type, position_str, trace_flag, close_direction, option_covered_flag, linkman, phone_no,
+        clear_speed, valid_flag, rival_tradercode, hg_deal_date, quoter_request_no, original_deal_no, contract_no,
+        hg_days, report_flag, legal_gh_date, actual_gh_date, hg_interest, hgcontinue_flag, third_flag,
+        first_settle_date, use_days, board_type, terminal_info_slit_ext, order_id, dfd_status, auto_drop_flag,
+        report_status, bulkunderweight_flag, cashgroup_prop, min_volume, compact_id, stock_type, restricted_flag,
+        in_report_code, in_stock_name
+        from hisjy_tentrusts
+        <where>
+            <if test="hisjyTentrusts.businessDate != null">
+                and business_date = #{hisjyTentrusts.businessDate}
+            </if>
+            <if test="hisjyTentrusts.entrustSerialNo != null">
+                and entrust_serial_no = #{hisjyTentrusts.entrustSerialNo}
+            </if>
+            <if test="hisjyTentrusts.batchSerialNo != null">
+                and batch_serial_no = #{hisjyTentrusts.batchSerialNo}
+            </if>
+            <if test="hisjyTentrusts.reportSerialNo != null">
+                and report_serial_no = #{hisjyTentrusts.reportSerialNo}
+            </if>
+            <if test="hisjyTentrusts.companyId != null">
+                and company_id = #{hisjyTentrusts.companyId}
+            </if>
+            <if test="hisjyTentrusts.fundId != null">
+                and fund_id = #{hisjyTentrusts.fundId}
+            </if>
+            <if test="hisjyTentrusts.confirmCodeno != null and confirmCodeno != ''">
+                and confirm_codeno = #{hisjyTentrusts.confirmCodeno}
+            </if>
+            <if test="hisjyTentrusts.assetId != null">
+                and asset_id = #{hisjyTentrusts.assetId}
+            </if>
+            <if test="hisjyTentrusts.combiId != null">
+                and combi_id = #{hisjyTentrusts.combiId}
+            </if>
+            <if test="hisjyTentrusts.marketNo != null">
+                and market_no = #{hisjyTentrusts.marketNo}
+            </if>
+            <if test="hisjyTentrusts.reportCode != null and reportCode != ''">
+                and report_code = #{hisjyTentrusts.reportCode}
+            </if>
+            <if test="hisjyTentrusts.interCode != null">
+                and inter_code = #{hisjyTentrusts.interCode}
+            </if>
+            <if test="hisjyTentrusts.bindSeat != null and bindSeat != ''">
+                and bind_seat = #{hisjyTentrusts.bindSeat}
+            </if>
+            <if test="hisjyTentrusts.stockholderId != null and stockholderId != ''">
+                and stockholder_id = #{hisjyTentrusts.stockholderId}
+            </if>
+            <if test="hisjyTentrusts.tradeSeat != null and tradeSeat != ''">
+                and trade_seat = #{hisjyTentrusts.tradeSeat}
+            </if>
+            <if test="hisjyTentrusts.investType != null and investType != ''">
+                and invest_type = #{hisjyTentrusts.investType}
+            </if>
+            <if test="hisjyTentrusts.entrustDirection != null">
+                and entrust_direction = #{hisjyTentrusts.entrustDirection}
+            </if>
+            <if test="hisjyTentrusts.reportDirection != null and reportDirection != ''">
+                and report_direction = #{hisjyTentrusts.reportDirection}
+            </if>
+            <if test="hisjyTentrusts.entrustPriceType != null and entrustPriceType != ''">
+                and entrust_price_type = #{hisjyTentrusts.entrustPriceType}
+            </if>
+            <if test="hisjyTentrusts.entrustPrice != null">
+                and entrust_price = #{hisjyTentrusts.entrustPrice}
+            </if>
+            <if test="hisjyTentrusts.entrustAmount != null">
+                and entrust_amount = #{hisjyTentrusts.entrustAmount}
+            </if>
+            <if test="hisjyTentrusts.entrustBalance != null">
+                and entrust_balance = #{hisjyTentrusts.entrustBalance}
+            </if>
+            <if test="hisjyTentrusts.cancelAmount != null">
+                and cancel_amount = #{hisjyTentrusts.cancelAmount}
+            </if>
+            <if test="hisjyTentrusts.businAmount != null">
+                and busin_amount = #{hisjyTentrusts.businAmount}
+            </if>
+            <if test="hisjyTentrusts.businBalance != null">
+                and busin_balance = #{hisjyTentrusts.businBalance}
+            </if>
+            <if test="hisjyTentrusts.totalDealAmount != null">
+                and total_deal_amount = #{hisjyTentrusts.totalDealAmount}
+            </if>
+            <if test="hisjyTentrusts.totalDealBalance != null">
+                and total_deal_balance = #{hisjyTentrusts.totalDealBalance}
+            </if>
+            <if test="hisjyTentrusts.prebuyFrozenBalance != null">
+                and prebuy_frozen_balance = #{hisjyTentrusts.prebuyFrozenBalance}
+            </if>
+            <if test="hisjyTentrusts.entrustStatus != null and entrustStatus != ''">
+                and entrust_status = #{hisjyTentrusts.entrustStatus}
+            </if>
+            <if test="hisjyTentrusts.entrustLaunchType != null and entrustLaunchType != ''">
+                and entrust_launch_type = #{hisjyTentrusts.entrustLaunchType}
+            </if>
+            <if test="hisjyTentrusts.businTimes != null">
+                and busin_times = #{hisjyTentrusts.businTimes}
+            </if>
+            <if test="hisjyTentrusts.entrustTime != null">
+                and entrust_time = #{hisjyTentrusts.entrustTime}
+            </if>
+            <if test="hisjyTentrusts.lastDealTime != null">
+                and last_deal_time = #{hisjyTentrusts.lastDealTime}
+            </if>
+            <if test="hisjyTentrusts.operatorNo != null">
+                and operator_no = #{hisjyTentrusts.operatorNo}
+            </if>
+            <if test="hisjyTentrusts.revokeCause != null and revokeCause != ''">
+                and revoke_cause = #{hisjyTentrusts.revokeCause}
+            </if>
+            <if test="hisjyTentrusts.reportSerialNoBranch != null and reportSerialNoBranch != ''">
+                and report_serial_no_branch = #{hisjyTentrusts.reportSerialNoBranch}
+            </if>
+            <if test="hisjyTentrusts.recNum != null">
+                and rec_num = #{hisjyTentrusts.recNum}
+            </if>
+            <if test="hisjyTentrusts.tranReff != null and tranReff != ''">
+                and tran_reff = #{hisjyTentrusts.tranReff}
+            </if>
+            <if test="hisjyTentrusts.tradePlatformId != null">
+                and trade_platform_id = #{hisjyTentrusts.tradePlatformId}
+            </if>
+            <if test="hisjyTentrusts.cancelFlag != null and cancelFlag != ''">
+                and cancel_flag = #{hisjyTentrusts.cancelFlag}
+            </if>
+            <if test="hisjyTentrusts.cancelSerialNo != null">
+                and cancel_serial_no = #{hisjyTentrusts.cancelSerialNo}
+            </if>
+            <if test="hisjyTentrusts.appendEntrustXhFlag != null and appendEntrustXhFlag != ''">
+                and append_entrust_xh_flag = #{hisjyTentrusts.appendEntrustXhFlag}
+            </if>
+            <if test="hisjyTentrusts.mac != null and mac != ''">
+                and mac = #{hisjyTentrusts.mac}
+            </if>
+            <if test="hisjyTentrusts.ipAddress != null and ipAddress != ''">
+                and ip_address = #{hisjyTentrusts.ipAddress}
+            </if>
+            <if test="hisjyTentrusts.volserialNo != null and volserialNo != ''">
+                and volserial_no = #{hisjyTentrusts.volserialNo}
+            </if>
+            <if test="hisjyTentrusts.wsCpu != null and wsCpu != ''">
+                and ws_cpu = #{hisjyTentrusts.wsCpu}
+            </if>
+            <if test="hisjyTentrusts.schemeCode != null and schemeCode != ''">
+                and scheme_code = #{hisjyTentrusts.schemeCode}
+            </if>
+            <if test="hisjyTentrusts.schemeInsCode != null and schemeInsCode != ''">
+                and scheme_ins_code = #{hisjyTentrusts.schemeInsCode}
+            </if>
+            <if test="hisjyTentrusts.algoOrdid != null and algoOrdid != ''">
+                and algo_ordid = #{hisjyTentrusts.algoOrdid}
+            </if>
+            <if test="hisjyTentrusts.insId != null">
+                and ins_id = #{hisjyTentrusts.insId}
+            </if>
+            <if test="hisjyTentrusts.indexDailyModify != null">
+                and index_daily_modify = #{hisjyTentrusts.indexDailyModify}
+            </if>
+            <if test="hisjyTentrusts.insStockId != null">
+                and ins_stock_id = #{hisjyTentrusts.insStockId}
+            </if>
+            <if test="hisjyTentrusts.capitalAccountNo != null and capitalAccountNo != ''">
+                and capital_account_no = #{hisjyTentrusts.capitalAccountNo}
+            </if>
+            <if test="hisjyTentrusts.branchCode != null and branchCode != ''">
+                and branch_code = #{hisjyTentrusts.branchCode}
+            </if>
+            <if test="hisjyTentrusts.sysBranchCode != null and sysBranchCode != ''">
+                and sys_branch_code = #{hisjyTentrusts.sysBranchCode}
+            </if>
+            <if test="hisjyTentrusts.tradeInterfaceType != null">
+                and trade_interface_type = #{hisjyTentrusts.tradeInterfaceType}
+            </if>
+            <if test="hisjyTentrusts.arbitrageSerialNo != null">
+                and arbitrage_serial_no = #{hisjyTentrusts.arbitrageSerialNo}
+            </if>
+            <if test="hisjyTentrusts.engagedNo != null and engagedNo != ''">
+                and engaged_no = #{hisjyTentrusts.engagedNo}
+            </if>
+            <if test="hisjyTentrusts.rivalSeat != null and rivalSeat != ''">
+                and rival_seat = #{hisjyTentrusts.rivalSeat}
+            </if>
+            <if test="hisjyTentrusts.rivalStockholderId != null and rivalStockholderId != ''">
+                and rival_stockholder_id = #{hisjyTentrusts.rivalStockholderId}
+            </if>
+            <if test="hisjyTentrusts.sysDate != null">
+                and sys_date = #{hisjyTentrusts.sysDate}
+            </if>
+            <if test="hisjyTentrusts.sysTime != null">
+                and sys_time = #{hisjyTentrusts.sysTime}
+            </if>
+            <if test="hisjyTentrusts.externalOrdid != null">
+                and external_ordid = #{hisjyTentrusts.externalOrdid}
+            </if>
+            <if test="hisjyTentrusts.thirdRemark != null and thirdRemark != ''">
+                and third_remark = #{hisjyTentrusts.thirdRemark}
+            </if>
+            <if test="hisjyTentrusts.voteSenateNo != null and voteSenateNo != ''">
+                and vote_senate_no = #{hisjyTentrusts.voteSenateNo}
+            </if>
+            <if test="hisjyTentrusts.stockName != null and stockName != ''">
+                and stock_name = #{hisjyTentrusts.stockName}
+            </if>
+            <if test="hisjyTentrusts.tradeCurrencyNo != null and tradeCurrencyNo != ''">
+                and trade_currency_no = #{hisjyTentrusts.tradeCurrencyNo}
+            </if>
+            <if test="hisjyTentrusts.fundName != null and fundName != ''">
+                and fund_name = #{hisjyTentrusts.fundName}
+            </if>
+            <if test="hisjyTentrusts.assetName != null and assetName != ''">
+                and asset_name = #{hisjyTentrusts.assetName}
+            </if>
+            <if test="hisjyTentrusts.combiName != null and combiName != ''">
+                and combi_name = #{hisjyTentrusts.combiName}
+            </if>
+            <if test="hisjyTentrusts.capitalAccountType != null and capitalAccountType != ''">
+                and capital_account_type = #{hisjyTentrusts.capitalAccountType}
+            </if>
+            <if test="hisjyTentrusts.positionStr != null and positionStr != ''">
+                and position_str = #{hisjyTentrusts.positionStr}
+            </if>
+            <if test="hisjyTentrusts.traceFlag != null and traceFlag != ''">
+                and trace_flag = #{hisjyTentrusts.traceFlag}
+            </if>
+            <if test="hisjyTentrusts.closeDirection != null and closeDirection != ''">
+                and close_direction = #{hisjyTentrusts.closeDirection}
+            </if>
+            <if test="hisjyTentrusts.optionCoveredFlag != null and optionCoveredFlag != ''">
+                and option_covered_flag = #{hisjyTentrusts.optionCoveredFlag}
+            </if>
+            <if test="hisjyTentrusts.linkman != null and linkman != ''">
+                and linkman = #{hisjyTentrusts.linkman}
+            </if>
+            <if test="hisjyTentrusts.phoneNo != null and phoneNo != ''">
+                and phone_no = #{hisjyTentrusts.phoneNo}
+            </if>
+            <if test="hisjyTentrusts.clearSpeed != null">
+                and clear_speed = #{hisjyTentrusts.clearSpeed}
+            </if>
+            <if test="hisjyTentrusts.validFlag != null and validFlag != ''">
+                and valid_flag = #{hisjyTentrusts.validFlag}
+            </if>
+            <if test="hisjyTentrusts.rivalTradercode != null and rivalTradercode != ''">
+                and rival_tradercode = #{hisjyTentrusts.rivalTradercode}
+            </if>
+            <if test="hisjyTentrusts.hgDealDate != null">
+                and hg_deal_date = #{hisjyTentrusts.hgDealDate}
+            </if>
+            <if test="hisjyTentrusts.quoterRequestNo != null and quoterRequestNo != ''">
+                and quoter_request_no = #{hisjyTentrusts.quoterRequestNo}
+            </if>
+            <if test="hisjyTentrusts.originalDealNo != null and originalDealNo != ''">
+                and original_deal_no = #{hisjyTentrusts.originalDealNo}
+            </if>
+            <if test="hisjyTentrusts.contractNo != null and contractNo != ''">
+                and contract_no = #{hisjyTentrusts.contractNo}
+            </if>
+            <if test="hisjyTentrusts.hgDays != null">
+                and hg_days = #{hisjyTentrusts.hgDays}
+            </if>
+            <if test="hisjyTentrusts.reportFlag != null and reportFlag != ''">
+                and report_flag = #{hisjyTentrusts.reportFlag}
+            </if>
+            <if test="hisjyTentrusts.legalGhDate != null">
+                and legal_gh_date = #{hisjyTentrusts.legalGhDate}
+            </if>
+            <if test="hisjyTentrusts.actualGhDate != null">
+                and actual_gh_date = #{hisjyTentrusts.actualGhDate}
+            </if>
+            <if test="hisjyTentrusts.hgInterest != null">
+                and hg_interest = #{hisjyTentrusts.hgInterest}
+            </if>
+            <if test="hisjyTentrusts.hgcontinueFlag != null and hgcontinueFlag != ''">
+                and hgcontinue_flag = #{hisjyTentrusts.hgcontinueFlag}
+            </if>
+            <if test="hisjyTentrusts.thirdFlag != null and thirdFlag != ''">
+                and third_flag = #{hisjyTentrusts.thirdFlag}
+            </if>
+            <if test="hisjyTentrusts.firstSettleDate != null">
+                and first_settle_date = #{hisjyTentrusts.firstSettleDate}
+            </if>
+            <if test="hisjyTentrusts.useDays != null">
+                and use_days = #{hisjyTentrusts.useDays}
+            </if>
+            <if test="hisjyTentrusts.boardType != null and boardType != ''">
+                and board_type = #{hisjyTentrusts.boardType}
+            </if>
+            <if test="hisjyTentrusts.terminalInfoSlitExt != null and terminalInfoSlitExt != ''">
+                and terminal_info_slit_ext = #{hisjyTentrusts.terminalInfoSlitExt}
+            </if>
+            <if test="hisjyTentrusts.orderId != null">
+                and order_id = #{hisjyTentrusts.orderId}
+            </if>
+            <if test="hisjyTentrusts.dfdStatus != null and dfdStatus != ''">
+                and dfd_status = #{hisjyTentrusts.dfdStatus}
+            </if>
+            <if test="hisjyTentrusts.autoDropFlag != null and autoDropFlag != ''">
+                and auto_drop_flag = #{hisjyTentrusts.autoDropFlag}
+            </if>
+            <if test="hisjyTentrusts.reportStatus != null and reportStatus != ''">
+                and report_status = #{hisjyTentrusts.reportStatus}
+            </if>
+            <if test="hisjyTentrusts.bulkunderweightFlag != null and bulkunderweightFlag != ''">
+                and bulkunderweight_flag = #{hisjyTentrusts.bulkunderweightFlag}
+            </if>
+            <if test="hisjyTentrusts.cashgroupProp != null and cashgroupProp != ''">
+                and cashgroup_prop = #{hisjyTentrusts.cashgroupProp}
+            </if>
+            <if test="hisjyTentrusts.minVolume != null">
+                and min_volume = #{hisjyTentrusts.minVolume}
+            </if>
+            <if test="hisjyTentrusts.compactId != null and compactId != ''">
+                and compact_id = #{hisjyTentrusts.compactId}
+            </if>
+            <if test="hisjyTentrusts.stockType != null">
+                and stock_type = #{hisjyTentrusts.stockType}
+            </if>
+            <if test="hisjyTentrusts.restrictedFlag != null and restrictedFlag != ''">
+                and restricted_flag = #{hisjyTentrusts.restrictedFlag}
+            </if>
+            <if test="hisjyTentrusts.inReportCode != null and inReportCode != ''">
+                and in_report_code = #{hisjyTentrusts.inReportCode}
+            </if>
+            <if test="hisjyTentrusts.inStockName != null and inStockName != ''">
+                and in_stock_name = #{hisjyTentrusts.inStockName}
+            </if>
+        </where>
+        order by business_date, entrust_serial_no asc
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+    <!--通过实体作为筛选条件查询-->
+    <select id="queryAll" resultMap="BaseResultMap">
+    select
+    business_date, entrust_serial_no, batch_serial_no, report_serial_no, company_id, fund_id, confirm_codeno, asset_id,
+    combi_id, market_no, report_code, inter_code, bind_seat, stockholder_id, trade_seat, invest_type, entrust_direction,
+    report_direction, entrust_price_type, entrust_price, entrust_amount, entrust_balance, cancel_amount, busin_amount,
+    busin_balance, total_deal_amount, total_deal_balance, prebuy_frozen_balance, entrust_status, entrust_launch_type,
+    busin_times, entrust_time, last_deal_time, operator_no, revoke_cause, report_serial_no_branch, rec_num, tran_reff,
+    trade_platform_id, cancel_flag, cancel_serial_no, append_entrust_xh_flag, mac, ip_address, volserial_no, ws_cpu,
+    scheme_code, scheme_ins_code, algo_ordid, ins_id, index_daily_modify, ins_stock_id, capital_account_no, branch_code,
+    sys_branch_code, trade_interface_type, arbitrage_serial_no, engaged_no, rival_seat, rival_stockholder_id, sys_date,
+    sys_time, external_ordid, third_remark, vote_senate_no, stock_name, trade_currency_no, fund_name, asset_name,
+    combi_name, capital_account_type, position_str, trace_flag, close_direction, option_covered_flag, linkman, phone_no,
+    clear_speed, valid_flag, rival_tradercode, hg_deal_date, quoter_request_no, original_deal_no, contract_no, hg_days,
+    report_flag, legal_gh_date, actual_gh_date, hg_interest, hgcontinue_flag, third_flag, first_settle_date, use_days,
+    board_type, terminal_info_slit_ext, order_id, dfd_status, auto_drop_flag, report_status, bulkunderweight_flag,
+    cashgroup_prop, min_volume, compact_id, stock_type, restricted_flag, in_report_code, in_stock_name
+    from dbtrade.hisjy_tentrusts
+    </select>
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from hisjy_tentrusts
+        <where>
+            <if test="businessDate != null">
+                and business_date = #{businessDate}
+            </if>
+            <if test="entrustSerialNo != null">
+                and entrust_serial_no = #{entrustSerialNo}
+            </if>
+            <if test="batchSerialNo != null">
+                and batch_serial_no = #{batchSerialNo}
+            </if>
+            <if test="reportSerialNo != null">
+                and report_serial_no = #{reportSerialNo}
+            </if>
+            <if test="companyId != null">
+                and company_id = #{companyId}
+            </if>
+            <if test="fundId != null">
+                and fund_id = #{fundId}
+            </if>
+            <if test="confirmCodeno != null and confirmCodeno != ''">
+                and confirm_codeno = #{confirmCodeno}
+            </if>
+            <if test="assetId != null">
+                and asset_id = #{assetId}
+            </if>
+            <if test="combiId != null">
+                and combi_id = #{combiId}
+            </if>
+            <if test="marketNo != null">
+                and market_no = #{marketNo}
+            </if>
+            <if test="reportCode != null and reportCode != ''">
+                and report_code = #{reportCode}
+            </if>
+            <if test="interCode != null">
+                and inter_code = #{interCode}
+            </if>
+            <if test="bindSeat != null and bindSeat != ''">
+                and bind_seat = #{bindSeat}
+            </if>
+            <if test="stockholderId != null and stockholderId != ''">
+                and stockholder_id = #{stockholderId}
+            </if>
+            <if test="tradeSeat != null and tradeSeat != ''">
+                and trade_seat = #{tradeSeat}
+            </if>
+            <if test="investType != null and investType != ''">
+                and invest_type = #{investType}
+            </if>
+            <if test="entrustDirection != null">
+                and entrust_direction = #{entrustDirection}
+            </if>
+            <if test="reportDirection != null and reportDirection != ''">
+                and report_direction = #{reportDirection}
+            </if>
+            <if test="entrustPriceType != null and entrustPriceType != ''">
+                and entrust_price_type = #{entrustPriceType}
+            </if>
+            <if test="entrustPrice != null">
+                and entrust_price = #{entrustPrice}
+            </if>
+            <if test="entrustAmount != null">
+                and entrust_amount = #{entrustAmount}
+            </if>
+            <if test="entrustBalance != null">
+                and entrust_balance = #{entrustBalance}
+            </if>
+            <if test="cancelAmount != null">
+                and cancel_amount = #{cancelAmount}
+            </if>
+            <if test="businAmount != null">
+                and busin_amount = #{businAmount}
+            </if>
+            <if test="businBalance != null">
+                and busin_balance = #{businBalance}
+            </if>
+            <if test="totalDealAmount != null">
+                and total_deal_amount = #{totalDealAmount}
+            </if>
+            <if test="totalDealBalance != null">
+                and total_deal_balance = #{totalDealBalance}
+            </if>
+            <if test="prebuyFrozenBalance != null">
+                and prebuy_frozen_balance = #{prebuyFrozenBalance}
+            </if>
+            <if test="entrustStatus != null and entrustStatus != ''">
+                and entrust_status = #{entrustStatus}
+            </if>
+            <if test="entrustLaunchType != null and entrustLaunchType != ''">
+                and entrust_launch_type = #{entrustLaunchType}
+            </if>
+            <if test="businTimes != null">
+                and busin_times = #{businTimes}
+            </if>
+            <if test="entrustTime != null">
+                and entrust_time = #{entrustTime}
+            </if>
+            <if test="lastDealTime != null">
+                and last_deal_time = #{lastDealTime}
+            </if>
+            <if test="operatorNo != null">
+                and operator_no = #{operatorNo}
+            </if>
+            <if test="revokeCause != null and revokeCause != ''">
+                and revoke_cause = #{revokeCause}
+            </if>
+            <if test="reportSerialNoBranch != null and reportSerialNoBranch != ''">
+                and report_serial_no_branch = #{reportSerialNoBranch}
+            </if>
+            <if test="recNum != null">
+                and rec_num = #{recNum}
+            </if>
+            <if test="tranReff != null and tranReff != ''">
+                and tran_reff = #{tranReff}
+            </if>
+            <if test="tradePlatformId != null">
+                and trade_platform_id = #{tradePlatformId}
+            </if>
+            <if test="cancelFlag != null and cancelFlag != ''">
+                and cancel_flag = #{cancelFlag}
+            </if>
+            <if test="cancelSerialNo != null">
+                and cancel_serial_no = #{cancelSerialNo}
+            </if>
+            <if test="appendEntrustXhFlag != null and appendEntrustXhFlag != ''">
+                and append_entrust_xh_flag = #{appendEntrustXhFlag}
+            </if>
+            <if test="mac != null and mac != ''">
+                and mac = #{mac}
+            </if>
+            <if test="ipAddress != null and ipAddress != ''">
+                and ip_address = #{ipAddress}
+            </if>
+            <if test="volserialNo != null and volserialNo != ''">
+                and volserial_no = #{volserialNo}
+            </if>
+            <if test="wsCpu != null and wsCpu != ''">
+                and ws_cpu = #{wsCpu}
+            </if>
+            <if test="schemeCode != null and schemeCode != ''">
+                and scheme_code = #{schemeCode}
+            </if>
+            <if test="schemeInsCode != null and schemeInsCode != ''">
+                and scheme_ins_code = #{schemeInsCode}
+            </if>
+            <if test="algoOrdid != null and algoOrdid != ''">
+                and algo_ordid = #{algoOrdid}
+            </if>
+            <if test="insId != null">
+                and ins_id = #{insId}
+            </if>
+            <if test="indexDailyModify != null">
+                and index_daily_modify = #{indexDailyModify}
+            </if>
+            <if test="insStockId != null">
+                and ins_stock_id = #{insStockId}
+            </if>
+            <if test="capitalAccountNo != null and capitalAccountNo != ''">
+                and capital_account_no = #{capitalAccountNo}
+            </if>
+            <if test="branchCode != null and branchCode != ''">
+                and branch_code = #{branchCode}
+            </if>
+            <if test="sysBranchCode != null and sysBranchCode != ''">
+                and sys_branch_code = #{sysBranchCode}
+            </if>
+            <if test="tradeInterfaceType != null">
+                and trade_interface_type = #{tradeInterfaceType}
+            </if>
+            <if test="arbitrageSerialNo != null">
+                and arbitrage_serial_no = #{arbitrageSerialNo}
+            </if>
+            <if test="engagedNo != null and engagedNo != ''">
+                and engaged_no = #{engagedNo}
+            </if>
+            <if test="rivalSeat != null and rivalSeat != ''">
+                and rival_seat = #{rivalSeat}
+            </if>
+            <if test="rivalStockholderId != null and rivalStockholderId != ''">
+                and rival_stockholder_id = #{rivalStockholderId}
+            </if>
+            <if test="sysDate != null">
+                and sys_date = #{sysDate}
+            </if>
+            <if test="sysTime != null">
+                and sys_time = #{sysTime}
+            </if>
+            <if test="externalOrdid != null">
+                and external_ordid = #{externalOrdid}
+            </if>
+            <if test="thirdRemark != null and thirdRemark != ''">
+                and third_remark = #{thirdRemark}
+            </if>
+            <if test="voteSenateNo != null and voteSenateNo != ''">
+                and vote_senate_no = #{voteSenateNo}
+            </if>
+            <if test="stockName != null and stockName != ''">
+                and stock_name = #{stockName}
+            </if>
+            <if test="tradeCurrencyNo != null and tradeCurrencyNo != ''">
+                and trade_currency_no = #{tradeCurrencyNo}
+            </if>
+            <if test="fundName != null and fundName != ''">
+                and fund_name = #{fundName}
+            </if>
+            <if test="assetName != null and assetName != ''">
+                and asset_name = #{assetName}
+            </if>
+            <if test="combiName != null and combiName != ''">
+                and combi_name = #{combiName}
+            </if>
+            <if test="capitalAccountType != null and capitalAccountType != ''">
+                and capital_account_type = #{capitalAccountType}
+            </if>
+            <if test="positionStr != null and positionStr != ''">
+                and position_str = #{positionStr}
+            </if>
+            <if test="traceFlag != null and traceFlag != ''">
+                and trace_flag = #{traceFlag}
+            </if>
+            <if test="closeDirection != null and closeDirection != ''">
+                and close_direction = #{closeDirection}
+            </if>
+            <if test="optionCoveredFlag != null and optionCoveredFlag != ''">
+                and option_covered_flag = #{optionCoveredFlag}
+            </if>
+            <if test="linkman != null and linkman != ''">
+                and linkman = #{linkman}
+            </if>
+            <if test="phoneNo != null and phoneNo != ''">
+                and phone_no = #{phoneNo}
+            </if>
+            <if test="clearSpeed != null">
+                and clear_speed = #{clearSpeed}
+            </if>
+            <if test="validFlag != null and validFlag != ''">
+                and valid_flag = #{validFlag}
+            </if>
+            <if test="rivalTradercode != null and rivalTradercode != ''">
+                and rival_tradercode = #{rivalTradercode}
+            </if>
+            <if test="hgDealDate != null">
+                and hg_deal_date = #{hgDealDate}
+            </if>
+            <if test="quoterRequestNo != null and quoterRequestNo != ''">
+                and quoter_request_no = #{quoterRequestNo}
+            </if>
+            <if test="originalDealNo != null and originalDealNo != ''">
+                and original_deal_no = #{originalDealNo}
+            </if>
+            <if test="contractNo != null and contractNo != ''">
+                and contract_no = #{contractNo}
+            </if>
+            <if test="hgDays != null">
+                and hg_days = #{hgDays}
+            </if>
+            <if test="reportFlag != null and reportFlag != ''">
+                and report_flag = #{reportFlag}
+            </if>
+            <if test="legalGhDate != null">
+                and legal_gh_date = #{legalGhDate}
+            </if>
+            <if test="actualGhDate != null">
+                and actual_gh_date = #{actualGhDate}
+            </if>
+            <if test="hgInterest != null">
+                and hg_interest = #{hgInterest}
+            </if>
+            <if test="hgcontinueFlag != null and hgcontinueFlag != ''">
+                and hgcontinue_flag = #{hgcontinueFlag}
+            </if>
+            <if test="thirdFlag != null and thirdFlag != ''">
+                and third_flag = #{thirdFlag}
+            </if>
+            <if test="firstSettleDate != null">
+                and first_settle_date = #{firstSettleDate}
+            </if>
+            <if test="useDays != null">
+                and use_days = #{useDays}
+            </if>
+            <if test="boardType != null and boardType != ''">
+                and board_type = #{boardType}
+            </if>
+            <if test="terminalInfoSlitExt != null and terminalInfoSlitExt != ''">
+                and terminal_info_slit_ext = #{terminalInfoSlitExt}
+            </if>
+            <if test="orderId != null">
+                and order_id = #{orderId}
+            </if>
+            <if test="dfdStatus != null and dfdStatus != ''">
+                and dfd_status = #{dfdStatus}
+            </if>
+            <if test="autoDropFlag != null and autoDropFlag != ''">
+                and auto_drop_flag = #{autoDropFlag}
+            </if>
+            <if test="reportStatus != null and reportStatus != ''">
+                and report_status = #{reportStatus}
+            </if>
+            <if test="bulkunderweightFlag != null and bulkunderweightFlag != ''">
+                and bulkunderweight_flag = #{bulkunderweightFlag}
+            </if>
+            <if test="cashgroupProp != null and cashgroupProp != ''">
+                and cashgroup_prop = #{cashgroupProp}
+            </if>
+            <if test="minVolume != null">
+                and min_volume = #{minVolume}
+            </if>
+            <if test="compactId != null and compactId != ''">
+                and compact_id = #{compactId}
+            </if>
+            <if test="stockType != null">
+                and stock_type = #{stockType}
+            </if>
+            <if test="restrictedFlag != null and restrictedFlag != ''">
+                and restricted_flag = #{restrictedFlag}
+            </if>
+            <if test="inReportCode != null and inReportCode != ''">
+                and in_report_code = #{inReportCode}
+            </if>
+            <if test="inStockName != null and inStockName != ''">
+                and in_stock_name = #{inStockName}
+            </if>
+        </where>
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="businessDate" useGeneratedKeys="true">
+        insert into hisjy_tentrusts(batch_serial_no, report_serial_no, company_id, fund_id, confirm_codeno, asset_id,
+                                    combi_id, market_no, report_code, inter_code, bind_seat, stockholder_id, trade_seat,
+                                    invest_type, entrust_direction, report_direction, entrust_price_type, entrust_price,
+                                    entrust_amount, entrust_balance, cancel_amount, busin_amount, busin_balance,
+                                    total_deal_amount, total_deal_balance, prebuy_frozen_balance, entrust_status,
+                                    entrust_launch_type, busin_times, entrust_time, last_deal_time, operator_no,
+                                    revoke_cause, report_serial_no_branch, rec_num, tran_reff, trade_platform_id,
+                                    cancel_flag, cancel_serial_no, append_entrust_xh_flag, mac, ip_address,
+                                    volserial_no, ws_cpu, scheme_code, scheme_ins_code, algo_ordid, ins_id,
+                                    index_daily_modify, ins_stock_id, capital_account_no, branch_code, sys_branch_code,
+                                    trade_interface_type, arbitrage_serial_no, engaged_no, rival_seat,
+                                    rival_stockholder_id, sys_date, sys_time, external_ordid, third_remark,
+                                    vote_senate_no, stock_name, trade_currency_no, fund_name, asset_name, combi_name,
+                                    capital_account_type, position_str, trace_flag, close_direction,
+                                    option_covered_flag, linkman, phone_no, clear_speed, valid_flag, rival_tradercode,
+                                    hg_deal_date, quoter_request_no, original_deal_no, contract_no, hg_days,
+                                    report_flag, legal_gh_date, actual_gh_date, hg_interest, hgcontinue_flag,
+                                    third_flag, first_settle_date, use_days, board_type, terminal_info_slit_ext,
+                                    order_id, dfd_status, auto_drop_flag, report_status, bulkunderweight_flag,
+                                    cashgroup_prop, min_volume, compact_id, stock_type, restricted_flag, in_report_code,
+                                    in_stock_name)
+        values (#{batchSerialNo}, #{reportSerialNo}, #{companyId}, #{fundId}, #{confirmCodeno}, #{assetId}, #{combiId},
+                #{marketNo}, #{reportCode}, #{interCode}, #{bindSeat}, #{stockholderId}, #{tradeSeat}, #{investType},
+                #{entrustDirection}, #{reportDirection}, #{entrustPriceType}, #{entrustPrice}, #{entrustAmount},
+                #{entrustBalance}, #{cancelAmount}, #{businAmount}, #{businBalance}, #{totalDealAmount},
+                #{totalDealBalance}, #{prebuyFrozenBalance}, #{entrustStatus}, #{entrustLaunchType}, #{businTimes},
+                #{entrustTime}, #{lastDealTime}, #{operatorNo}, #{revokeCause}, #{reportSerialNoBranch}, #{recNum},
+                #{tranReff}, #{tradePlatformId}, #{cancelFlag}, #{cancelSerialNo}, #{appendEntrustXhFlag}, #{mac},
+                #{ipAddress}, #{volserialNo}, #{wsCpu}, #{schemeCode}, #{schemeInsCode}, #{algoOrdid}, #{insId},
+                #{indexDailyModify}, #{insStockId}, #{capitalAccountNo}, #{branchCode}, #{sysBranchCode},
+                #{tradeInterfaceType}, #{arbitrageSerialNo}, #{engagedNo}, #{rivalSeat}, #{rivalStockholderId},
+                #{sysDate}, #{sysTime}, #{externalOrdid}, #{thirdRemark}, #{voteSenateNo}, #{stockName},
+                #{tradeCurrencyNo}, #{fundName}, #{assetName}, #{combiName}, #{capitalAccountType}, #{positionStr},
+                #{traceFlag}, #{closeDirection}, #{optionCoveredFlag}, #{linkman}, #{phoneNo}, #{clearSpeed},
+                #{validFlag}, #{rivalTradercode}, #{hgDealDate}, #{quoterRequestNo}, #{originalDealNo}, #{contractNo},
+                #{hgDays}, #{reportFlag}, #{legalGhDate}, #{actualGhDate}, #{hgInterest}, #{hgcontinueFlag},
+                #{thirdFlag}, #{firstSettleDate}, #{useDays}, #{boardType}, #{terminalInfoSlitExt}, #{orderId},
+                #{dfdStatus}, #{autoDropFlag}, #{reportStatus}, #{bulkunderweightFlag}, #{cashgroupProp}, #{minVolume},
+                #{compactId}, #{stockType}, #{restrictedFlag}, #{inReportCode}, #{inStockName})
+    </insert>
+
+    <insert id="insertBatch" keyProperty="businessDate" useGeneratedKeys="true">
+        insert into hisjy_tentrusts(batch_serial_no, report_serial_no, company_id, fund_id, confirm_codeno, asset_id,
+        combi_id, market_no, report_code, inter_code, bind_seat, stockholder_id, trade_seat, invest_type,
+        entrust_direction, report_direction, entrust_price_type, entrust_price, entrust_amount, entrust_balance,
+        cancel_amount, busin_amount, busin_balance, total_deal_amount, total_deal_balance, prebuy_frozen_balance,
+        entrust_status, entrust_launch_type, busin_times, entrust_time, last_deal_time, operator_no, revoke_cause,
+        report_serial_no_branch, rec_num, tran_reff, trade_platform_id, cancel_flag, cancel_serial_no,
+        append_entrust_xh_flag, mac, ip_address, volserial_no, ws_cpu, scheme_code, scheme_ins_code, algo_ordid, ins_id,
+        index_daily_modify, ins_stock_id, capital_account_no, branch_code, sys_branch_code, trade_interface_type,
+        arbitrage_serial_no, engaged_no, rival_seat, rival_stockholder_id, sys_date, sys_time, external_ordid,
+        third_remark, vote_senate_no, stock_name, trade_currency_no, fund_name, asset_name, combi_name,
+        capital_account_type, position_str, trace_flag, close_direction, option_covered_flag, linkman, phone_no,
+        clear_speed, valid_flag, rival_tradercode, hg_deal_date, quoter_request_no, original_deal_no, contract_no,
+        hg_days, report_flag, legal_gh_date, actual_gh_date, hg_interest, hgcontinue_flag, third_flag,
+        first_settle_date, use_days, board_type, terminal_info_slit_ext, order_id, dfd_status, auto_drop_flag,
+        report_status, bulkunderweight_flag, cashgroup_prop, min_volume, compact_id, stock_type, restricted_flag,
+        in_report_code, in_stock_name)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.batchSerialNo}, #{entity.reportSerialNo}, #{entity.companyId}, #{entity.fundId},
+            #{entity.confirmCodeno}, #{entity.assetId}, #{entity.combiId}, #{entity.marketNo}, #{entity.reportCode},
+            #{entity.interCode}, #{entity.bindSeat}, #{entity.stockholderId}, #{entity.tradeSeat}, #{entity.investType},
+            #{entity.entrustDirection}, #{entity.reportDirection}, #{entity.entrustPriceType}, #{entity.entrustPrice},
+            #{entity.entrustAmount}, #{entity.entrustBalance}, #{entity.cancelAmount}, #{entity.businAmount},
+            #{entity.businBalance}, #{entity.totalDealAmount}, #{entity.totalDealBalance},
+            #{entity.prebuyFrozenBalance}, #{entity.entrustStatus}, #{entity.entrustLaunchType}, #{entity.businTimes},
+            #{entity.entrustTime}, #{entity.lastDealTime}, #{entity.operatorNo}, #{entity.revokeCause},
+            #{entity.reportSerialNoBranch}, #{entity.recNum}, #{entity.tranReff}, #{entity.tradePlatformId},
+            #{entity.cancelFlag}, #{entity.cancelSerialNo}, #{entity.appendEntrustXhFlag}, #{entity.mac},
+            #{entity.ipAddress}, #{entity.volserialNo}, #{entity.wsCpu}, #{entity.schemeCode}, #{entity.schemeInsCode},
+            #{entity.algoOrdid}, #{entity.insId}, #{entity.indexDailyModify}, #{entity.insStockId},
+            #{entity.capitalAccountNo}, #{entity.branchCode}, #{entity.sysBranchCode}, #{entity.tradeInterfaceType},
+            #{entity.arbitrageSerialNo}, #{entity.engagedNo}, #{entity.rivalSeat}, #{entity.rivalStockholderId},
+            #{entity.sysDate}, #{entity.sysTime}, #{entity.externalOrdid}, #{entity.thirdRemark},
+            #{entity.voteSenateNo}, #{entity.stockName}, #{entity.tradeCurrencyNo}, #{entity.fundName},
+            #{entity.assetName}, #{entity.combiName}, #{entity.capitalAccountType}, #{entity.positionStr},
+            #{entity.traceFlag}, #{entity.closeDirection}, #{entity.optionCoveredFlag}, #{entity.linkman},
+            #{entity.phoneNo}, #{entity.clearSpeed}, #{entity.validFlag}, #{entity.rivalTradercode},
+            #{entity.hgDealDate}, #{entity.quoterRequestNo}, #{entity.originalDealNo}, #{entity.contractNo},
+            #{entity.hgDays}, #{entity.reportFlag}, #{entity.legalGhDate}, #{entity.actualGhDate}, #{entity.hgInterest},
+            #{entity.hgcontinueFlag}, #{entity.thirdFlag}, #{entity.firstSettleDate}, #{entity.useDays},
+            #{entity.boardType}, #{entity.terminalInfoSlitExt}, #{entity.orderId}, #{entity.dfdStatus},
+            #{entity.autoDropFlag}, #{entity.reportStatus}, #{entity.bulkunderweightFlag}, #{entity.cashgroupProp},
+            #{entity.minVolume}, #{entity.compactId}, #{entity.stockType}, #{entity.restrictedFlag},
+            #{entity.inReportCode}, #{entity.inStockName})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="businessDate" useGeneratedKeys="true">
+        insert into hisjy_tentrusts(batch_serial_no, report_serial_no, company_id, fund_id, confirm_codeno, asset_id,
+        combi_id, market_no, report_code, inter_code, bind_seat, stockholder_id, trade_seat, invest_type,
+        entrust_direction, report_direction, entrust_price_type, entrust_price, entrust_amount, entrust_balance,
+        cancel_amount, busin_amount, busin_balance, total_deal_amount, total_deal_balance, prebuy_frozen_balance,
+        entrust_status, entrust_launch_type, busin_times, entrust_time, last_deal_time, operator_no, revoke_cause,
+        report_serial_no_branch, rec_num, tran_reff, trade_platform_id, cancel_flag, cancel_serial_no,
+        append_entrust_xh_flag, mac, ip_address, volserial_no, ws_cpu, scheme_code, scheme_ins_code, algo_ordid, ins_id,
+        index_daily_modify, ins_stock_id, capital_account_no, branch_code, sys_branch_code, trade_interface_type,
+        arbitrage_serial_no, engaged_no, rival_seat, rival_stockholder_id, sys_date, sys_time, external_ordid,
+        third_remark, vote_senate_no, stock_name, trade_currency_no, fund_name, asset_name, combi_name,
+        capital_account_type, position_str, trace_flag, close_direction, option_covered_flag, linkman, phone_no,
+        clear_speed, valid_flag, rival_tradercode, hg_deal_date, quoter_request_no, original_deal_no, contract_no,
+        hg_days, report_flag, legal_gh_date, actual_gh_date, hg_interest, hgcontinue_flag, third_flag,
+        first_settle_date, use_days, board_type, terminal_info_slit_ext, order_id, dfd_status, auto_drop_flag,
+        report_status, bulkunderweight_flag, cashgroup_prop, min_volume, compact_id, stock_type, restricted_flag,
+        in_report_code, in_stock_name)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.batchSerialNo}, #{entity.reportSerialNo}, #{entity.companyId}, #{entity.fundId},
+            #{entity.confirmCodeno}, #{entity.assetId}, #{entity.combiId}, #{entity.marketNo}, #{entity.reportCode},
+            #{entity.interCode}, #{entity.bindSeat}, #{entity.stockholderId}, #{entity.tradeSeat}, #{entity.investType},
+            #{entity.entrustDirection}, #{entity.reportDirection}, #{entity.entrustPriceType}, #{entity.entrustPrice},
+            #{entity.entrustAmount}, #{entity.entrustBalance}, #{entity.cancelAmount}, #{entity.businAmount},
+            #{entity.businBalance}, #{entity.totalDealAmount}, #{entity.totalDealBalance},
+            #{entity.prebuyFrozenBalance}, #{entity.entrustStatus}, #{entity.entrustLaunchType}, #{entity.businTimes},
+            #{entity.entrustTime}, #{entity.lastDealTime}, #{entity.operatorNo}, #{entity.revokeCause},
+            #{entity.reportSerialNoBranch}, #{entity.recNum}, #{entity.tranReff}, #{entity.tradePlatformId},
+            #{entity.cancelFlag}, #{entity.cancelSerialNo}, #{entity.appendEntrustXhFlag}, #{entity.mac},
+            #{entity.ipAddress}, #{entity.volserialNo}, #{entity.wsCpu}, #{entity.schemeCode}, #{entity.schemeInsCode},
+            #{entity.algoOrdid}, #{entity.insId}, #{entity.indexDailyModify}, #{entity.insStockId},
+            #{entity.capitalAccountNo}, #{entity.branchCode}, #{entity.sysBranchCode}, #{entity.tradeInterfaceType},
+            #{entity.arbitrageSerialNo}, #{entity.engagedNo}, #{entity.rivalSeat}, #{entity.rivalStockholderId},
+            #{entity.sysDate}, #{entity.sysTime}, #{entity.externalOrdid}, #{entity.thirdRemark},
+            #{entity.voteSenateNo}, #{entity.stockName}, #{entity.tradeCurrencyNo}, #{entity.fundName},
+            #{entity.assetName}, #{entity.combiName}, #{entity.capitalAccountType}, #{entity.positionStr},
+            #{entity.traceFlag}, #{entity.closeDirection}, #{entity.optionCoveredFlag}, #{entity.linkman},
+            #{entity.phoneNo}, #{entity.clearSpeed}, #{entity.validFlag}, #{entity.rivalTradercode},
+            #{entity.hgDealDate}, #{entity.quoterRequestNo}, #{entity.originalDealNo}, #{entity.contractNo},
+            #{entity.hgDays}, #{entity.reportFlag}, #{entity.legalGhDate}, #{entity.actualGhDate}, #{entity.hgInterest},
+            #{entity.hgcontinueFlag}, #{entity.thirdFlag}, #{entity.firstSettleDate}, #{entity.useDays},
+            #{entity.boardType}, #{entity.terminalInfoSlitExt}, #{entity.orderId}, #{entity.dfdStatus},
+            #{entity.autoDropFlag}, #{entity.reportStatus}, #{entity.bulkunderweightFlag}, #{entity.cashgroupProp},
+            #{entity.minVolume}, #{entity.compactId}, #{entity.stockType}, #{entity.restrictedFlag},
+            #{entity.inReportCode}, #{entity.inStockName})
+        </foreach>
+        on duplicate key update
+        batch_serial_no = values(batch_serial_no),
+        report_serial_no = values(report_serial_no),
+        company_id = values(company_id),
+        fund_id = values(fund_id),
+        confirm_codeno = values(confirm_codeno),
+        asset_id = values(asset_id),
+        combi_id = values(combi_id),
+        market_no = values(market_no),
+        report_code = values(report_code),
+        inter_code = values(inter_code),
+        bind_seat = values(bind_seat),
+        stockholder_id = values(stockholder_id),
+        trade_seat = values(trade_seat),
+        invest_type = values(invest_type),
+        entrust_direction = values(entrust_direction),
+        report_direction = values(report_direction),
+        entrust_price_type = values(entrust_price_type),
+        entrust_price = values(entrust_price),
+        entrust_amount = values(entrust_amount),
+        entrust_balance = values(entrust_balance),
+        cancel_amount = values(cancel_amount),
+        busin_amount = values(busin_amount),
+        busin_balance = values(busin_balance),
+        total_deal_amount = values(total_deal_amount),
+        total_deal_balance = values(total_deal_balance),
+        prebuy_frozen_balance = values(prebuy_frozen_balance),
+        entrust_status = values(entrust_status),
+        entrust_launch_type = values(entrust_launch_type),
+        busin_times = values(busin_times),
+        entrust_time = values(entrust_time),
+        last_deal_time = values(last_deal_time),
+        operator_no = values(operator_no),
+        revoke_cause = values(revoke_cause),
+        report_serial_no_branch = values(report_serial_no_branch),
+        rec_num = values(rec_num),
+        tran_reff = values(tran_reff),
+        trade_platform_id = values(trade_platform_id),
+        cancel_flag = values(cancel_flag),
+        cancel_serial_no = values(cancel_serial_no),
+        append_entrust_xh_flag = values(append_entrust_xh_flag),
+        mac = values(mac),
+        ip_address = values(ip_address),
+        volserial_no = values(volserial_no),
+        ws_cpu = values(ws_cpu),
+        scheme_code = values(scheme_code),
+        scheme_ins_code = values(scheme_ins_code),
+        algo_ordid = values(algo_ordid),
+        ins_id = values(ins_id),
+        index_daily_modify = values(index_daily_modify),
+        ins_stock_id = values(ins_stock_id),
+        capital_account_no = values(capital_account_no),
+        branch_code = values(branch_code),
+        sys_branch_code = values(sys_branch_code),
+        trade_interface_type = values(trade_interface_type),
+        arbitrage_serial_no = values(arbitrage_serial_no),
+        engaged_no = values(engaged_no),
+        rival_seat = values(rival_seat),
+        rival_stockholder_id = values(rival_stockholder_id),
+        sys_date = values(sys_date),
+        sys_time = values(sys_time),
+        external_ordid = values(external_ordid),
+        third_remark = values(third_remark),
+        vote_senate_no = values(vote_senate_no),
+        stock_name = values(stock_name),
+        trade_currency_no = values(trade_currency_no),
+        fund_name = values(fund_name),
+        asset_name = values(asset_name),
+        combi_name = values(combi_name),
+        capital_account_type = values(capital_account_type),
+        position_str = values(position_str),
+        trace_flag = values(trace_flag),
+        close_direction = values(close_direction),
+        option_covered_flag = values(option_covered_flag),
+        linkman = values(linkman),
+        phone_no = values(phone_no),
+        clear_speed = values(clear_speed),
+        valid_flag = values(valid_flag),
+        rival_tradercode = values(rival_tradercode),
+        hg_deal_date = values(hg_deal_date),
+        quoter_request_no = values(quoter_request_no),
+        original_deal_no = values(original_deal_no),
+        contract_no = values(contract_no),
+        hg_days = values(hg_days),
+        report_flag = values(report_flag),
+        legal_gh_date = values(legal_gh_date),
+        actual_gh_date = values(actual_gh_date),
+        hg_interest = values(hg_interest),
+        hgcontinue_flag = values(hgcontinue_flag),
+        third_flag = values(third_flag),
+        first_settle_date = values(first_settle_date),
+        use_days = values(use_days),
+        board_type = values(board_type),
+        terminal_info_slit_ext = values(terminal_info_slit_ext),
+        order_id = values(order_id),
+        dfd_status = values(dfd_status),
+        auto_drop_flag = values(auto_drop_flag),
+        report_status = values(report_status),
+        bulkunderweight_flag = values(bulkunderweight_flag),
+        cashgroup_prop = values(cashgroup_prop),
+        min_volume = values(min_volume),
+        compact_id = values(compact_id),
+        stock_type = values(stock_type),
+        restricted_flag = values(restricted_flag),
+        in_report_code = values(in_report_code),
+        in_stock_name = values(in_stock_name)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update hisjy_tentrusts
+        <set>
+            <if test="batchSerialNo != null">
+                batch_serial_no = #{batchSerialNo},
+            </if>
+            <if test="reportSerialNo != null">
+                report_serial_no = #{reportSerialNo},
+            </if>
+            <if test="companyId != null">
+                company_id = #{companyId},
+            </if>
+            <if test="fundId != null">
+                fund_id = #{fundId},
+            </if>
+            <if test="confirmCodeno != null and confirmCodeno != ''">
+                confirm_codeno = #{confirmCodeno},
+            </if>
+            <if test="assetId != null">
+                asset_id = #{assetId},
+            </if>
+            <if test="combiId != null">
+                combi_id = #{combiId},
+            </if>
+            <if test="marketNo != null">
+                market_no = #{marketNo},
+            </if>
+            <if test="reportCode != null and reportCode != ''">
+                report_code = #{reportCode},
+            </if>
+            <if test="interCode != null">
+                inter_code = #{interCode},
+            </if>
+            <if test="bindSeat != null and bindSeat != ''">
+                bind_seat = #{bindSeat},
+            </if>
+            <if test="stockholderId != null and stockholderId != ''">
+                stockholder_id = #{stockholderId},
+            </if>
+            <if test="tradeSeat != null and tradeSeat != ''">
+                trade_seat = #{tradeSeat},
+            </if>
+            <if test="investType != null and investType != ''">
+                invest_type = #{investType},
+            </if>
+            <if test="entrustDirection != null">
+                entrust_direction = #{entrustDirection},
+            </if>
+            <if test="reportDirection != null and reportDirection != ''">
+                report_direction = #{reportDirection},
+            </if>
+            <if test="entrustPriceType != null and entrustPriceType != ''">
+                entrust_price_type = #{entrustPriceType},
+            </if>
+            <if test="entrustPrice != null">
+                entrust_price = #{entrustPrice},
+            </if>
+            <if test="entrustAmount != null">
+                entrust_amount = #{entrustAmount},
+            </if>
+            <if test="entrustBalance != null">
+                entrust_balance = #{entrustBalance},
+            </if>
+            <if test="cancelAmount != null">
+                cancel_amount = #{cancelAmount},
+            </if>
+            <if test="businAmount != null">
+                busin_amount = #{businAmount},
+            </if>
+            <if test="businBalance != null">
+                busin_balance = #{businBalance},
+            </if>
+            <if test="totalDealAmount != null">
+                total_deal_amount = #{totalDealAmount},
+            </if>
+            <if test="totalDealBalance != null">
+                total_deal_balance = #{totalDealBalance},
+            </if>
+            <if test="prebuyFrozenBalance != null">
+                prebuy_frozen_balance = #{prebuyFrozenBalance},
+            </if>
+            <if test="entrustStatus != null and entrustStatus != ''">
+                entrust_status = #{entrustStatus},
+            </if>
+            <if test="entrustLaunchType != null and entrustLaunchType != ''">
+                entrust_launch_type = #{entrustLaunchType},
+            </if>
+            <if test="businTimes != null">
+                busin_times = #{businTimes},
+            </if>
+            <if test="entrustTime != null">
+                entrust_time = #{entrustTime},
+            </if>
+            <if test="lastDealTime != null">
+                last_deal_time = #{lastDealTime},
+            </if>
+            <if test="operatorNo != null">
+                operator_no = #{operatorNo},
+            </if>
+            <if test="revokeCause != null and revokeCause != ''">
+                revoke_cause = #{revokeCause},
+            </if>
+            <if test="reportSerialNoBranch != null and reportSerialNoBranch != ''">
+                report_serial_no_branch = #{reportSerialNoBranch},
+            </if>
+            <if test="recNum != null">
+                rec_num = #{recNum},
+            </if>
+            <if test="tranReff != null and tranReff != ''">
+                tran_reff = #{tranReff},
+            </if>
+            <if test="tradePlatformId != null">
+                trade_platform_id = #{tradePlatformId},
+            </if>
+            <if test="cancelFlag != null and cancelFlag != ''">
+                cancel_flag = #{cancelFlag},
+            </if>
+            <if test="cancelSerialNo != null">
+                cancel_serial_no = #{cancelSerialNo},
+            </if>
+            <if test="appendEntrustXhFlag != null and appendEntrustXhFlag != ''">
+                append_entrust_xh_flag = #{appendEntrustXhFlag},
+            </if>
+            <if test="mac != null and mac != ''">
+                mac = #{mac},
+            </if>
+            <if test="ipAddress != null and ipAddress != ''">
+                ip_address = #{ipAddress},
+            </if>
+            <if test="volserialNo != null and volserialNo != ''">
+                volserial_no = #{volserialNo},
+            </if>
+            <if test="wsCpu != null and wsCpu != ''">
+                ws_cpu = #{wsCpu},
+            </if>
+            <if test="schemeCode != null and schemeCode != ''">
+                scheme_code = #{schemeCode},
+            </if>
+            <if test="schemeInsCode != null and schemeInsCode != ''">
+                scheme_ins_code = #{schemeInsCode},
+            </if>
+            <if test="algoOrdid != null and algoOrdid != ''">
+                algo_ordid = #{algoOrdid},
+            </if>
+            <if test="insId != null">
+                ins_id = #{insId},
+            </if>
+            <if test="indexDailyModify != null">
+                index_daily_modify = #{indexDailyModify},
+            </if>
+            <if test="insStockId != null">
+                ins_stock_id = #{insStockId},
+            </if>
+            <if test="capitalAccountNo != null and capitalAccountNo != ''">
+                capital_account_no = #{capitalAccountNo},
+            </if>
+            <if test="branchCode != null and branchCode != ''">
+                branch_code = #{branchCode},
+            </if>
+            <if test="sysBranchCode != null and sysBranchCode != ''">
+                sys_branch_code = #{sysBranchCode},
+            </if>
+            <if test="tradeInterfaceType != null">
+                trade_interface_type = #{tradeInterfaceType},
+            </if>
+            <if test="arbitrageSerialNo != null">
+                arbitrage_serial_no = #{arbitrageSerialNo},
+            </if>
+            <if test="engagedNo != null and engagedNo != ''">
+                engaged_no = #{engagedNo},
+            </if>
+            <if test="rivalSeat != null and rivalSeat != ''">
+                rival_seat = #{rivalSeat},
+            </if>
+            <if test="rivalStockholderId != null and rivalStockholderId != ''">
+                rival_stockholder_id = #{rivalStockholderId},
+            </if>
+            <if test="sysDate != null">
+                sys_date = #{sysDate},
+            </if>
+            <if test="sysTime != null">
+                sys_time = #{sysTime},
+            </if>
+            <if test="externalOrdid != null">
+                external_ordid = #{externalOrdid},
+            </if>
+            <if test="thirdRemark != null and thirdRemark != ''">
+                third_remark = #{thirdRemark},
+            </if>
+            <if test="voteSenateNo != null and voteSenateNo != ''">
+                vote_senate_no = #{voteSenateNo},
+            </if>
+            <if test="stockName != null and stockName != ''">
+                stock_name = #{stockName},
+            </if>
+            <if test="tradeCurrencyNo != null and tradeCurrencyNo != ''">
+                trade_currency_no = #{tradeCurrencyNo},
+            </if>
+            <if test="fundName != null and fundName != ''">
+                fund_name = #{fundName},
+            </if>
+            <if test="assetName != null and assetName != ''">
+                asset_name = #{assetName},
+            </if>
+            <if test="combiName != null and combiName != ''">
+                combi_name = #{combiName},
+            </if>
+            <if test="capitalAccountType != null and capitalAccountType != ''">
+                capital_account_type = #{capitalAccountType},
+            </if>
+            <if test="positionStr != null and positionStr != ''">
+                position_str = #{positionStr},
+            </if>
+            <if test="traceFlag != null and traceFlag != ''">
+                trace_flag = #{traceFlag},
+            </if>
+            <if test="closeDirection != null and closeDirection != ''">
+                close_direction = #{closeDirection},
+            </if>
+            <if test="optionCoveredFlag != null and optionCoveredFlag != ''">
+                option_covered_flag = #{optionCoveredFlag},
+            </if>
+            <if test="linkman != null and linkman != ''">
+                linkman = #{linkman},
+            </if>
+            <if test="phoneNo != null and phoneNo != ''">
+                phone_no = #{phoneNo},
+            </if>
+            <if test="clearSpeed != null">
+                clear_speed = #{clearSpeed},
+            </if>
+            <if test="validFlag != null and validFlag != ''">
+                valid_flag = #{validFlag},
+            </if>
+            <if test="rivalTradercode != null and rivalTradercode != ''">
+                rival_tradercode = #{rivalTradercode},
+            </if>
+            <if test="hgDealDate != null">
+                hg_deal_date = #{hgDealDate},
+            </if>
+            <if test="quoterRequestNo != null and quoterRequestNo != ''">
+                quoter_request_no = #{quoterRequestNo},
+            </if>
+            <if test="originalDealNo != null and originalDealNo != ''">
+                original_deal_no = #{originalDealNo},
+            </if>
+            <if test="contractNo != null and contractNo != ''">
+                contract_no = #{contractNo},
+            </if>
+            <if test="hgDays != null">
+                hg_days = #{hgDays},
+            </if>
+            <if test="reportFlag != null and reportFlag != ''">
+                report_flag = #{reportFlag},
+            </if>
+            <if test="legalGhDate != null">
+                legal_gh_date = #{legalGhDate},
+            </if>
+            <if test="actualGhDate != null">
+                actual_gh_date = #{actualGhDate},
+            </if>
+            <if test="hgInterest != null">
+                hg_interest = #{hgInterest},
+            </if>
+            <if test="hgcontinueFlag != null and hgcontinueFlag != ''">
+                hgcontinue_flag = #{hgcontinueFlag},
+            </if>
+            <if test="thirdFlag != null and thirdFlag != ''">
+                third_flag = #{thirdFlag},
+            </if>
+            <if test="firstSettleDate != null">
+                first_settle_date = #{firstSettleDate},
+            </if>
+            <if test="useDays != null">
+                use_days = #{useDays},
+            </if>
+            <if test="boardType != null and boardType != ''">
+                board_type = #{boardType},
+            </if>
+            <if test="terminalInfoSlitExt != null and terminalInfoSlitExt != ''">
+                terminal_info_slit_ext = #{terminalInfoSlitExt},
+            </if>
+            <if test="orderId != null">
+                order_id = #{orderId},
+            </if>
+            <if test="dfdStatus != null and dfdStatus != ''">
+                dfd_status = #{dfdStatus},
+            </if>
+            <if test="autoDropFlag != null and autoDropFlag != ''">
+                auto_drop_flag = #{autoDropFlag},
+            </if>
+            <if test="reportStatus != null and reportStatus != ''">
+                report_status = #{reportStatus},
+            </if>
+            <if test="bulkunderweightFlag != null and bulkunderweightFlag != ''">
+                bulkunderweight_flag = #{bulkunderweightFlag},
+            </if>
+            <if test="cashgroupProp != null and cashgroupProp != ''">
+                cashgroup_prop = #{cashgroupProp},
+            </if>
+            <if test="minVolume != null">
+                min_volume = #{minVolume},
+            </if>
+            <if test="compactId != null and compactId != ''">
+                compact_id = #{compactId},
+            </if>
+            <if test="stockType != null">
+                stock_type = #{stockType},
+            </if>
+            <if test="restrictedFlag != null and restrictedFlag != ''">
+                restricted_flag = #{restrictedFlag},
+            </if>
+            <if test="inReportCode != null and inReportCode != ''">
+                in_report_code = #{inReportCode},
+            </if>
+            <if test="inStockName != null and inStockName != ''">
+                in_stock_name = #{inStockName},
+            </if>
+        </set>
+        where business_date = #{businessDate}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from hisjy_tentrusts
+        where business_date = #{businessDate}
+    </delete>
+
+</mapper>
+
