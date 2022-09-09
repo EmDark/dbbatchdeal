@@ -920,6 +920,9 @@
             </if>
         </where>
     </select>
+    <select id="getMaxEntrustSerialNo" resultType="java.lang.Integer">
+        select max(entrust_serial_no) from hisjy_tentrusts;
+    </select>
 
     <!--新增所有列-->
     <insert id="insert" keyProperty="businessDate" useGeneratedKeys="true">
@@ -963,9 +966,8 @@
                 #{dfdStatus}, #{autoDropFlag}, #{reportStatus}, #{bulkunderweightFlag}, #{cashgroupProp}, #{minVolume},
                 #{compactId}, #{stockType}, #{restrictedFlag}, #{inReportCode}, #{inStockName})
     </insert>
-
-    <insert id="insertBatch" keyProperty="businessDate" useGeneratedKeys="true">
-        insert into hisjy_tentrusts(batch_serial_no, report_serial_no, company_id, fund_id, confirm_codeno, asset_id,
+    <insert id="insertBatch" >
+        insert into hisjy_tentrusts(business_date,entrust_serial_no,batch_serial_no, report_serial_no, company_id, fund_id, confirm_codeno, asset_id,
         combi_id, market_no, report_code, inter_code, bind_seat, stockholder_id, trade_seat, invest_type,
         entrust_direction, report_direction, entrust_price_type, entrust_price, entrust_amount, entrust_balance,
         cancel_amount, busin_amount, busin_balance, total_deal_amount, total_deal_balance, prebuy_frozen_balance,
@@ -983,7 +985,7 @@
         in_report_code, in_stock_name)
         values
         <foreach collection="entities" item="entity" separator=",">
-            (#{entity.batchSerialNo}, #{entity.reportSerialNo}, #{entity.companyId}, #{entity.fundId},
+            (#{entity.businessDate},#{entity.entrustSerialNo},#{entity.batchSerialNo}, #{entity.reportSerialNo}, #{entity.companyId}, #{entity.fundId},
             #{entity.confirmCodeno}, #{entity.assetId}, #{entity.combiId}, #{entity.marketNo}, #{entity.reportCode},
             #{entity.interCode}, #{entity.bindSeat}, #{entity.stockholderId}, #{entity.tradeSeat}, #{entity.investType},
             #{entity.entrustDirection}, #{entity.reportDirection}, #{entity.entrustPriceType}, #{entity.entrustPrice},

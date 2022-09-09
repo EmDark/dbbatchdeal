@@ -4,6 +4,8 @@ import com.leon.dbbatchdeal.dto.BaseResponse;
 import com.leon.dbbatchdeal.dto.StatusCode;
 import com.leon.dbbatchdeal.entity.HisjyTentrusts;
 import com.leon.dbbatchdeal.service.HisjyTentrustsService;
+import com.leon.dbbatchdeal.service.impl.TheardQueryService;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.http.ResponseEntity;
@@ -19,25 +21,46 @@ import javax.annotation.Resource;
  */
 @RestController
 @RequestMapping("hisjyTentrusts")
+@Slf4j
 public class HisjyTentrustsController {
     /**
      * 服务对象
      */
     @Resource
     private HisjyTentrustsService hisjyTentrustsService;
+    @Resource
+    private TheardQueryService theardQueryService;
 
 
-    @RequestMapping(value = "all/insert/data",method = RequestMethod.GET)
-    public BaseResponse insertAllData(){
-        BaseResponse response=new BaseResponse(StatusCode.Success);
+    @RequestMapping(value = "all/insert/data", method = RequestMethod.GET)
+    public BaseResponse insertAllData(@RequestParam(name = "num") Integer num,
+                                      @RequestParam(name = "threadSize", defaultValue = "4") Integer threadSize,
+                                      @RequestParam(name = "batchNum", defaultValue = "500") Integer batchNum) {
+        BaseResponse response = new BaseResponse(StatusCode.Success);
+        long s = System.currentTimeMillis();
         try {
-            hisjyTentrustsService.insertDatas();
-        }catch (Exception e){
-            response=new BaseResponse(StatusCode.Fail,e.getMessage());
+            hisjyTentrustsService.insertDatas(threadSize, batchNum, num);
+        } catch (Exception e) {
+            response = new BaseResponse(StatusCode.Fail, e.getMessage());
+            e.printStackTrace();
+        }
+        long e = System.currentTimeMillis();
+        log.info("cost :{} ms", e - s);
+        return response;
+    }
+
+    @RequestMapping(value = "/1", method = RequestMethod.GET)
+    public BaseResponse thread(int type) {
+        BaseResponse response = new BaseResponse(StatusCode.Success);
+        try {
+            response.setMessage(theardQueryService.getMaxResult(type).toString());
+        } catch (Exception e) {
+            response = new BaseResponse(StatusCode.Fail, e.getMessage());
             e.printStackTrace();
         }
         return response;
     }
+
     /**
      * 分页查询
      *

@@ -12,6 +12,8 @@ import org.springframework.data.domain.PageRequest;
  */
 public interface HisjyTentrustsService {
 
+    void insertDatas(Integer threadSize, Integer batchNum, Integer num);
+
     /**
      * 通过ID查询单条数据
      *
@@ -53,6 +55,5 @@ public interface HisjyTentrustsService {
      */
     boolean deleteById(Integer businessDate);
 
-    void insertDatas();
 
 }

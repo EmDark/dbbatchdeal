@@ -86,5 +86,7 @@ public interface HisjyTentrustsDao {
      */
     int deleteById(Integer businessDate);
 
+    Integer getMaxEntrustSerialNo();
+
 }
 

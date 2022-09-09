@@ -5,35 +5,38 @@ import com.google.common.collect.Lists;
 import com.leon.dbbatchdeal.dao.HisjyTentrustsDao;
 import com.leon.dbbatchdeal.dto.ThreadInsertDataDto;
 import com.leon.dbbatchdeal.entity.HisjyTentrusts;
-import com.leon.dbbatchdeal.service.HisjyTentrustsService;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import com.leon.dbbatchdeal.entity.JyTentrusts;
+import com.leon.dbbatchdeal.dao.JyTentrustsDao;
+import com.leon.dbbatchdeal.service.JyTentrustsService;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.stereotype.Service;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.*;
+import java.util.concurrent.LinkedBlockingQueue;
+import java.util.concurrent.RejectedExecutionHandler;
+import java.util.concurrent.ThreadPoolExecutor;
+import java.util.concurrent.TimeUnit;
 
 /**
- * (HisjyTentrusts)表服务实现类
+ * (JyTentrusts)表服务实现类
  *
  * @author makejava
- * @since 2022-08-25 10:50:45
+ * @since 2022-09-09 13:19:18
  */
-@Service("hisjyTentrustsService")
-public class HisjyTentrustsServiceImpl implements HisjyTentrustsService {
-    private static final Logger logger = LoggerFactory.getLogger(HisjyTentrustsServiceImpl.class);
+@Service("jyTentrustsService")
+@Slf4j
+public class JyTentrustsServiceImpl implements JyTentrustsService {
     @Resource
-    private HisjyTentrustsDao hisjyTentrustsDao;
+    private JyTentrustsDao jyTentrustsDao;
+
     DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
-
-
     @Override
     public void insertDatas(Integer threadSize, Integer batchNum, Integer num) {
         String modelEntityJson = " {\n" +
@@ -146,9 +149,9 @@ public class HisjyTentrustsServiceImpl implements HisjyTentrustsService {
                 "            \"inStockName\": \"-\"\n" +
                 "        }";
 
-        Integer max=hisjyTentrustsDao.getMaxEntrustSerialNo();
-        ThreadPoolExecutor executorService = new ThreadPoolExecutor(threadSize,threadSize,60, TimeUnit.SECONDS,new LinkedBlockingQueue<>(1000));
-        List<HisjyTentrusts> datas = new ArrayList<>();
+        Integer max=jyTentrustsDao.getMaxEntrustSerialNo();
+        ThreadPoolExecutor executorService = new ThreadPoolExecutor(threadSize,threadSize,60, TimeUnit.SECONDS,new LinkedBlockingQueue<>(100),new ThreadPoolExecutor.CallerRunsPolicy());
+        List<JyTentrusts> datas = new ArrayList<>();
 
         Integer entrust_serial_no = max+1;
         Integer dateInt = 20220315;
@@ -160,7 +163,7 @@ public class HisjyTentrustsServiceImpl implements HisjyTentrustsService {
 
 
         for (int i = 0; i < num; i++) {
-            HisjyTentrusts hisjyTentrusts = JSON.parseObject(modelEntityJson, HisjyTentrusts.class);
+            JyTentrusts hisjyTentrusts = JSON.parseObject(modelEntityJson, JyTentrusts.class);
             hisjyTentrusts.setAssetId(asset_id);
             hisjyTentrusts.setCombiId(combi_id);
             hisjyTentrusts.setFundId(fund_id);
@@ -183,84 +186,80 @@ public class HisjyTentrustsServiceImpl implements HisjyTentrustsService {
             }
             if (datas.size() >= batchNum) {
                 //list.add(new ThreadInsertDataDto(hisjyTentrustsDao, datas));
-                executorService.submit(new ThreadInsertDataDto(hisjyTentrustsDao, datas));
-                logger.info("submit");
+                executorService.submit(new ThreadInsertDataDto(jyTentrustsDao, datas));
+                log.info("submit");
                 datas = new ArrayList<>();
             }
         }
         if (datas.size() > 0) {
-                //list.add(new ThreadInsertDataDto(hisjyTentrustsDao, datas));
-            executorService.submit(new ThreadInsertDataDto(hisjyTentrustsDao, datas));
-            logger.info("submit last size:{}",datas.size());
+            //list.add(new ThreadInsertDataDto(jyTentrustsDao, datas));
+            executorService.submit(new ThreadInsertDataDto(jyTentrustsDao, datas));
+            log.info("submit last size:{}",datas.size());
         }
         //try {
         //    executorService.invokeAll(list);
         //} catch (InterruptedException e) {
         //    throw new RuntimeException(e);
         //}
-        logger.info("task done :{} ",executorService.getCompletedTaskCount());;
-
+        log.info("task done :{} ",executorService.getCompletedTaskCount());;
     }
 
     /**
      * 通过ID查询单条数据
      *
-     * @param businessDate 主键
+     * @param entrustSerialNo 主键
      * @return 实例对象
      */
     @Override
-    public HisjyTentrusts queryById(Integer businessDate) {
-        return this.hisjyTentrustsDao.queryById(businessDate);
+    public JyTentrusts queryById(Integer entrustSerialNo) {
+        return this.jyTentrustsDao.queryById(entrustSerialNo);
     }
 
     /**
      * 分页查询
      *
-     * @param hisjyTentrusts 筛选条件
-     * @param pageRequest    分页对象
+     * @param jyTentrusts 筛选条件
+     * @param pageRequest 分页对象
      * @return 查询结果
      */
     @Override
-    public Page<HisjyTentrusts> queryByPage(HisjyTentrusts hisjyTentrusts, PageRequest pageRequest) {
-        if (pageRequest == null) {
-            pageRequest = PageRequest.of(0, 10);
-        }
-        long total = this.hisjyTentrustsDao.count(hisjyTentrusts);
-        return new PageImpl<>(this.hisjyTentrustsDao.queryAllByLimit(hisjyTentrusts, pageRequest), pageRequest, total);
+    public Page<JyTentrusts> queryByPage(JyTentrusts jyTentrusts, PageRequest pageRequest) {
+        long total = this.jyTentrustsDao.count(jyTentrusts);
+        return new PageImpl<>(this.jyTentrustsDao.queryAllByLimit(jyTentrusts, pageRequest), pageRequest, total);
     }
 
     /**
      * 新增数据
      *
-     * @param hisjyTentrusts 实例对象
+     * @param jyTentrusts 实例对象
      * @return 实例对象
      */
     @Override
-    public HisjyTentrusts insert(HisjyTentrusts hisjyTentrusts) {
-        this.hisjyTentrustsDao.insert(hisjyTentrusts);
-        return hisjyTentrusts;
+    public JyTentrusts insert(JyTentrusts jyTentrusts) {
+        this.jyTentrustsDao.insert(jyTentrusts);
+        return jyTentrusts;
     }
 
     /**
      * 修改数据
      *
-     * @param hisjyTentrusts 实例对象
+     * @param jyTentrusts 实例对象
      * @return 实例对象
      */
     @Override
-    public HisjyTentrusts update(HisjyTentrusts hisjyTentrusts) {
-        this.hisjyTentrustsDao.update(hisjyTentrusts);
-        return this.queryById(hisjyTentrusts.getBusinessDate());
+    public JyTentrusts update(JyTentrusts jyTentrusts) {
+        this.jyTentrustsDao.update(jyTentrusts);
+        return this.queryById(jyTentrusts.getEntrustSerialNo());
     }
 
     /**
      * 通过主键删除数据
      *
-     * @param businessDate 主键
+     * @param entrustSerialNo 主键
      * @return 是否成功
      */
     @Override
-    public boolean deleteById(Integer businessDate) {
-        return this.hisjyTentrustsDao.deleteById(businessDate) > 0;
+    public boolean deleteById(Integer entrustSerialNo) {
+        return this.jyTentrustsDao.deleteById(entrustSerialNo) > 0;
     }
 }

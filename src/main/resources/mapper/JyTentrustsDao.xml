@@ -1,0 +1,993 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leon.dbbatchdeal.dao.JyTentrustsDao">
+
+    <resultMap id="BaseResultMap" type="com.leon.dbbatchdeal.entity.JyTentrusts">
+        <!--@Table jy_tentrusts-->
+        <result property="businessDate" column="business_date" jdbcType="INTEGER"/>
+        <result property="entrustSerialNo" column="entrust_serial_no" jdbcType="INTEGER"/>
+        <result property="batchSerialNo" column="batch_serial_no" jdbcType="INTEGER"/>
+        <result property="reportSerialNo" column="report_serial_no" jdbcType="INTEGER"/>
+        <result property="companyId" column="company_id" jdbcType="INTEGER"/>
+        <result property="fundId" column="fund_id" jdbcType="INTEGER"/>
+        <result property="confirmCodeno" column="confirm_codeno" jdbcType="VARCHAR"/>
+        <result property="assetId" column="asset_id" jdbcType="INTEGER"/>
+        <result property="combiId" column="combi_id" jdbcType="INTEGER"/>
+        <result property="marketNo" column="market_no" jdbcType="INTEGER"/>
+        <result property="reportCode" column="report_code" jdbcType="VARCHAR"/>
+        <result property="interCode" column="inter_code" jdbcType="INTEGER"/>
+        <result property="bindSeat" column="bind_seat" jdbcType="VARCHAR"/>
+        <result property="stockholderId" column="stockholder_id" jdbcType="VARCHAR"/>
+        <result property="tradeSeat" column="trade_seat" jdbcType="VARCHAR"/>
+        <result property="investType" column="invest_type" jdbcType="VARCHAR"/>
+        <result property="entrustDirection" column="entrust_direction" jdbcType="INTEGER"/>
+        <result property="reportDirection" column="report_direction" jdbcType="VARCHAR"/>
+        <result property="entrustPriceType" column="entrust_price_type" jdbcType="VARCHAR"/>
+        <result property="entrustPrice" column="entrust_price" jdbcType="NUMERIC"/>
+        <result property="entrustAmount" column="entrust_amount" jdbcType="NUMERIC"/>
+        <result property="entrustBalance" column="entrust_balance" jdbcType="NUMERIC"/>
+        <result property="cancelAmount" column="cancel_amount" jdbcType="NUMERIC"/>
+        <result property="businAmount" column="busin_amount" jdbcType="NUMERIC"/>
+        <result property="businBalance" column="busin_balance" jdbcType="NUMERIC"/>
+        <result property="totalDealAmount" column="total_deal_amount" jdbcType="NUMERIC"/>
+        <result property="totalDealBalance" column="total_deal_balance" jdbcType="NUMERIC"/>
+        <result property="prebuyFrozenBalance" column="prebuy_frozen_balance" jdbcType="NUMERIC"/>
+        <result property="entrustStatus" column="entrust_status" jdbcType="VARCHAR"/>
+        <result property="entrustLaunchType" column="entrust_launch_type" jdbcType="VARCHAR"/>
+        <result property="businTimes" column="busin_times" jdbcType="INTEGER"/>
+        <result property="entrustTime" column="entrust_time" jdbcType="INTEGER"/>
+        <result property="lastDealTime" column="last_deal_time" jdbcType="INTEGER"/>
+        <result property="operatorNo" column="operator_no" jdbcType="INTEGER"/>
+        <result property="revokeCause" column="revoke_cause" jdbcType="VARCHAR"/>
+        <result property="reportSerialNoBranch" column="report_serial_no_branch" jdbcType="VARCHAR"/>
+        <result property="recNum" column="rec_num" jdbcType="INTEGER"/>
+        <result property="tranReff" column="tran_reff" jdbcType="VARCHAR"/>
+        <result property="tradePlatformId" column="trade_platform_id" jdbcType="INTEGER"/>
+        <result property="cancelFlag" column="cancel_flag" jdbcType="VARCHAR"/>
+        <result property="cancelSerialNo" column="cancel_serial_no" jdbcType="INTEGER"/>
+        <result property="appendEntrustXhFlag" column="append_entrust_xh_flag" jdbcType="VARCHAR"/>
+        <result property="mac" column="mac" jdbcType="VARCHAR"/>
+        <result property="ipAddress" column="ip_address" jdbcType="VARCHAR"/>
+        <result property="volserialNo" column="volserial_no" jdbcType="VARCHAR"/>
+        <result property="wsCpu" column="ws_cpu" jdbcType="VARCHAR"/>
+        <result property="schemeCode" column="scheme_code" jdbcType="VARCHAR"/>
+        <result property="schemeInsCode" column="scheme_ins_code" jdbcType="VARCHAR"/>
+        <result property="algoOrdid" column="algo_ordid" jdbcType="VARCHAR"/>
+        <result property="insId" column="ins_id" jdbcType="INTEGER"/>
+        <result property="indexDailyModify" column="index_daily_modify" jdbcType="INTEGER"/>
+        <result property="insStockId" column="ins_stock_id" jdbcType="INTEGER"/>
+        <result property="capitalAccountNo" column="capital_account_no" jdbcType="VARCHAR"/>
+        <result property="branchCode" column="branch_code" jdbcType="VARCHAR"/>
+        <result property="sysBranchCode" column="sys_branch_code" jdbcType="VARCHAR"/>
+        <result property="tradeInterfaceType" column="trade_interface_type" jdbcType="INTEGER"/>
+        <result property="arbitrageSerialNo" column="arbitrage_serial_no" jdbcType="INTEGER"/>
+        <result property="engagedNo" column="engaged_no" jdbcType="VARCHAR"/>
+        <result property="rivalSeat" column="rival_seat" jdbcType="VARCHAR"/>
+        <result property="rivalStockholderId" column="rival_stockholder_id" jdbcType="VARCHAR"/>
+        <result property="sysDate" column="sys_date" jdbcType="INTEGER"/>
+        <result property="sysTime" column="sys_time" jdbcType="INTEGER"/>
+        <result property="externalOrdid" column="external_ordid" jdbcType="INTEGER"/>
+        <result property="thirdRemark" column="third_remark" jdbcType="VARCHAR"/>
+        <result property="voteSenateNo" column="vote_senate_no" jdbcType="VARCHAR"/>
+        <result property="terminalInfoSlitExt" column="terminal_info_slit_ext" jdbcType="VARCHAR"/>
+        <result property="orderId" column="order_id" jdbcType="NUMERIC"/>
+        <result property="dfdStatus" column="dfd_status" jdbcType="VARCHAR"/>
+        <result property="reportStatus" column="report_status" jdbcType="VARCHAR"/>
+        <result property="purchasingCode" column="purchasing_code" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select business_date,
+               entrust_serial_no,
+               batch_serial_no,
+               report_serial_no,
+               company_id,
+               fund_id,
+               confirm_codeno,
+               asset_id,
+               combi_id,
+               market_no,
+               report_code,
+               inter_code,
+               bind_seat,
+               stockholder_id,
+               trade_seat,
+               invest_type,
+               entrust_direction,
+               report_direction,
+               entrust_price_type,
+               entrust_price,
+               entrust_amount,
+               entrust_balance,
+               cancel_amount,
+               busin_amount,
+               busin_balance,
+               total_deal_amount,
+               total_deal_balance,
+               prebuy_frozen_balance,
+               entrust_status,
+               entrust_launch_type,
+               busin_times,
+               entrust_time,
+               last_deal_time,
+               operator_no,
+               revoke_cause,
+               report_serial_no_branch,
+               rec_num,
+               tran_reff,
+               trade_platform_id,
+               cancel_flag,
+               cancel_serial_no,
+               append_entrust_xh_flag,
+               mac,
+               ip_address,
+               volserial_no,
+               ws_cpu,
+               scheme_code,
+               scheme_ins_code,
+               algo_ordid,
+               ins_id,
+               index_daily_modify,
+               ins_stock_id,
+               capital_account_no,
+               branch_code,
+               sys_branch_code,
+               trade_interface_type,
+               arbitrage_serial_no,
+               engaged_no,
+               rival_seat,
+               rival_stockholder_id,
+               sys_date,
+               sys_time,
+               external_ordid,
+               third_remark,
+               vote_senate_no,
+               terminal_info_slit_ext,
+               order_id,
+               dfd_status,
+               report_status,
+               purchasing_code
+        from jy_tentrusts
+        where entrust_serial_no = #{entrustSerialNo}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+        business_date, entrust_serial_no, batch_serial_no, report_serial_no, company_id, fund_id, confirm_codeno,
+        asset_id, combi_id, market_no, report_code, inter_code, bind_seat, stockholder_id, trade_seat, invest_type,
+        entrust_direction, report_direction, entrust_price_type, entrust_price, entrust_amount, entrust_balance,
+        cancel_amount, busin_amount, busin_balance, total_deal_amount, total_deal_balance, prebuy_frozen_balance,
+        entrust_status, entrust_launch_type, busin_times, entrust_time, last_deal_time, operator_no, revoke_cause,
+        report_serial_no_branch, rec_num, tran_reff, trade_platform_id, cancel_flag, cancel_serial_no,
+        append_entrust_xh_flag, mac, ip_address, volserial_no, ws_cpu, scheme_code, scheme_ins_code, algo_ordid, ins_id,
+        index_daily_modify, ins_stock_id, capital_account_no, branch_code, sys_branch_code, trade_interface_type,
+        arbitrage_serial_no, engaged_no, rival_seat, rival_stockholder_id, sys_date, sys_time, external_ordid,
+        third_remark, vote_senate_no, terminal_info_slit_ext, order_id, dfd_status, report_status, purchasing_code
+        from jy_tentrusts
+        <where>
+            <if test="businessDate != null">
+                and business_date = #{businessDate}
+            </if>
+            <if test="entrustSerialNo != null">
+                and entrust_serial_no = #{entrustSerialNo}
+            </if>
+            <if test="batchSerialNo != null">
+                and batch_serial_no = #{batchSerialNo}
+            </if>
+            <if test="reportSerialNo != null">
+                and report_serial_no = #{reportSerialNo}
+            </if>
+            <if test="companyId != null">
+                and company_id = #{companyId}
+            </if>
+            <if test="fundId != null">
+                and fund_id = #{fundId}
+            </if>
+            <if test="confirmCodeno != null and confirmCodeno != ''">
+                and confirm_codeno = #{confirmCodeno}
+            </if>
+            <if test="assetId != null">
+                and asset_id = #{assetId}
+            </if>
+            <if test="combiId != null">
+                and combi_id = #{combiId}
+            </if>
+            <if test="marketNo != null">
+                and market_no = #{marketNo}
+            </if>
+            <if test="reportCode != null and reportCode != ''">
+                and report_code = #{reportCode}
+            </if>
+            <if test="interCode != null">
+                and inter_code = #{interCode}
+            </if>
+            <if test="bindSeat != null and bindSeat != ''">
+                and bind_seat = #{bindSeat}
+            </if>
+            <if test="stockholderId != null and stockholderId != ''">
+                and stockholder_id = #{stockholderId}
+            </if>
+            <if test="tradeSeat != null and tradeSeat != ''">
+                and trade_seat = #{tradeSeat}
+            </if>
+            <if test="investType != null and investType != ''">
+                and invest_type = #{investType}
+            </if>
+            <if test="entrustDirection != null">
+                and entrust_direction = #{entrustDirection}
+            </if>
+            <if test="reportDirection != null and reportDirection != ''">
+                and report_direction = #{reportDirection}
+            </if>
+            <if test="entrustPriceType != null and entrustPriceType != ''">
+                and entrust_price_type = #{entrustPriceType}
+            </if>
+            <if test="entrustPrice != null">
+                and entrust_price = #{entrustPrice}
+            </if>
+            <if test="entrustAmount != null">
+                and entrust_amount = #{entrustAmount}
+            </if>
+            <if test="entrustBalance != null">
+                and entrust_balance = #{entrustBalance}
+            </if>
+            <if test="cancelAmount != null">
+                and cancel_amount = #{cancelAmount}
+            </if>
+            <if test="businAmount != null">
+                and busin_amount = #{businAmount}
+            </if>
+            <if test="businBalance != null">
+                and busin_balance = #{businBalance}
+            </if>
+            <if test="totalDealAmount != null">
+                and total_deal_amount = #{totalDealAmount}
+            </if>
+            <if test="totalDealBalance != null">
+                and total_deal_balance = #{totalDealBalance}
+            </if>
+            <if test="prebuyFrozenBalance != null">
+                and prebuy_frozen_balance = #{prebuyFrozenBalance}
+            </if>
+            <if test="entrustStatus != null and entrustStatus != ''">
+                and entrust_status = #{entrustStatus}
+            </if>
+            <if test="entrustLaunchType != null and entrustLaunchType != ''">
+                and entrust_launch_type = #{entrustLaunchType}
+            </if>
+            <if test="businTimes != null">
+                and busin_times = #{businTimes}
+            </if>
+            <if test="entrustTime != null">
+                and entrust_time = #{entrustTime}
+            </if>
+            <if test="lastDealTime != null">
+                and last_deal_time = #{lastDealTime}
+            </if>
+            <if test="operatorNo != null">
+                and operator_no = #{operatorNo}
+            </if>
+            <if test="revokeCause != null and revokeCause != ''">
+                and revoke_cause = #{revokeCause}
+            </if>
+            <if test="reportSerialNoBranch != null and reportSerialNoBranch != ''">
+                and report_serial_no_branch = #{reportSerialNoBranch}
+            </if>
+            <if test="recNum != null">
+                and rec_num = #{recNum}
+            </if>
+            <if test="tranReff != null and tranReff != ''">
+                and tran_reff = #{tranReff}
+            </if>
+            <if test="tradePlatformId != null">
+                and trade_platform_id = #{tradePlatformId}
+            </if>
+            <if test="cancelFlag != null and cancelFlag != ''">
+                and cancel_flag = #{cancelFlag}
+            </if>
+            <if test="cancelSerialNo != null">
+                and cancel_serial_no = #{cancelSerialNo}
+            </if>
+            <if test="appendEntrustXhFlag != null and appendEntrustXhFlag != ''">
+                and append_entrust_xh_flag = #{appendEntrustXhFlag}
+            </if>
+            <if test="mac != null and mac != ''">
+                and mac = #{mac}
+            </if>
+            <if test="ipAddress != null and ipAddress != ''">
+                and ip_address = #{ipAddress}
+            </if>
+            <if test="volserialNo != null and volserialNo != ''">
+                and volserial_no = #{volserialNo}
+            </if>
+            <if test="wsCpu != null and wsCpu != ''">
+                and ws_cpu = #{wsCpu}
+            </if>
+            <if test="schemeCode != null and schemeCode != ''">
+                and scheme_code = #{schemeCode}
+            </if>
+            <if test="schemeInsCode != null and schemeInsCode != ''">
+                and scheme_ins_code = #{schemeInsCode}
+            </if>
+            <if test="algoOrdid != null and algoOrdid != ''">
+                and algo_ordid = #{algoOrdid}
+            </if>
+            <if test="insId != null">
+                and ins_id = #{insId}
+            </if>
+            <if test="indexDailyModify != null">
+                and index_daily_modify = #{indexDailyModify}
+            </if>
+            <if test="insStockId != null">
+                and ins_stock_id = #{insStockId}
+            </if>
+            <if test="capitalAccountNo != null and capitalAccountNo != ''">
+                and capital_account_no = #{capitalAccountNo}
+            </if>
+            <if test="branchCode != null and branchCode != ''">
+                and branch_code = #{branchCode}
+            </if>
+            <if test="sysBranchCode != null and sysBranchCode != ''">
+                and sys_branch_code = #{sysBranchCode}
+            </if>
+            <if test="tradeInterfaceType != null">
+                and trade_interface_type = #{tradeInterfaceType}
+            </if>
+            <if test="arbitrageSerialNo != null">
+                and arbitrage_serial_no = #{arbitrageSerialNo}
+            </if>
+            <if test="engagedNo != null and engagedNo != ''">
+                and engaged_no = #{engagedNo}
+            </if>
+            <if test="rivalSeat != null and rivalSeat != ''">
+                and rival_seat = #{rivalSeat}
+            </if>
+            <if test="rivalStockholderId != null and rivalStockholderId != ''">
+                and rival_stockholder_id = #{rivalStockholderId}
+            </if>
+            <if test="sysDate != null">
+                and sys_date = #{sysDate}
+            </if>
+            <if test="sysTime != null">
+                and sys_time = #{sysTime}
+            </if>
+            <if test="externalOrdid != null">
+                and external_ordid = #{externalOrdid}
+            </if>
+            <if test="thirdRemark != null and thirdRemark != ''">
+                and third_remark = #{thirdRemark}
+            </if>
+            <if test="voteSenateNo != null and voteSenateNo != ''">
+                and vote_senate_no = #{voteSenateNo}
+            </if>
+            <if test="terminalInfoSlitExt != null and terminalInfoSlitExt != ''">
+                and terminal_info_slit_ext = #{terminalInfoSlitExt}
+            </if>
+            <if test="orderId != null">
+                and order_id = #{orderId}
+            </if>
+            <if test="dfdStatus != null and dfdStatus != ''">
+                and dfd_status = #{dfdStatus}
+            </if>
+            <if test="reportStatus != null and reportStatus != ''">
+                and report_status = #{reportStatus}
+            </if>
+            <if test="purchasingCode != null and purchasingCode != ''">
+                and purchasing_code = #{purchasingCode}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from jy_tentrusts
+        <where>
+            <if test="businessDate != null">
+                and business_date = #{businessDate}
+            </if>
+            <if test="entrustSerialNo != null">
+                and entrust_serial_no = #{entrustSerialNo}
+            </if>
+            <if test="batchSerialNo != null">
+                and batch_serial_no = #{batchSerialNo}
+            </if>
+            <if test="reportSerialNo != null">
+                and report_serial_no = #{reportSerialNo}
+            </if>
+            <if test="companyId != null">
+                and company_id = #{companyId}
+            </if>
+            <if test="fundId != null">
+                and fund_id = #{fundId}
+            </if>
+            <if test="confirmCodeno != null and confirmCodeno != ''">
+                and confirm_codeno = #{confirmCodeno}
+            </if>
+            <if test="assetId != null">
+                and asset_id = #{assetId}
+            </if>
+            <if test="combiId != null">
+                and combi_id = #{combiId}
+            </if>
+            <if test="marketNo != null">
+                and market_no = #{marketNo}
+            </if>
+            <if test="reportCode != null and reportCode != ''">
+                and report_code = #{reportCode}
+            </if>
+            <if test="interCode != null">
+                and inter_code = #{interCode}
+            </if>
+            <if test="bindSeat != null and bindSeat != ''">
+                and bind_seat = #{bindSeat}
+            </if>
+            <if test="stockholderId != null and stockholderId != ''">
+                and stockholder_id = #{stockholderId}
+            </if>
+            <if test="tradeSeat != null and tradeSeat != ''">
+                and trade_seat = #{tradeSeat}
+            </if>
+            <if test="investType != null and investType != ''">
+                and invest_type = #{investType}
+            </if>
+            <if test="entrustDirection != null">
+                and entrust_direction = #{entrustDirection}
+            </if>
+            <if test="reportDirection != null and reportDirection != ''">
+                and report_direction = #{reportDirection}
+            </if>
+            <if test="entrustPriceType != null and entrustPriceType != ''">
+                and entrust_price_type = #{entrustPriceType}
+            </if>
+            <if test="entrustPrice != null">
+                and entrust_price = #{entrustPrice}
+            </if>
+            <if test="entrustAmount != null">
+                and entrust_amount = #{entrustAmount}
+            </if>
+            <if test="entrustBalance != null">
+                and entrust_balance = #{entrustBalance}
+            </if>
+            <if test="cancelAmount != null">
+                and cancel_amount = #{cancelAmount}
+            </if>
+            <if test="businAmount != null">
+                and busin_amount = #{businAmount}
+            </if>
+            <if test="businBalance != null">
+                and busin_balance = #{businBalance}
+            </if>
+            <if test="totalDealAmount != null">
+                and total_deal_amount = #{totalDealAmount}
+            </if>
+            <if test="totalDealBalance != null">
+                and total_deal_balance = #{totalDealBalance}
+            </if>
+            <if test="prebuyFrozenBalance != null">
+                and prebuy_frozen_balance = #{prebuyFrozenBalance}
+            </if>
+            <if test="entrustStatus != null and entrustStatus != ''">
+                and entrust_status = #{entrustStatus}
+            </if>
+            <if test="entrustLaunchType != null and entrustLaunchType != ''">
+                and entrust_launch_type = #{entrustLaunchType}
+            </if>
+            <if test="businTimes != null">
+                and busin_times = #{businTimes}
+            </if>
+            <if test="entrustTime != null">
+                and entrust_time = #{entrustTime}
+            </if>
+            <if test="lastDealTime != null">
+                and last_deal_time = #{lastDealTime}
+            </if>
+            <if test="operatorNo != null">
+                and operator_no = #{operatorNo}
+            </if>
+            <if test="revokeCause != null and revokeCause != ''">
+                and revoke_cause = #{revokeCause}
+            </if>
+            <if test="reportSerialNoBranch != null and reportSerialNoBranch != ''">
+                and report_serial_no_branch = #{reportSerialNoBranch}
+            </if>
+            <if test="recNum != null">
+                and rec_num = #{recNum}
+            </if>
+            <if test="tranReff != null and tranReff != ''">
+                and tran_reff = #{tranReff}
+            </if>
+            <if test="tradePlatformId != null">
+                and trade_platform_id = #{tradePlatformId}
+            </if>
+            <if test="cancelFlag != null and cancelFlag != ''">
+                and cancel_flag = #{cancelFlag}
+            </if>
+            <if test="cancelSerialNo != null">
+                and cancel_serial_no = #{cancelSerialNo}
+            </if>
+            <if test="appendEntrustXhFlag != null and appendEntrustXhFlag != ''">
+                and append_entrust_xh_flag = #{appendEntrustXhFlag}
+            </if>
+            <if test="mac != null and mac != ''">
+                and mac = #{mac}
+            </if>
+            <if test="ipAddress != null and ipAddress != ''">
+                and ip_address = #{ipAddress}
+            </if>
+            <if test="volserialNo != null and volserialNo != ''">
+                and volserial_no = #{volserialNo}
+            </if>
+            <if test="wsCpu != null and wsCpu != ''">
+                and ws_cpu = #{wsCpu}
+            </if>
+            <if test="schemeCode != null and schemeCode != ''">
+                and scheme_code = #{schemeCode}
+            </if>
+            <if test="schemeInsCode != null and schemeInsCode != ''">
+                and scheme_ins_code = #{schemeInsCode}
+            </if>
+            <if test="algoOrdid != null and algoOrdid != ''">
+                and algo_ordid = #{algoOrdid}
+            </if>
+            <if test="insId != null">
+                and ins_id = #{insId}
+            </if>
+            <if test="indexDailyModify != null">
+                and index_daily_modify = #{indexDailyModify}
+            </if>
+            <if test="insStockId != null">
+                and ins_stock_id = #{insStockId}
+            </if>
+            <if test="capitalAccountNo != null and capitalAccountNo != ''">
+                and capital_account_no = #{capitalAccountNo}
+            </if>
+            <if test="branchCode != null and branchCode != ''">
+                and branch_code = #{branchCode}
+            </if>
+            <if test="sysBranchCode != null and sysBranchCode != ''">
+                and sys_branch_code = #{sysBranchCode}
+            </if>
+            <if test="tradeInterfaceType != null">
+                and trade_interface_type = #{tradeInterfaceType}
+            </if>
+            <if test="arbitrageSerialNo != null">
+                and arbitrage_serial_no = #{arbitrageSerialNo}
+            </if>
+            <if test="engagedNo != null and engagedNo != ''">
+                and engaged_no = #{engagedNo}
+            </if>
+            <if test="rivalSeat != null and rivalSeat != ''">
+                and rival_seat = #{rivalSeat}
+            </if>
+            <if test="rivalStockholderId != null and rivalStockholderId != ''">
+                and rival_stockholder_id = #{rivalStockholderId}
+            </if>
+            <if test="sysDate != null">
+                and sys_date = #{sysDate}
+            </if>
+            <if test="sysTime != null">
+                and sys_time = #{sysTime}
+            </if>
+            <if test="externalOrdid != null">
+                and external_ordid = #{externalOrdid}
+            </if>
+            <if test="thirdRemark != null and thirdRemark != ''">
+                and third_remark = #{thirdRemark}
+            </if>
+            <if test="voteSenateNo != null and voteSenateNo != ''">
+                and vote_senate_no = #{voteSenateNo}
+            </if>
+            <if test="terminalInfoSlitExt != null and terminalInfoSlitExt != ''">
+                and terminal_info_slit_ext = #{terminalInfoSlitExt}
+            </if>
+            <if test="orderId != null">
+                and order_id = #{orderId}
+            </if>
+            <if test="dfdStatus != null and dfdStatus != ''">
+                and dfd_status = #{dfdStatus}
+            </if>
+            <if test="reportStatus != null and reportStatus != ''">
+                and report_status = #{reportStatus}
+            </if>
+            <if test="purchasingCode != null and purchasingCode != ''">
+                and purchasing_code = #{purchasingCode}
+            </if>
+        </where>
+    </select>
+    <select id="getMaxEntrustSerialNo" resultType="java.lang.Integer">
+        select  max(entrust_serial_no) from jy_tentrusts;
+    </select>
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="entrustSerialNo" useGeneratedKeys="true">
+        insert into jy_tentrusts(business_date, batch_serial_no, report_serial_no, company_id, fund_id, confirm_codeno,
+                                 asset_id, combi_id, market_no, report_code, inter_code, bind_seat, stockholder_id,
+                                 trade_seat, invest_type, entrust_direction, report_direction, entrust_price_type,
+                                 entrust_price, entrust_amount, entrust_balance, cancel_amount, busin_amount,
+                                 busin_balance, total_deal_amount, total_deal_balance, prebuy_frozen_balance,
+                                 entrust_status, entrust_launch_type, busin_times, entrust_time, last_deal_time,
+                                 operator_no, revoke_cause, report_serial_no_branch, rec_num, tran_reff,
+                                 trade_platform_id, cancel_flag, cancel_serial_no, append_entrust_xh_flag, mac,
+                                 ip_address, volserial_no, ws_cpu, scheme_code, scheme_ins_code, algo_ordid, ins_id,
+                                 index_daily_modify, ins_stock_id, capital_account_no, branch_code, sys_branch_code,
+                                 trade_interface_type, arbitrage_serial_no, engaged_no, rival_seat,
+                                 rival_stockholder_id, sys_date, sys_time, external_ordid, third_remark, vote_senate_no,
+                                 terminal_info_slit_ext, order_id, dfd_status, report_status, purchasing_code)
+        values (#{businessDate}, #{batchSerialNo}, #{reportSerialNo}, #{companyId}, #{fundId}, #{confirmCodeno},
+                #{assetId}, #{combiId}, #{marketNo}, #{reportCode}, #{interCode}, #{bindSeat}, #{stockholderId},
+                #{tradeSeat}, #{investType}, #{entrustDirection}, #{reportDirection}, #{entrustPriceType},
+                #{entrustPrice}, #{entrustAmount}, #{entrustBalance}, #{cancelAmount}, #{businAmount}, #{businBalance},
+                #{totalDealAmount}, #{totalDealBalance}, #{prebuyFrozenBalance}, #{entrustStatus}, #{entrustLaunchType},
+                #{businTimes}, #{entrustTime}, #{lastDealTime}, #{operatorNo}, #{revokeCause}, #{reportSerialNoBranch},
+                #{recNum}, #{tranReff}, #{tradePlatformId}, #{cancelFlag}, #{cancelSerialNo}, #{appendEntrustXhFlag},
+                #{mac}, #{ipAddress}, #{volserialNo}, #{wsCpu}, #{schemeCode}, #{schemeInsCode}, #{algoOrdid}, #{insId},
+                #{indexDailyModify}, #{insStockId}, #{capitalAccountNo}, #{branchCode}, #{sysBranchCode},
+                #{tradeInterfaceType}, #{arbitrageSerialNo}, #{engagedNo}, #{rivalSeat}, #{rivalStockholderId},
+                #{sysDate}, #{sysTime}, #{externalOrdid}, #{thirdRemark}, #{voteSenateNo}, #{terminalInfoSlitExt},
+                #{orderId}, #{dfdStatus}, #{reportStatus}, #{purchasingCode})
+    </insert>
+
+    <insert id="insertBatch" >
+        insert into jy_tentrusts(business_date,entrust_serial_no, batch_serial_no, report_serial_no, company_id, fund_id, confirm_codeno,
+        asset_id, combi_id, market_no, report_code, inter_code, bind_seat, stockholder_id, trade_seat, invest_type,
+        entrust_direction, report_direction, entrust_price_type, entrust_price, entrust_amount, entrust_balance,
+        cancel_amount, busin_amount, busin_balance, total_deal_amount, total_deal_balance, prebuy_frozen_balance,
+        entrust_status, entrust_launch_type, busin_times, entrust_time, last_deal_time, operator_no, revoke_cause,
+        report_serial_no_branch, rec_num, tran_reff, trade_platform_id, cancel_flag, cancel_serial_no,
+        append_entrust_xh_flag, mac, ip_address, volserial_no, ws_cpu, scheme_code, scheme_ins_code, algo_ordid, ins_id,
+        index_daily_modify, ins_stock_id, capital_account_no, branch_code, sys_branch_code, trade_interface_type,
+        arbitrage_serial_no, engaged_no, rival_seat, rival_stockholder_id, sys_date, sys_time, external_ordid,
+        third_remark, vote_senate_no, terminal_info_slit_ext, order_id, dfd_status, report_status, purchasing_code)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.businessDate},#{entity.entrustSerialNo}, #{entity.batchSerialNo}, #{entity.reportSerialNo}, #{entity.companyId},
+            #{entity.fundId}, #{entity.confirmCodeno}, #{entity.assetId}, #{entity.combiId}, #{entity.marketNo},
+            #{entity.reportCode}, #{entity.interCode}, #{entity.bindSeat}, #{entity.stockholderId}, #{entity.tradeSeat},
+            #{entity.investType}, #{entity.entrustDirection}, #{entity.reportDirection}, #{entity.entrustPriceType},
+            #{entity.entrustPrice}, #{entity.entrustAmount}, #{entity.entrustBalance}, #{entity.cancelAmount},
+            #{entity.businAmount}, #{entity.businBalance}, #{entity.totalDealAmount}, #{entity.totalDealBalance},
+            #{entity.prebuyFrozenBalance}, #{entity.entrustStatus}, #{entity.entrustLaunchType}, #{entity.businTimes},
+            #{entity.entrustTime}, #{entity.lastDealTime}, #{entity.operatorNo}, #{entity.revokeCause},
+            #{entity.reportSerialNoBranch}, #{entity.recNum}, #{entity.tranReff}, #{entity.tradePlatformId},
+            #{entity.cancelFlag}, #{entity.cancelSerialNo}, #{entity.appendEntrustXhFlag}, #{entity.mac},
+            #{entity.ipAddress}, #{entity.volserialNo}, #{entity.wsCpu}, #{entity.schemeCode}, #{entity.schemeInsCode},
+            #{entity.algoOrdid}, #{entity.insId}, #{entity.indexDailyModify}, #{entity.insStockId},
+            #{entity.capitalAccountNo}, #{entity.branchCode}, #{entity.sysBranchCode}, #{entity.tradeInterfaceType},
+            #{entity.arbitrageSerialNo}, #{entity.engagedNo}, #{entity.rivalSeat}, #{entity.rivalStockholderId},
+            #{entity.sysDate}, #{entity.sysTime}, #{entity.externalOrdid}, #{entity.thirdRemark},
+            #{entity.voteSenateNo}, #{entity.terminalInfoSlitExt}, #{entity.orderId}, #{entity.dfdStatus},
+            #{entity.reportStatus}, #{entity.purchasingCode})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="entrustSerialNo" useGeneratedKeys="true">
+        insert into jy_tentrusts(business_date, batch_serial_no, report_serial_no, company_id, fund_id, confirm_codeno,
+        asset_id, combi_id, market_no, report_code, inter_code, bind_seat, stockholder_id, trade_seat, invest_type,
+        entrust_direction, report_direction, entrust_price_type, entrust_price, entrust_amount, entrust_balance,
+        cancel_amount, busin_amount, busin_balance, total_deal_amount, total_deal_balance, prebuy_frozen_balance,
+        entrust_status, entrust_launch_type, busin_times, entrust_time, last_deal_time, operator_no, revoke_cause,
+        report_serial_no_branch, rec_num, tran_reff, trade_platform_id, cancel_flag, cancel_serial_no,
+        append_entrust_xh_flag, mac, ip_address, volserial_no, ws_cpu, scheme_code, scheme_ins_code, algo_ordid, ins_id,
+        index_daily_modify, ins_stock_id, capital_account_no, branch_code, sys_branch_code, trade_interface_type,
+        arbitrage_serial_no, engaged_no, rival_seat, rival_stockholder_id, sys_date, sys_time, external_ordid,
+        third_remark, vote_senate_no, terminal_info_slit_ext, order_id, dfd_status, report_status, purchasing_code)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.businessDate}, #{entity.batchSerialNo}, #{entity.reportSerialNo}, #{entity.companyId},
+            #{entity.fundId}, #{entity.confirmCodeno}, #{entity.assetId}, #{entity.combiId}, #{entity.marketNo},
+            #{entity.reportCode}, #{entity.interCode}, #{entity.bindSeat}, #{entity.stockholderId}, #{entity.tradeSeat},
+            #{entity.investType}, #{entity.entrustDirection}, #{entity.reportDirection}, #{entity.entrustPriceType},
+            #{entity.entrustPrice}, #{entity.entrustAmount}, #{entity.entrustBalance}, #{entity.cancelAmount},
+            #{entity.businAmount}, #{entity.businBalance}, #{entity.totalDealAmount}, #{entity.totalDealBalance},
+            #{entity.prebuyFrozenBalance}, #{entity.entrustStatus}, #{entity.entrustLaunchType}, #{entity.businTimes},
+            #{entity.entrustTime}, #{entity.lastDealTime}, #{entity.operatorNo}, #{entity.revokeCause},
+            #{entity.reportSerialNoBranch}, #{entity.recNum}, #{entity.tranReff}, #{entity.tradePlatformId},
+            #{entity.cancelFlag}, #{entity.cancelSerialNo}, #{entity.appendEntrustXhFlag}, #{entity.mac},
+            #{entity.ipAddress}, #{entity.volserialNo}, #{entity.wsCpu}, #{entity.schemeCode}, #{entity.schemeInsCode},
+            #{entity.algoOrdid}, #{entity.insId}, #{entity.indexDailyModify}, #{entity.insStockId},
+            #{entity.capitalAccountNo}, #{entity.branchCode}, #{entity.sysBranchCode}, #{entity.tradeInterfaceType},
+            #{entity.arbitrageSerialNo}, #{entity.engagedNo}, #{entity.rivalSeat}, #{entity.rivalStockholderId},
+            #{entity.sysDate}, #{entity.sysTime}, #{entity.externalOrdid}, #{entity.thirdRemark},
+            #{entity.voteSenateNo}, #{entity.terminalInfoSlitExt}, #{entity.orderId}, #{entity.dfdStatus},
+            #{entity.reportStatus}, #{entity.purchasingCode})
+        </foreach>
+        on duplicate key update
+        business_date = values(business_date),
+        batch_serial_no = values(batch_serial_no),
+        report_serial_no = values(report_serial_no),
+        company_id = values(company_id),
+        fund_id = values(fund_id),
+        confirm_codeno = values(confirm_codeno),
+        asset_id = values(asset_id),
+        combi_id = values(combi_id),
+        market_no = values(market_no),
+        report_code = values(report_code),
+        inter_code = values(inter_code),
+        bind_seat = values(bind_seat),
+        stockholder_id = values(stockholder_id),
+        trade_seat = values(trade_seat),
+        invest_type = values(invest_type),
+        entrust_direction = values(entrust_direction),
+        report_direction = values(report_direction),
+        entrust_price_type = values(entrust_price_type),
+        entrust_price = values(entrust_price),
+        entrust_amount = values(entrust_amount),
+        entrust_balance = values(entrust_balance),
+        cancel_amount = values(cancel_amount),
+        busin_amount = values(busin_amount),
+        busin_balance = values(busin_balance),
+        total_deal_amount = values(total_deal_amount),
+        total_deal_balance = values(total_deal_balance),
+        prebuy_frozen_balance = values(prebuy_frozen_balance),
+        entrust_status = values(entrust_status),
+        entrust_launch_type = values(entrust_launch_type),
+        busin_times = values(busin_times),
+        entrust_time = values(entrust_time),
+        last_deal_time = values(last_deal_time),
+        operator_no = values(operator_no),
+        revoke_cause = values(revoke_cause),
+        report_serial_no_branch = values(report_serial_no_branch),
+        rec_num = values(rec_num),
+        tran_reff = values(tran_reff),
+        trade_platform_id = values(trade_platform_id),
+        cancel_flag = values(cancel_flag),
+        cancel_serial_no = values(cancel_serial_no),
+        append_entrust_xh_flag = values(append_entrust_xh_flag),
+        mac = values(mac),
+        ip_address = values(ip_address),
+        volserial_no = values(volserial_no),
+        ws_cpu = values(ws_cpu),
+        scheme_code = values(scheme_code),
+        scheme_ins_code = values(scheme_ins_code),
+        algo_ordid = values(algo_ordid),
+        ins_id = values(ins_id),
+        index_daily_modify = values(index_daily_modify),
+        ins_stock_id = values(ins_stock_id),
+        capital_account_no = values(capital_account_no),
+        branch_code = values(branch_code),
+        sys_branch_code = values(sys_branch_code),
+        trade_interface_type = values(trade_interface_type),
+        arbitrage_serial_no = values(arbitrage_serial_no),
+        engaged_no = values(engaged_no),
+        rival_seat = values(rival_seat),
+        rival_stockholder_id = values(rival_stockholder_id),
+        sys_date = values(sys_date),
+        sys_time = values(sys_time),
+        external_ordid = values(external_ordid),
+        third_remark = values(third_remark),
+        vote_senate_no = values(vote_senate_no),
+        terminal_info_slit_ext = values(terminal_info_slit_ext),
+        order_id = values(order_id),
+        dfd_status = values(dfd_status),
+        report_status = values(report_status),
+        purchasing_code = values(purchasing_code)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update jy_tentrusts
+        <set>
+            <if test="businessDate != null">
+                business_date = #{businessDate},
+            </if>
+            <if test="batchSerialNo != null">
+                batch_serial_no = #{batchSerialNo},
+            </if>
+            <if test="reportSerialNo != null">
+                report_serial_no = #{reportSerialNo},
+            </if>
+            <if test="companyId != null">
+                company_id = #{companyId},
+            </if>
+            <if test="fundId != null">
+                fund_id = #{fundId},
+            </if>
+            <if test="confirmCodeno != null and confirmCodeno != ''">
+                confirm_codeno = #{confirmCodeno},
+            </if>
+            <if test="assetId != null">
+                asset_id = #{assetId},
+            </if>
+            <if test="combiId != null">
+                combi_id = #{combiId},
+            </if>
+            <if test="marketNo != null">
+                market_no = #{marketNo},
+            </if>
+            <if test="reportCode != null and reportCode != ''">
+                report_code = #{reportCode},
+            </if>
+            <if test="interCode != null">
+                inter_code = #{interCode},
+            </if>
+            <if test="bindSeat != null and bindSeat != ''">
+                bind_seat = #{bindSeat},
+            </if>
+            <if test="stockholderId != null and stockholderId != ''">
+                stockholder_id = #{stockholderId},
+            </if>
+            <if test="tradeSeat != null and tradeSeat != ''">
+                trade_seat = #{tradeSeat},
+            </if>
+            <if test="investType != null and investType != ''">
+                invest_type = #{investType},
+            </if>
+            <if test="entrustDirection != null">
+                entrust_direction = #{entrustDirection},
+            </if>
+            <if test="reportDirection != null and reportDirection != ''">
+                report_direction = #{reportDirection},
+            </if>
+            <if test="entrustPriceType != null and entrustPriceType != ''">
+                entrust_price_type = #{entrustPriceType},
+            </if>
+            <if test="entrustPrice != null">
+                entrust_price = #{entrustPrice},
+            </if>
+            <if test="entrustAmount != null">
+                entrust_amount = #{entrustAmount},
+            </if>
+            <if test="entrustBalance != null">
+                entrust_balance = #{entrustBalance},
+            </if>
+            <if test="cancelAmount != null">
+                cancel_amount = #{cancelAmount},
+            </if>
+            <if test="businAmount != null">
+                busin_amount = #{businAmount},
+            </if>
+            <if test="businBalance != null">
+                busin_balance = #{businBalance},
+            </if>
+            <if test="totalDealAmount != null">
+                total_deal_amount = #{totalDealAmount},
+            </if>
+            <if test="totalDealBalance != null">
+                total_deal_balance = #{totalDealBalance},
+            </if>
+            <if test="prebuyFrozenBalance != null">
+                prebuy_frozen_balance = #{prebuyFrozenBalance},
+            </if>
+            <if test="entrustStatus != null and entrustStatus != ''">
+                entrust_status = #{entrustStatus},
+            </if>
+            <if test="entrustLaunchType != null and entrustLaunchType != ''">
+                entrust_launch_type = #{entrustLaunchType},
+            </if>
+            <if test="businTimes != null">
+                busin_times = #{businTimes},
+            </if>
+            <if test="entrustTime != null">
+                entrust_time = #{entrustTime},
+            </if>
+            <if test="lastDealTime != null">
+                last_deal_time = #{lastDealTime},
+            </if>
+            <if test="operatorNo != null">
+                operator_no = #{operatorNo},
+            </if>
+            <if test="revokeCause != null and revokeCause != ''">
+                revoke_cause = #{revokeCause},
+            </if>
+            <if test="reportSerialNoBranch != null and reportSerialNoBranch != ''">
+                report_serial_no_branch = #{reportSerialNoBranch},
+            </if>
+            <if test="recNum != null">
+                rec_num = #{recNum},
+            </if>
+            <if test="tranReff != null and tranReff != ''">
+                tran_reff = #{tranReff},
+            </if>
+            <if test="tradePlatformId != null">
+                trade_platform_id = #{tradePlatformId},
+            </if>
+            <if test="cancelFlag != null and cancelFlag != ''">
+                cancel_flag = #{cancelFlag},
+            </if>
+            <if test="cancelSerialNo != null">
+                cancel_serial_no = #{cancelSerialNo},
+            </if>
+            <if test="appendEntrustXhFlag != null and appendEntrustXhFlag != ''">
+                append_entrust_xh_flag = #{appendEntrustXhFlag},
+            </if>
+            <if test="mac != null and mac != ''">
+                mac = #{mac},
+            </if>
+            <if test="ipAddress != null and ipAddress != ''">
+                ip_address = #{ipAddress},
+            </if>
+            <if test="volserialNo != null and volserialNo != ''">
+                volserial_no = #{volserialNo},
+            </if>
+            <if test="wsCpu != null and wsCpu != ''">
+                ws_cpu = #{wsCpu},
+            </if>
+            <if test="schemeCode != null and schemeCode != ''">
+                scheme_code = #{schemeCode},
+            </if>
+            <if test="schemeInsCode != null and schemeInsCode != ''">
+                scheme_ins_code = #{schemeInsCode},
+            </if>
+            <if test="algoOrdid != null and algoOrdid != ''">
+                algo_ordid = #{algoOrdid},
+            </if>
+            <if test="insId != null">
+                ins_id = #{insId},
+            </if>
+            <if test="indexDailyModify != null">
+                index_daily_modify = #{indexDailyModify},
+            </if>
+            <if test="insStockId != null">
+                ins_stock_id = #{insStockId},
+            </if>
+            <if test="capitalAccountNo != null and capitalAccountNo != ''">
+                capital_account_no = #{capitalAccountNo},
+            </if>
+            <if test="branchCode != null and branchCode != ''">
+                branch_code = #{branchCode},
+            </if>
+            <if test="sysBranchCode != null and sysBranchCode != ''">
+                sys_branch_code = #{sysBranchCode},
+            </if>
+            <if test="tradeInterfaceType != null">
+                trade_interface_type = #{tradeInterfaceType},
+            </if>
+            <if test="arbitrageSerialNo != null">
+                arbitrage_serial_no = #{arbitrageSerialNo},
+            </if>
+            <if test="engagedNo != null and engagedNo != ''">
+                engaged_no = #{engagedNo},
+            </if>
+            <if test="rivalSeat != null and rivalSeat != ''">
+                rival_seat = #{rivalSeat},
+            </if>
+            <if test="rivalStockholderId != null and rivalStockholderId != ''">
+                rival_stockholder_id = #{rivalStockholderId},
+            </if>
+            <if test="sysDate != null">
+                sys_date = #{sysDate},
+            </if>
+            <if test="sysTime != null">
+                sys_time = #{sysTime},
+            </if>
+            <if test="externalOrdid != null">
+                external_ordid = #{externalOrdid},
+            </if>
+            <if test="thirdRemark != null and thirdRemark != ''">
+                third_remark = #{thirdRemark},
+            </if>
+            <if test="voteSenateNo != null and voteSenateNo != ''">
+                vote_senate_no = #{voteSenateNo},
+            </if>
+            <if test="terminalInfoSlitExt != null and terminalInfoSlitExt != ''">
+                terminal_info_slit_ext = #{terminalInfoSlitExt},
+            </if>
+            <if test="orderId != null">
+                order_id = #{orderId},
+            </if>
+            <if test="dfdStatus != null and dfdStatus != ''">
+                dfd_status = #{dfdStatus},
+            </if>
+            <if test="reportStatus != null and reportStatus != ''">
+                report_status = #{reportStatus},
+            </if>
+            <if test="purchasingCode != null and purchasingCode != ''">
+                purchasing_code = #{purchasingCode},
+            </if>
+        </set>
+        where entrust_serial_no = #{entrustSerialNo}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from jy_tentrusts
+        where entrust_serial_no = #{entrustSerialNo}
+    </delete>
+
+</mapper>
+
