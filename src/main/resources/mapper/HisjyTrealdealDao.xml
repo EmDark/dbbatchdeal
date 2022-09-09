@@ -1,0 +1,1359 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leon.dbbatchdeal.dao.HisjyTrealdealDao">
+
+    <resultMap id="BaseResultMap" type="com.leon.dbbatchdeal.entity.HisjyTrealdeal">
+        <!--@Table hisjy_trealdeal-->
+        <result property="businessDate" column="business_date" jdbcType="INTEGER"/>
+        <result property="companyId" column="company_id" jdbcType="INTEGER"/>
+        <result property="realdealSerialNo" column="realdeal_serial_no" jdbcType="INTEGER"/>
+        <result property="entrustSerialNo" column="entrust_serial_no" jdbcType="INTEGER"/>
+        <result property="batchSerialNo" column="batch_serial_no" jdbcType="INTEGER"/>
+        <result property="reportSerialNo" column="report_serial_no" jdbcType="INTEGER"/>
+        <result property="fundId" column="fund_id" jdbcType="INTEGER"/>
+        <result property="assetId" column="asset_id" jdbcType="INTEGER"/>
+        <result property="combiId" column="combi_id" jdbcType="INTEGER"/>
+        <result property="marketNo" column="market_no" jdbcType="INTEGER"/>
+        <result property="reportCode" column="report_code" jdbcType="VARCHAR"/>
+        <result property="interCode" column="inter_code" jdbcType="INTEGER"/>
+        <result property="stockholderId" column="stockholder_id" jdbcType="VARCHAR"/>
+        <result property="tradeSeat" column="trade_seat" jdbcType="VARCHAR"/>
+        <result property="investType" column="invest_type" jdbcType="VARCHAR"/>
+        <result property="entrustDirection" column="entrust_direction" jdbcType="INTEGER"/>
+        <result property="dealAmount" column="deal_amount" jdbcType="NUMERIC"/>
+        <result property="dealPrice" column="deal_price" jdbcType="NUMERIC"/>
+        <result property="dealBalance" column="deal_balance" jdbcType="NUMERIC"/>
+        <result property="dealTime" column="deal_time" jdbcType="INTEGER"/>
+        <result property="operatorNo" column="operator_no" jdbcType="INTEGER"/>
+        <result property="timeStamp" column="time_stamp" jdbcType="TIMESTAMP"/>
+        <result property="dealNo" column="deal_no" jdbcType="VARCHAR"/>
+        <result property="totalFee" column="total_fee" jdbcType="NUMERIC"/>
+        <result property="feeJy" column="fee_jy" jdbcType="NUMERIC"/>
+        <result property="feeYh" column="fee_yh" jdbcType="NUMERIC"/>
+        <result property="feeGh" column="fee_gh" jdbcType="NUMERIC"/>
+        <result property="feeCommission" column="fee_commission" jdbcType="NUMERIC"/>
+        <result property="feeJs" column="fee_js" jdbcType="NUMERIC"/>
+        <result property="feeZg" column="fee_zg" jdbcType="NUMERIC"/>
+        <result property="feeQt" column="fee_qt" jdbcType="NUMERIC"/>
+        <result property="feeSx" column="fee_sx" jdbcType="NUMERIC"/>
+        <result property="feeRisk" column="fee_risk" jdbcType="NUMERIC"/>
+        <result property="feeJsfw" column="fee_jsfw" jdbcType="NUMERIC"/>
+        <result property="feeJg" column="fee_jg" jdbcType="NUMERIC"/>
+        <result property="tradePlatformId" column="trade_platform_id" jdbcType="INTEGER"/>
+        <result property="schemeCode" column="scheme_code" jdbcType="VARCHAR"/>
+        <result property="capitalAccountNo" column="capital_account_no" jdbcType="VARCHAR"/>
+        <result property="tradeInterfaceType" column="trade_interface_type" jdbcType="INTEGER"/>
+        <result property="insId" column="ins_id" jdbcType="INTEGER"/>
+        <result property="indexDailyModify" column="index_daily_modify" jdbcType="INTEGER"/>
+        <result property="externalOrdid" column="external_ordid" jdbcType="INTEGER"/>
+        <result property="thirdRemark" column="third_remark" jdbcType="VARCHAR"/>
+        <result property="stockName" column="stock_name" jdbcType="VARCHAR"/>
+        <result property="fundName" column="fund_name" jdbcType="VARCHAR"/>
+        <result property="assetName" column="asset_name" jdbcType="VARCHAR"/>
+        <result property="combiName" column="combi_name" jdbcType="VARCHAR"/>
+        <result property="tradeCurrencyNo" column="trade_currency_no" jdbcType="VARCHAR"/>
+        <result property="rivalTradercode" column="rival_tradercode" jdbcType="VARCHAR"/>
+        <result property="closeType" column="close_type" jdbcType="VARCHAR"/>
+        <result property="capitalAccountType" column="capital_account_type" jdbcType="VARCHAR"/>
+        <result property="positionStr" column="position_str" jdbcType="VARCHAR"/>
+        <result property="contractNo" column="contract_no" jdbcType="VARCHAR"/>
+        <result property="hgcontinueFlag" column="hgcontinue_flag" jdbcType="VARCHAR"/>
+        <result property="hgDays" column="hg_days" jdbcType="NUMERIC"/>
+        <result property="useDays" column="use_days" jdbcType="INTEGER"/>
+        <result property="firstSettleDate" column="first_settle_date" jdbcType="INTEGER"/>
+        <result property="expireSettleDate" column="expire_settle_date" jdbcType="INTEGER"/>
+        <result property="expireSettleBalance" column="expire_settle_balance" jdbcType="NUMERIC"/>
+        <result property="legalGhDate" column="legal_gh_date" jdbcType="INTEGER"/>
+        <result property="tradeRivalNo" column="trade_rival_no" jdbcType="INTEGER"/>
+        <result property="contactId" column="contact_id" jdbcType="INTEGER"/>
+        <result property="bondInterest" column="bond_interest" jdbcType="NUMERIC"/>
+        <result property="optionCoveredFlag" column="option_covered_flag" jdbcType="VARCHAR"/>
+        <result property="boardType" column="board_type" jdbcType="VARCHAR"/>
+        <result property="msgSendStatus" column="msg_send_status" jdbcType="INTEGER"/>
+        <result property="mxddbh" column="mxddbh" jdbcType="VARCHAR"/>
+        <result property="cashSettleDate" column="cash_settle_date" jdbcType="INTEGER"/>
+        <result property="stockSettleDate" column="stock_settle_date" jdbcType="INTEGER"/>
+        <result property="isinCode" column="isin_code" jdbcType="VARCHAR"/>
+        <result property="engName" column="eng_name" jdbcType="VARCHAR"/>
+        <result property="reportDirection" column="report_direction" jdbcType="VARCHAR"/>
+        <result property="foreignOrgFlag" column="foreign_org_flag" jdbcType="VARCHAR"/>
+        <result property="bankSubAccount" column="bank_sub_account" jdbcType="VARCHAR"/>
+        <result property="bankSerialNo" column="bank_serial_no" jdbcType="INTEGER"/>
+        <result property="bankName" column="bank_name" jdbcType="VARCHAR"/>
+        <result property="qfiiSubAccountTag" column="qfii_sub_account_tag" jdbcType="VARCHAR"/>
+        <result property="validFlag" column="valid_flag" jdbcType="VARCHAR"/>
+        <result property="blockId" column="block_id" jdbcType="INTEGER"/>
+        <result property="cashgroupProp" column="cashgroup_prop" jdbcType="VARCHAR"/>
+        <result property="compactId" column="compact_id" jdbcType="VARCHAR"/>
+        <result property="stockType" column="stock_type" jdbcType="INTEGER"/>
+        <result property="midPrice" column="mid_price" jdbcType="NUMERIC"/>
+        <result property="inReportCode" column="in_report_code" jdbcType="VARCHAR"/>
+        <result property="inStockName" column="in_stock_name" jdbcType="VARCHAR"/>
+        <result property="nicked" column="nicked" jdbcType="VARCHAR"/>
+        <result property="szBondTradeMethod" column="sz_bond_trade_method" jdbcType="INTEGER"/>
+        <result property="operFlag" column="oper_flag" jdbcType="VARCHAR"/>
+        <result property="rivalTradeParty" column="rival_trade_party" jdbcType="VARCHAR"/>
+        <result property="entrustTableType" column="entrust_table_type" jdbcType="INTEGER"/>
+        <result property="bonusType" column="bonus_type" jdbcType="VARCHAR"/>
+        <result property="openfundExceedType" column="openfund_exceed_type" jdbcType="VARCHAR"/>
+        <result property="rivalTradePartyType" column="rival_trade_party_type" jdbcType="VARCHAR"/>
+        <result property="rivalCompanycode" column="rival_companycode" jdbcType="VARCHAR"/>
+        <result property="assetType" column="asset_type" jdbcType="VARCHAR"/>
+        <result property="applyDescribe" column="apply_describe" jdbcType="VARCHAR"/>
+        <result property="fixedCompanyName" column="fixed_company_name" jdbcType="VARCHAR"/>
+        <result property="entrustLaunchType" column="entrust_launch_type" jdbcType="VARCHAR"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select business_date,
+               company_id,
+               realdeal_serial_no,
+               entrust_serial_no,
+               batch_serial_no,
+               report_serial_no,
+               fund_id,
+               asset_id,
+               combi_id,
+               market_no,
+               report_code,
+               inter_code,
+               stockholder_id,
+               trade_seat,
+               invest_type,
+               entrust_direction,
+               deal_amount,
+               deal_price,
+               deal_balance,
+               deal_time,
+               operator_no,
+               time_stamp,
+               deal_no,
+               total_fee,
+               fee_jy,
+               fee_yh,
+               fee_gh,
+               fee_commission,
+               fee_js,
+               fee_zg,
+               fee_qt,
+               fee_sx,
+               fee_risk,
+               fee_jsfw,
+               fee_jg,
+               trade_platform_id,
+               scheme_code,
+               capital_account_no,
+               trade_interface_type,
+               ins_id,
+               index_daily_modify,
+               external_ordid,
+               third_remark,
+               stock_name,
+               fund_name,
+               asset_name,
+               combi_name,
+               trade_currency_no,
+               rival_tradercode,
+               close_type,
+               capital_account_type,
+               position_str,
+               contract_no,
+               hgcontinue_flag,
+               hg_days,
+               use_days,
+               first_settle_date,
+               expire_settle_date,
+               expire_settle_balance,
+               legal_gh_date,
+               trade_rival_no,
+               contact_id,
+               bond_interest,
+               option_covered_flag,
+               board_type,
+               msg_send_status,
+               mxddbh,
+               cash_settle_date,
+               stock_settle_date,
+               isin_code,
+               eng_name,
+               report_direction,
+               foreign_org_flag,
+               bank_sub_account,
+               bank_serial_no,
+               bank_name,
+               qfii_sub_account_tag,
+               valid_flag,
+               block_id,
+               cashgroup_prop,
+               compact_id,
+               stock_type,
+               mid_price,
+               in_report_code,
+               in_stock_name,
+               nicked,
+               sz_bond_trade_method,
+               oper_flag,
+               rival_trade_party,
+               entrust_table_type,
+               bonus_type,
+               openfund_exceed_type,
+               rival_trade_party_type,
+               rival_companycode,
+               asset_type,
+               apply_describe,
+               fixed_company_name,
+               entrust_launch_type
+        from hisjy_trealdeal
+        where business_date = #{businessDate}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+        business_date, company_id, realdeal_serial_no, entrust_serial_no, batch_serial_no, report_serial_no, fund_id,
+        asset_id, combi_id, market_no, report_code, inter_code, stockholder_id, trade_seat, invest_type,
+        entrust_direction, deal_amount, deal_price, deal_balance, deal_time, operator_no, time_stamp, deal_no,
+        total_fee, fee_jy, fee_yh, fee_gh, fee_commission, fee_js, fee_zg, fee_qt, fee_sx, fee_risk, fee_jsfw, fee_jg,
+        trade_platform_id, scheme_code, capital_account_no, trade_interface_type, ins_id, index_daily_modify,
+        external_ordid, third_remark, stock_name, fund_name, asset_name, combi_name, trade_currency_no,
+        rival_tradercode, close_type, capital_account_type, position_str, contract_no, hgcontinue_flag, hg_days,
+        use_days, first_settle_date, expire_settle_date, expire_settle_balance, legal_gh_date, trade_rival_no,
+        contact_id, bond_interest, option_covered_flag, board_type, msg_send_status, mxddbh, cash_settle_date,
+        stock_settle_date, isin_code, eng_name, report_direction, foreign_org_flag, bank_sub_account, bank_serial_no,
+        bank_name, qfii_sub_account_tag, valid_flag, block_id, cashgroup_prop, compact_id, stock_type, mid_price,
+        in_report_code, in_stock_name, nicked, sz_bond_trade_method, oper_flag, rival_trade_party, entrust_table_type,
+        bonus_type, openfund_exceed_type, rival_trade_party_type, rival_companycode, asset_type, apply_describe,
+        fixed_company_name, entrust_launch_type
+        from hisjy_trealdeal
+        <where>
+            <if test="businessDate != null">
+                and business_date = #{businessDate}
+            </if>
+            <if test="companyId != null">
+                and company_id = #{companyId}
+            </if>
+            <if test="realdealSerialNo != null">
+                and realdeal_serial_no = #{realdealSerialNo}
+            </if>
+            <if test="entrustSerialNo != null">
+                and entrust_serial_no = #{entrustSerialNo}
+            </if>
+            <if test="batchSerialNo != null">
+                and batch_serial_no = #{batchSerialNo}
+            </if>
+            <if test="reportSerialNo != null">
+                and report_serial_no = #{reportSerialNo}
+            </if>
+            <if test="fundId != null">
+                and fund_id = #{fundId}
+            </if>
+            <if test="assetId != null">
+                and asset_id = #{assetId}
+            </if>
+            <if test="combiId != null">
+                and combi_id = #{combiId}
+            </if>
+            <if test="marketNo != null">
+                and market_no = #{marketNo}
+            </if>
+            <if test="reportCode != null and reportCode != ''">
+                and report_code = #{reportCode}
+            </if>
+            <if test="interCode != null">
+                and inter_code = #{interCode}
+            </if>
+            <if test="stockholderId != null and stockholderId != ''">
+                and stockholder_id = #{stockholderId}
+            </if>
+            <if test="tradeSeat != null and tradeSeat != ''">
+                and trade_seat = #{tradeSeat}
+            </if>
+            <if test="investType != null and investType != ''">
+                and invest_type = #{investType}
+            </if>
+            <if test="entrustDirection != null">
+                and entrust_direction = #{entrustDirection}
+            </if>
+            <if test="dealAmount != null">
+                and deal_amount = #{dealAmount}
+            </if>
+            <if test="dealPrice != null">
+                and deal_price = #{dealPrice}
+            </if>
+            <if test="dealBalance != null">
+                and deal_balance = #{dealBalance}
+            </if>
+            <if test="dealTime != null">
+                and deal_time = #{dealTime}
+            </if>
+            <if test="operatorNo != null">
+                and operator_no = #{operatorNo}
+            </if>
+            <if test="timeStamp != null">
+                and time_stamp = #{timeStamp}
+            </if>
+            <if test="dealNo != null and dealNo != ''">
+                and deal_no = #{dealNo}
+            </if>
+            <if test="totalFee != null">
+                and total_fee = #{totalFee}
+            </if>
+            <if test="feeJy != null">
+                and fee_jy = #{feeJy}
+            </if>
+            <if test="feeYh != null">
+                and fee_yh = #{feeYh}
+            </if>
+            <if test="feeGh != null">
+                and fee_gh = #{feeGh}
+            </if>
+            <if test="feeCommission != null">
+                and fee_commission = #{feeCommission}
+            </if>
+            <if test="feeJs != null">
+                and fee_js = #{feeJs}
+            </if>
+            <if test="feeZg != null">
+                and fee_zg = #{feeZg}
+            </if>
+            <if test="feeQt != null">
+                and fee_qt = #{feeQt}
+            </if>
+            <if test="feeSx != null">
+                and fee_sx = #{feeSx}
+            </if>
+            <if test="feeRisk != null">
+                and fee_risk = #{feeRisk}
+            </if>
+            <if test="feeJsfw != null">
+                and fee_jsfw = #{feeJsfw}
+            </if>
+            <if test="feeJg != null">
+                and fee_jg = #{feeJg}
+            </if>
+            <if test="tradePlatformId != null">
+                and trade_platform_id = #{tradePlatformId}
+            </if>
+            <if test="schemeCode != null and schemeCode != ''">
+                and scheme_code = #{schemeCode}
+            </if>
+            <if test="capitalAccountNo != null and capitalAccountNo != ''">
+                and capital_account_no = #{capitalAccountNo}
+            </if>
+            <if test="tradeInterfaceType != null">
+                and trade_interface_type = #{tradeInterfaceType}
+            </if>
+            <if test="insId != null">
+                and ins_id = #{insId}
+            </if>
+            <if test="indexDailyModify != null">
+                and index_daily_modify = #{indexDailyModify}
+            </if>
+            <if test="externalOrdid != null">
+                and external_ordid = #{externalOrdid}
+            </if>
+            <if test="thirdRemark != null and thirdRemark != ''">
+                and third_remark = #{thirdRemark}
+            </if>
+            <if test="stockName != null and stockName != ''">
+                and stock_name = #{stockName}
+            </if>
+            <if test="fundName != null and fundName != ''">
+                and fund_name = #{fundName}
+            </if>
+            <if test="assetName != null and assetName != ''">
+                and asset_name = #{assetName}
+            </if>
+            <if test="combiName != null and combiName != ''">
+                and combi_name = #{combiName}
+            </if>
+            <if test="tradeCurrencyNo != null and tradeCurrencyNo != ''">
+                and trade_currency_no = #{tradeCurrencyNo}
+            </if>
+            <if test="rivalTradercode != null and rivalTradercode != ''">
+                and rival_tradercode = #{rivalTradercode}
+            </if>
+            <if test="closeType != null and closeType != ''">
+                and close_type = #{closeType}
+            </if>
+            <if test="capitalAccountType != null and capitalAccountType != ''">
+                and capital_account_type = #{capitalAccountType}
+            </if>
+            <if test="positionStr != null and positionStr != ''">
+                and position_str = #{positionStr}
+            </if>
+            <if test="contractNo != null and contractNo != ''">
+                and contract_no = #{contractNo}
+            </if>
+            <if test="hgcontinueFlag != null and hgcontinueFlag != ''">
+                and hgcontinue_flag = #{hgcontinueFlag}
+            </if>
+            <if test="hgDays != null">
+                and hg_days = #{hgDays}
+            </if>
+            <if test="useDays != null">
+                and use_days = #{useDays}
+            </if>
+            <if test="firstSettleDate != null">
+                and first_settle_date = #{firstSettleDate}
+            </if>
+            <if test="expireSettleDate != null">
+                and expire_settle_date = #{expireSettleDate}
+            </if>
+            <if test="expireSettleBalance != null">
+                and expire_settle_balance = #{expireSettleBalance}
+            </if>
+            <if test="legalGhDate != null">
+                and legal_gh_date = #{legalGhDate}
+            </if>
+            <if test="tradeRivalNo != null">
+                and trade_rival_no = #{tradeRivalNo}
+            </if>
+            <if test="contactId != null">
+                and contact_id = #{contactId}
+            </if>
+            <if test="bondInterest != null">
+                and bond_interest = #{bondInterest}
+            </if>
+            <if test="optionCoveredFlag != null and optionCoveredFlag != ''">
+                and option_covered_flag = #{optionCoveredFlag}
+            </if>
+            <if test="boardType != null and boardType != ''">
+                and board_type = #{boardType}
+            </if>
+            <if test="msgSendStatus != null">
+                and msg_send_status = #{msgSendStatus}
+            </if>
+            <if test="mxddbh != null and mxddbh != ''">
+                and mxddbh = #{mxddbh}
+            </if>
+            <if test="cashSettleDate != null">
+                and cash_settle_date = #{cashSettleDate}
+            </if>
+            <if test="stockSettleDate != null">
+                and stock_settle_date = #{stockSettleDate}
+            </if>
+            <if test="isinCode != null and isinCode != ''">
+                and isin_code = #{isinCode}
+            </if>
+            <if test="engName != null and engName != ''">
+                and eng_name = #{engName}
+            </if>
+            <if test="reportDirection != null and reportDirection != ''">
+                and report_direction = #{reportDirection}
+            </if>
+            <if test="foreignOrgFlag != null and foreignOrgFlag != ''">
+                and foreign_org_flag = #{foreignOrgFlag}
+            </if>
+            <if test="bankSubAccount != null and bankSubAccount != ''">
+                and bank_sub_account = #{bankSubAccount}
+            </if>
+            <if test="bankSerialNo != null">
+                and bank_serial_no = #{bankSerialNo}
+            </if>
+            <if test="bankName != null and bankName != ''">
+                and bank_name = #{bankName}
+            </if>
+            <if test="qfiiSubAccountTag != null and qfiiSubAccountTag != ''">
+                and qfii_sub_account_tag = #{qfiiSubAccountTag}
+            </if>
+            <if test="validFlag != null and validFlag != ''">
+                and valid_flag = #{validFlag}
+            </if>
+            <if test="blockId != null">
+                and block_id = #{blockId}
+            </if>
+            <if test="cashgroupProp != null and cashgroupProp != ''">
+                and cashgroup_prop = #{cashgroupProp}
+            </if>
+            <if test="compactId != null and compactId != ''">
+                and compact_id = #{compactId}
+            </if>
+            <if test="stockType != null">
+                and stock_type = #{stockType}
+            </if>
+            <if test="midPrice != null">
+                and mid_price = #{midPrice}
+            </if>
+            <if test="inReportCode != null and inReportCode != ''">
+                and in_report_code = #{inReportCode}
+            </if>
+            <if test="inStockName != null and inStockName != ''">
+                and in_stock_name = #{inStockName}
+            </if>
+            <if test="nicked != null and nicked != ''">
+                and nicked = #{nicked}
+            </if>
+            <if test="szBondTradeMethod != null">
+                and sz_bond_trade_method = #{szBondTradeMethod}
+            </if>
+            <if test="operFlag != null and operFlag != ''">
+                and oper_flag = #{operFlag}
+            </if>
+            <if test="rivalTradeParty != null and rivalTradeParty != ''">
+                and rival_trade_party = #{rivalTradeParty}
+            </if>
+            <if test="entrustTableType != null">
+                and entrust_table_type = #{entrustTableType}
+            </if>
+            <if test="bonusType != null and bonusType != ''">
+                and bonus_type = #{bonusType}
+            </if>
+            <if test="openfundExceedType != null and openfundExceedType != ''">
+                and openfund_exceed_type = #{openfundExceedType}
+            </if>
+            <if test="rivalTradePartyType != null and rivalTradePartyType != ''">
+                and rival_trade_party_type = #{rivalTradePartyType}
+            </if>
+            <if test="rivalCompanycode != null and rivalCompanycode != ''">
+                and rival_companycode = #{rivalCompanycode}
+            </if>
+            <if test="assetType != null and assetType != ''">
+                and asset_type = #{assetType}
+            </if>
+            <if test="applyDescribe != null and applyDescribe != ''">
+                and apply_describe = #{applyDescribe}
+            </if>
+            <if test="fixedCompanyName != null and fixedCompanyName != ''">
+                and fixed_company_name = #{fixedCompanyName}
+            </if>
+            <if test="entrustLaunchType != null and entrustLaunchType != ''">
+                and entrust_launch_type = #{entrustLaunchType}
+            </if>
+        </where>
+        limit #{pageable.offset}, #{pageable.pageSize}
+    </select>
+
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from hisjy_trealdeal
+        <where>
+            <if test="businessDate != null">
+                and business_date = #{businessDate}
+            </if>
+            <if test="companyId != null">
+                and company_id = #{companyId}
+            </if>
+            <if test="realdealSerialNo != null">
+                and realdeal_serial_no = #{realdealSerialNo}
+            </if>
+            <if test="entrustSerialNo != null">
+                and entrust_serial_no = #{entrustSerialNo}
+            </if>
+            <if test="batchSerialNo != null">
+                and batch_serial_no = #{batchSerialNo}
+            </if>
+            <if test="reportSerialNo != null">
+                and report_serial_no = #{reportSerialNo}
+            </if>
+            <if test="fundId != null">
+                and fund_id = #{fundId}
+            </if>
+            <if test="assetId != null">
+                and asset_id = #{assetId}
+            </if>
+            <if test="combiId != null">
+                and combi_id = #{combiId}
+            </if>
+            <if test="marketNo != null">
+                and market_no = #{marketNo}
+            </if>
+            <if test="reportCode != null and reportCode != ''">
+                and report_code = #{reportCode}
+            </if>
+            <if test="interCode != null">
+                and inter_code = #{interCode}
+            </if>
+            <if test="stockholderId != null and stockholderId != ''">
+                and stockholder_id = #{stockholderId}
+            </if>
+            <if test="tradeSeat != null and tradeSeat != ''">
+                and trade_seat = #{tradeSeat}
+            </if>
+            <if test="investType != null and investType != ''">
+                and invest_type = #{investType}
+            </if>
+            <if test="entrustDirection != null">
+                and entrust_direction = #{entrustDirection}
+            </if>
+            <if test="dealAmount != null">
+                and deal_amount = #{dealAmount}
+            </if>
+            <if test="dealPrice != null">
+                and deal_price = #{dealPrice}
+            </if>
+            <if test="dealBalance != null">
+                and deal_balance = #{dealBalance}
+            </if>
+            <if test="dealTime != null">
+                and deal_time = #{dealTime}
+            </if>
+            <if test="operatorNo != null">
+                and operator_no = #{operatorNo}
+            </if>
+            <if test="timeStamp != null">
+                and time_stamp = #{timeStamp}
+            </if>
+            <if test="dealNo != null and dealNo != ''">
+                and deal_no = #{dealNo}
+            </if>
+            <if test="totalFee != null">
+                and total_fee = #{totalFee}
+            </if>
+            <if test="feeJy != null">
+                and fee_jy = #{feeJy}
+            </if>
+            <if test="feeYh != null">
+                and fee_yh = #{feeYh}
+            </if>
+            <if test="feeGh != null">
+                and fee_gh = #{feeGh}
+            </if>
+            <if test="feeCommission != null">
+                and fee_commission = #{feeCommission}
+            </if>
+            <if test="feeJs != null">
+                and fee_js = #{feeJs}
+            </if>
+            <if test="feeZg != null">
+                and fee_zg = #{feeZg}
+            </if>
+            <if test="feeQt != null">
+                and fee_qt = #{feeQt}
+            </if>
+            <if test="feeSx != null">
+                and fee_sx = #{feeSx}
+            </if>
+            <if test="feeRisk != null">
+                and fee_risk = #{feeRisk}
+            </if>
+            <if test="feeJsfw != null">
+                and fee_jsfw = #{feeJsfw}
+            </if>
+            <if test="feeJg != null">
+                and fee_jg = #{feeJg}
+            </if>
+            <if test="tradePlatformId != null">
+                and trade_platform_id = #{tradePlatformId}
+            </if>
+            <if test="schemeCode != null and schemeCode != ''">
+                and scheme_code = #{schemeCode}
+            </if>
+            <if test="capitalAccountNo != null and capitalAccountNo != ''">
+                and capital_account_no = #{capitalAccountNo}
+            </if>
+            <if test="tradeInterfaceType != null">
+                and trade_interface_type = #{tradeInterfaceType}
+            </if>
+            <if test="insId != null">
+                and ins_id = #{insId}
+            </if>
+            <if test="indexDailyModify != null">
+                and index_daily_modify = #{indexDailyModify}
+            </if>
+            <if test="externalOrdid != null">
+                and external_ordid = #{externalOrdid}
+            </if>
+            <if test="thirdRemark != null and thirdRemark != ''">
+                and third_remark = #{thirdRemark}
+            </if>
+            <if test="stockName != null and stockName != ''">
+                and stock_name = #{stockName}
+            </if>
+            <if test="fundName != null and fundName != ''">
+                and fund_name = #{fundName}
+            </if>
+            <if test="assetName != null and assetName != ''">
+                and asset_name = #{assetName}
+            </if>
+            <if test="combiName != null and combiName != ''">
+                and combi_name = #{combiName}
+            </if>
+            <if test="tradeCurrencyNo != null and tradeCurrencyNo != ''">
+                and trade_currency_no = #{tradeCurrencyNo}
+            </if>
+            <if test="rivalTradercode != null and rivalTradercode != ''">
+                and rival_tradercode = #{rivalTradercode}
+            </if>
+            <if test="closeType != null and closeType != ''">
+                and close_type = #{closeType}
+            </if>
+            <if test="capitalAccountType != null and capitalAccountType != ''">
+                and capital_account_type = #{capitalAccountType}
+            </if>
+            <if test="positionStr != null and positionStr != ''">
+                and position_str = #{positionStr}
+            </if>
+            <if test="contractNo != null and contractNo != ''">
+                and contract_no = #{contractNo}
+            </if>
+            <if test="hgcontinueFlag != null and hgcontinueFlag != ''">
+                and hgcontinue_flag = #{hgcontinueFlag}
+            </if>
+            <if test="hgDays != null">
+                and hg_days = #{hgDays}
+            </if>
+            <if test="useDays != null">
+                and use_days = #{useDays}
+            </if>
+            <if test="firstSettleDate != null">
+                and first_settle_date = #{firstSettleDate}
+            </if>
+            <if test="expireSettleDate != null">
+                and expire_settle_date = #{expireSettleDate}
+            </if>
+            <if test="expireSettleBalance != null">
+                and expire_settle_balance = #{expireSettleBalance}
+            </if>
+            <if test="legalGhDate != null">
+                and legal_gh_date = #{legalGhDate}
+            </if>
+            <if test="tradeRivalNo != null">
+                and trade_rival_no = #{tradeRivalNo}
+            </if>
+            <if test="contactId != null">
+                and contact_id = #{contactId}
+            </if>
+            <if test="bondInterest != null">
+                and bond_interest = #{bondInterest}
+            </if>
+            <if test="optionCoveredFlag != null and optionCoveredFlag != ''">
+                and option_covered_flag = #{optionCoveredFlag}
+            </if>
+            <if test="boardType != null and boardType != ''">
+                and board_type = #{boardType}
+            </if>
+            <if test="msgSendStatus != null">
+                and msg_send_status = #{msgSendStatus}
+            </if>
+            <if test="mxddbh != null and mxddbh != ''">
+                and mxddbh = #{mxddbh}
+            </if>
+            <if test="cashSettleDate != null">
+                and cash_settle_date = #{cashSettleDate}
+            </if>
+            <if test="stockSettleDate != null">
+                and stock_settle_date = #{stockSettleDate}
+            </if>
+            <if test="isinCode != null and isinCode != ''">
+                and isin_code = #{isinCode}
+            </if>
+            <if test="engName != null and engName != ''">
+                and eng_name = #{engName}
+            </if>
+            <if test="reportDirection != null and reportDirection != ''">
+                and report_direction = #{reportDirection}
+            </if>
+            <if test="foreignOrgFlag != null and foreignOrgFlag != ''">
+                and foreign_org_flag = #{foreignOrgFlag}
+            </if>
+            <if test="bankSubAccount != null and bankSubAccount != ''">
+                and bank_sub_account = #{bankSubAccount}
+            </if>
+            <if test="bankSerialNo != null">
+                and bank_serial_no = #{bankSerialNo}
+            </if>
+            <if test="bankName != null and bankName != ''">
+                and bank_name = #{bankName}
+            </if>
+            <if test="qfiiSubAccountTag != null and qfiiSubAccountTag != ''">
+                and qfii_sub_account_tag = #{qfiiSubAccountTag}
+            </if>
+            <if test="validFlag != null and validFlag != ''">
+                and valid_flag = #{validFlag}
+            </if>
+            <if test="blockId != null">
+                and block_id = #{blockId}
+            </if>
+            <if test="cashgroupProp != null and cashgroupProp != ''">
+                and cashgroup_prop = #{cashgroupProp}
+            </if>
+            <if test="compactId != null and compactId != ''">
+                and compact_id = #{compactId}
+            </if>
+            <if test="stockType != null">
+                and stock_type = #{stockType}
+            </if>
+            <if test="midPrice != null">
+                and mid_price = #{midPrice}
+            </if>
+            <if test="inReportCode != null and inReportCode != ''">
+                and in_report_code = #{inReportCode}
+            </if>
+            <if test="inStockName != null and inStockName != ''">
+                and in_stock_name = #{inStockName}
+            </if>
+            <if test="nicked != null and nicked != ''">
+                and nicked = #{nicked}
+            </if>
+            <if test="szBondTradeMethod != null">
+                and sz_bond_trade_method = #{szBondTradeMethod}
+            </if>
+            <if test="operFlag != null and operFlag != ''">
+                and oper_flag = #{operFlag}
+            </if>
+            <if test="rivalTradeParty != null and rivalTradeParty != ''">
+                and rival_trade_party = #{rivalTradeParty}
+            </if>
+            <if test="entrustTableType != null">
+                and entrust_table_type = #{entrustTableType}
+            </if>
+            <if test="bonusType != null and bonusType != ''">
+                and bonus_type = #{bonusType}
+            </if>
+            <if test="openfundExceedType != null and openfundExceedType != ''">
+                and openfund_exceed_type = #{openfundExceedType}
+            </if>
+            <if test="rivalTradePartyType != null and rivalTradePartyType != ''">
+                and rival_trade_party_type = #{rivalTradePartyType}
+            </if>
+            <if test="rivalCompanycode != null and rivalCompanycode != ''">
+                and rival_companycode = #{rivalCompanycode}
+            </if>
+            <if test="assetType != null and assetType != ''">
+                and asset_type = #{assetType}
+            </if>
+            <if test="applyDescribe != null and applyDescribe != ''">
+                and apply_describe = #{applyDescribe}
+            </if>
+            <if test="fixedCompanyName != null and fixedCompanyName != ''">
+                and fixed_company_name = #{fixedCompanyName}
+            </if>
+            <if test="entrustLaunchType != null and entrustLaunchType != ''">
+                and entrust_launch_type = #{entrustLaunchType}
+            </if>
+        </where>
+    </select>
+
+    <select id="getMaxrealdeal_serial_no" resultType="java.lang.Integer">
+        select max(realdeal_serial_no) from hisjy_trealdeal;
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="businessDate" useGeneratedKeys="true">
+        insert into hisjy_trealdeal(company_id, entrust_serial_no, batch_serial_no, report_serial_no, fund_id, asset_id,
+                                    combi_id, market_no, report_code, inter_code, stockholder_id, trade_seat,
+                                    invest_type, entrust_direction, deal_amount, deal_price, deal_balance, deal_time,
+                                    operator_no, time_stamp, deal_no, total_fee, fee_jy, fee_yh, fee_gh, fee_commission,
+                                    fee_js, fee_zg, fee_qt, fee_sx, fee_risk, fee_jsfw, fee_jg, trade_platform_id,
+                                    scheme_code, capital_account_no, trade_interface_type, ins_id, index_daily_modify,
+                                    external_ordid, third_remark, stock_name, fund_name, asset_name, combi_name,
+                                    trade_currency_no, rival_tradercode, close_type, capital_account_type, position_str,
+                                    contract_no, hgcontinue_flag, hg_days, use_days, first_settle_date,
+                                    expire_settle_date, expire_settle_balance, legal_gh_date, trade_rival_no,
+                                    contact_id, bond_interest, option_covered_flag, board_type, msg_send_status, mxddbh,
+                                    cash_settle_date, stock_settle_date, isin_code, eng_name, report_direction,
+                                    foreign_org_flag, bank_sub_account, bank_serial_no, bank_name, qfii_sub_account_tag,
+                                    valid_flag, block_id, cashgroup_prop, compact_id, stock_type, mid_price,
+                                    in_report_code, in_stock_name, nicked, sz_bond_trade_method, oper_flag,
+                                    rival_trade_party, entrust_table_type, bonus_type, openfund_exceed_type,
+                                    rival_trade_party_type, rival_companycode, asset_type, apply_describe,
+                                    fixed_company_name, entrust_launch_type)
+        values (#{companyId}, #{entrustSerialNo}, #{batchSerialNo}, #{reportSerialNo}, #{fundId}, #{assetId},
+                #{combiId}, #{marketNo}, #{reportCode}, #{interCode}, #{stockholderId}, #{tradeSeat}, #{investType},
+                #{entrustDirection}, #{dealAmount}, #{dealPrice}, #{dealBalance}, #{dealTime}, #{operatorNo},
+                #{timeStamp}, #{dealNo}, #{totalFee}, #{feeJy}, #{feeYh}, #{feeGh}, #{feeCommission}, #{feeJs},
+                #{feeZg}, #{feeQt}, #{feeSx}, #{feeRisk}, #{feeJsfw}, #{feeJg}, #{tradePlatformId}, #{schemeCode},
+                #{capitalAccountNo}, #{tradeInterfaceType}, #{insId}, #{indexDailyModify}, #{externalOrdid},
+                #{thirdRemark}, #{stockName}, #{fundName}, #{assetName}, #{combiName}, #{tradeCurrencyNo},
+                #{rivalTradercode}, #{closeType}, #{capitalAccountType}, #{positionStr}, #{contractNo},
+                #{hgcontinueFlag}, #{hgDays}, #{useDays}, #{firstSettleDate}, #{expireSettleDate},
+                #{expireSettleBalance}, #{legalGhDate}, #{tradeRivalNo}, #{contactId}, #{bondInterest},
+                #{optionCoveredFlag}, #{boardType}, #{msgSendStatus}, #{mxddbh}, #{cashSettleDate}, #{stockSettleDate},
+                #{isinCode}, #{engName}, #{reportDirection}, #{foreignOrgFlag}, #{bankSubAccount}, #{bankSerialNo},
+                #{bankName}, #{qfiiSubAccountTag}, #{validFlag}, #{blockId}, #{cashgroupProp}, #{compactId},
+                #{stockType}, #{midPrice}, #{inReportCode}, #{inStockName}, #{nicked}, #{szBondTradeMethod},
+                #{operFlag}, #{rivalTradeParty}, #{entrustTableType}, #{bonusType}, #{openfundExceedType},
+                #{rivalTradePartyType}, #{rivalCompanycode}, #{assetType}, #{applyDescribe}, #{fixedCompanyName},
+                #{entrustLaunchType})
+    </insert>
+
+    <insert id="insertBatch">
+        insert into hisjy_trealdeal(business_date,realdeal_serial_no,company_id, entrust_serial_no, batch_serial_no, report_serial_no, fund_id, asset_id,
+        combi_id, market_no, report_code, inter_code, stockholder_id, trade_seat, invest_type, entrust_direction,
+        deal_amount, deal_price, deal_balance, deal_time, operator_no, time_stamp, deal_no, total_fee, fee_jy, fee_yh,
+        fee_gh, fee_commission, fee_js, fee_zg, fee_qt, fee_sx, fee_risk, fee_jsfw, fee_jg, trade_platform_id,
+        scheme_code, capital_account_no, trade_interface_type, ins_id, index_daily_modify, external_ordid, third_remark,
+        stock_name, fund_name, asset_name, combi_name, trade_currency_no, rival_tradercode, close_type,
+        capital_account_type, position_str, contract_no, hgcontinue_flag, hg_days, use_days, first_settle_date,
+        expire_settle_date, expire_settle_balance, legal_gh_date, trade_rival_no, contact_id, bond_interest,
+        option_covered_flag, board_type, msg_send_status, mxddbh, cash_settle_date, stock_settle_date, isin_code,
+        eng_name, report_direction, foreign_org_flag, bank_sub_account, bank_serial_no, bank_name, qfii_sub_account_tag,
+        valid_flag, block_id, cashgroup_prop, compact_id, stock_type, mid_price, in_report_code, in_stock_name, nicked,
+        sz_bond_trade_method, oper_flag, rival_trade_party, entrust_table_type, bonus_type, openfund_exceed_type,
+        rival_trade_party_type, rival_companycode, asset_type, apply_describe, fixed_company_name, entrust_launch_type)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.businessDate}, #{entity.realdealSerialNo},#{entity.companyId}, #{entity.entrustSerialNo}, #{entity.batchSerialNo}, #{entity.reportSerialNo},
+            #{entity.fundId}, #{entity.assetId}, #{entity.combiId}, #{entity.marketNo}, #{entity.reportCode},
+            #{entity.interCode}, #{entity.stockholderId}, #{entity.tradeSeat}, #{entity.investType},
+            #{entity.entrustDirection}, #{entity.dealAmount}, #{entity.dealPrice}, #{entity.dealBalance},
+            #{entity.dealTime}, #{entity.operatorNo}, #{entity.timeStamp}, #{entity.dealNo}, #{entity.totalFee},
+            #{entity.feeJy}, #{entity.feeYh}, #{entity.feeGh}, #{entity.feeCommission}, #{entity.feeJs},
+            #{entity.feeZg}, #{entity.feeQt}, #{entity.feeSx}, #{entity.feeRisk}, #{entity.feeJsfw}, #{entity.feeJg},
+            #{entity.tradePlatformId}, #{entity.schemeCode}, #{entity.capitalAccountNo}, #{entity.tradeInterfaceType},
+            #{entity.insId}, #{entity.indexDailyModify}, #{entity.externalOrdid}, #{entity.thirdRemark},
+            #{entity.stockName}, #{entity.fundName}, #{entity.assetName}, #{entity.combiName},
+            #{entity.tradeCurrencyNo}, #{entity.rivalTradercode}, #{entity.closeType}, #{entity.capitalAccountType},
+            #{entity.positionStr}, #{entity.contractNo}, #{entity.hgcontinueFlag}, #{entity.hgDays}, #{entity.useDays},
+            #{entity.firstSettleDate}, #{entity.expireSettleDate}, #{entity.expireSettleBalance}, #{entity.legalGhDate},
+            #{entity.tradeRivalNo}, #{entity.contactId}, #{entity.bondInterest}, #{entity.optionCoveredFlag},
+            #{entity.boardType}, #{entity.msgSendStatus}, #{entity.mxddbh}, #{entity.cashSettleDate},
+            #{entity.stockSettleDate}, #{entity.isinCode}, #{entity.engName}, #{entity.reportDirection},
+            #{entity.foreignOrgFlag}, #{entity.bankSubAccount}, #{entity.bankSerialNo}, #{entity.bankName},
+            #{entity.qfiiSubAccountTag}, #{entity.validFlag}, #{entity.blockId}, #{entity.cashgroupProp},
+            #{entity.compactId}, #{entity.stockType}, #{entity.midPrice}, #{entity.inReportCode}, #{entity.inStockName},
+            #{entity.nicked}, #{entity.szBondTradeMethod}, #{entity.operFlag}, #{entity.rivalTradeParty},
+            #{entity.entrustTableType}, #{entity.bonusType}, #{entity.openfundExceedType},
+            #{entity.rivalTradePartyType}, #{entity.rivalCompanycode}, #{entity.assetType}, #{entity.applyDescribe},
+            #{entity.fixedCompanyName}, #{entity.entrustLaunchType})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="businessDate" useGeneratedKeys="true">
+        insert into hisjy_trealdeal(company_id, entrust_serial_no, batch_serial_no, report_serial_no, fund_id, asset_id,
+        combi_id, market_no, report_code, inter_code, stockholder_id, trade_seat, invest_type, entrust_direction,
+        deal_amount, deal_price, deal_balance, deal_time, operator_no, time_stamp, deal_no, total_fee, fee_jy, fee_yh,
+        fee_gh, fee_commission, fee_js, fee_zg, fee_qt, fee_sx, fee_risk, fee_jsfw, fee_jg, trade_platform_id,
+        scheme_code, capital_account_no, trade_interface_type, ins_id, index_daily_modify, external_ordid, third_remark,
+        stock_name, fund_name, asset_name, combi_name, trade_currency_no, rival_tradercode, close_type,
+        capital_account_type, position_str, contract_no, hgcontinue_flag, hg_days, use_days, first_settle_date,
+        expire_settle_date, expire_settle_balance, legal_gh_date, trade_rival_no, contact_id, bond_interest,
+        option_covered_flag, board_type, msg_send_status, mxddbh, cash_settle_date, stock_settle_date, isin_code,
+        eng_name, report_direction, foreign_org_flag, bank_sub_account, bank_serial_no, bank_name, qfii_sub_account_tag,
+        valid_flag, block_id, cashgroup_prop, compact_id, stock_type, mid_price, in_report_code, in_stock_name, nicked,
+        sz_bond_trade_method, oper_flag, rival_trade_party, entrust_table_type, bonus_type, openfund_exceed_type,
+        rival_trade_party_type, rival_companycode, asset_type, apply_describe, fixed_company_name, entrust_launch_type)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.companyId}, #{entity.entrustSerialNo}, #{entity.batchSerialNo}, #{entity.reportSerialNo},
+            #{entity.fundId}, #{entity.assetId}, #{entity.combiId}, #{entity.marketNo}, #{entity.reportCode},
+            #{entity.interCode}, #{entity.stockholderId}, #{entity.tradeSeat}, #{entity.investType},
+            #{entity.entrustDirection}, #{entity.dealAmount}, #{entity.dealPrice}, #{entity.dealBalance},
+            #{entity.dealTime}, #{entity.operatorNo}, #{entity.timeStamp}, #{entity.dealNo}, #{entity.totalFee},
+            #{entity.feeJy}, #{entity.feeYh}, #{entity.feeGh}, #{entity.feeCommission}, #{entity.feeJs},
+            #{entity.feeZg}, #{entity.feeQt}, #{entity.feeSx}, #{entity.feeRisk}, #{entity.feeJsfw}, #{entity.feeJg},
+            #{entity.tradePlatformId}, #{entity.schemeCode}, #{entity.capitalAccountNo}, #{entity.tradeInterfaceType},
+            #{entity.insId}, #{entity.indexDailyModify}, #{entity.externalOrdid}, #{entity.thirdRemark},
+            #{entity.stockName}, #{entity.fundName}, #{entity.assetName}, #{entity.combiName},
+            #{entity.tradeCurrencyNo}, #{entity.rivalTradercode}, #{entity.closeType}, #{entity.capitalAccountType},
+            #{entity.positionStr}, #{entity.contractNo}, #{entity.hgcontinueFlag}, #{entity.hgDays}, #{entity.useDays},
+            #{entity.firstSettleDate}, #{entity.expireSettleDate}, #{entity.expireSettleBalance}, #{entity.legalGhDate},
+            #{entity.tradeRivalNo}, #{entity.contactId}, #{entity.bondInterest}, #{entity.optionCoveredFlag},
+            #{entity.boardType}, #{entity.msgSendStatus}, #{entity.mxddbh}, #{entity.cashSettleDate},
+            #{entity.stockSettleDate}, #{entity.isinCode}, #{entity.engName}, #{entity.reportDirection},
+            #{entity.foreignOrgFlag}, #{entity.bankSubAccount}, #{entity.bankSerialNo}, #{entity.bankName},
+            #{entity.qfiiSubAccountTag}, #{entity.validFlag}, #{entity.blockId}, #{entity.cashgroupProp},
+            #{entity.compactId}, #{entity.stockType}, #{entity.midPrice}, #{entity.inReportCode}, #{entity.inStockName},
+            #{entity.nicked}, #{entity.szBondTradeMethod}, #{entity.operFlag}, #{entity.rivalTradeParty},
+            #{entity.entrustTableType}, #{entity.bonusType}, #{entity.openfundExceedType},
+            #{entity.rivalTradePartyType}, #{entity.rivalCompanycode}, #{entity.assetType}, #{entity.applyDescribe},
+            #{entity.fixedCompanyName}, #{entity.entrustLaunchType})
+        </foreach>
+        on duplicate key update
+        company_id = values(company_id),
+        entrust_serial_no = values(entrust_serial_no),
+        batch_serial_no = values(batch_serial_no),
+        report_serial_no = values(report_serial_no),
+        fund_id = values(fund_id),
+        asset_id = values(asset_id),
+        combi_id = values(combi_id),
+        market_no = values(market_no),
+        report_code = values(report_code),
+        inter_code = values(inter_code),
+        stockholder_id = values(stockholder_id),
+        trade_seat = values(trade_seat),
+        invest_type = values(invest_type),
+        entrust_direction = values(entrust_direction),
+        deal_amount = values(deal_amount),
+        deal_price = values(deal_price),
+        deal_balance = values(deal_balance),
+        deal_time = values(deal_time),
+        operator_no = values(operator_no),
+        time_stamp = values(time_stamp),
+        deal_no = values(deal_no),
+        total_fee = values(total_fee),
+        fee_jy = values(fee_jy),
+        fee_yh = values(fee_yh),
+        fee_gh = values(fee_gh),
+        fee_commission = values(fee_commission),
+        fee_js = values(fee_js),
+        fee_zg = values(fee_zg),
+        fee_qt = values(fee_qt),
+        fee_sx = values(fee_sx),
+        fee_risk = values(fee_risk),
+        fee_jsfw = values(fee_jsfw),
+        fee_jg = values(fee_jg),
+        trade_platform_id = values(trade_platform_id),
+        scheme_code = values(scheme_code),
+        capital_account_no = values(capital_account_no),
+        trade_interface_type = values(trade_interface_type),
+        ins_id = values(ins_id),
+        index_daily_modify = values(index_daily_modify),
+        external_ordid = values(external_ordid),
+        third_remark = values(third_remark),
+        stock_name = values(stock_name),
+        fund_name = values(fund_name),
+        asset_name = values(asset_name),
+        combi_name = values(combi_name),
+        trade_currency_no = values(trade_currency_no),
+        rival_tradercode = values(rival_tradercode),
+        close_type = values(close_type),
+        capital_account_type = values(capital_account_type),
+        position_str = values(position_str),
+        contract_no = values(contract_no),
+        hgcontinue_flag = values(hgcontinue_flag),
+        hg_days = values(hg_days),
+        use_days = values(use_days),
+        first_settle_date = values(first_settle_date),
+        expire_settle_date = values(expire_settle_date),
+        expire_settle_balance = values(expire_settle_balance),
+        legal_gh_date = values(legal_gh_date),
+        trade_rival_no = values(trade_rival_no),
+        contact_id = values(contact_id),
+        bond_interest = values(bond_interest),
+        option_covered_flag = values(option_covered_flag),
+        board_type = values(board_type),
+        msg_send_status = values(msg_send_status),
+        mxddbh = values(mxddbh),
+        cash_settle_date = values(cash_settle_date),
+        stock_settle_date = values(stock_settle_date),
+        isin_code = values(isin_code),
+        eng_name = values(eng_name),
+        report_direction = values(report_direction),
+        foreign_org_flag = values(foreign_org_flag),
+        bank_sub_account = values(bank_sub_account),
+        bank_serial_no = values(bank_serial_no),
+        bank_name = values(bank_name),
+        qfii_sub_account_tag = values(qfii_sub_account_tag),
+        valid_flag = values(valid_flag),
+        block_id = values(block_id),
+        cashgroup_prop = values(cashgroup_prop),
+        compact_id = values(compact_id),
+        stock_type = values(stock_type),
+        mid_price = values(mid_price),
+        in_report_code = values(in_report_code),
+        in_stock_name = values(in_stock_name),
+        nicked = values(nicked),
+        sz_bond_trade_method = values(sz_bond_trade_method),
+        oper_flag = values(oper_flag),
+        rival_trade_party = values(rival_trade_party),
+        entrust_table_type = values(entrust_table_type),
+        bonus_type = values(bonus_type),
+        openfund_exceed_type = values(openfund_exceed_type),
+        rival_trade_party_type = values(rival_trade_party_type),
+        rival_companycode = values(rival_companycode),
+        asset_type = values(asset_type),
+        apply_describe = values(apply_describe),
+        fixed_company_name = values(fixed_company_name),
+        entrust_launch_type = values(entrust_launch_type)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update hisjy_trealdeal
+        <set>
+            <if test="companyId != null">
+                company_id = #{companyId},
+            </if>
+            <if test="entrustSerialNo != null">
+                entrust_serial_no = #{entrustSerialNo},
+            </if>
+            <if test="batchSerialNo != null">
+                batch_serial_no = #{batchSerialNo},
+            </if>
+            <if test="reportSerialNo != null">
+                report_serial_no = #{reportSerialNo},
+            </if>
+            <if test="fundId != null">
+                fund_id = #{fundId},
+            </if>
+            <if test="assetId != null">
+                asset_id = #{assetId},
+            </if>
+            <if test="combiId != null">
+                combi_id = #{combiId},
+            </if>
+            <if test="marketNo != null">
+                market_no = #{marketNo},
+            </if>
+            <if test="reportCode != null and reportCode != ''">
+                report_code = #{reportCode},
+            </if>
+            <if test="interCode != null">
+                inter_code = #{interCode},
+            </if>
+            <if test="stockholderId != null and stockholderId != ''">
+                stockholder_id = #{stockholderId},
+            </if>
+            <if test="tradeSeat != null and tradeSeat != ''">
+                trade_seat = #{tradeSeat},
+            </if>
+            <if test="investType != null and investType != ''">
+                invest_type = #{investType},
+            </if>
+            <if test="entrustDirection != null">
+                entrust_direction = #{entrustDirection},
+            </if>
+            <if test="dealAmount != null">
+                deal_amount = #{dealAmount},
+            </if>
+            <if test="dealPrice != null">
+                deal_price = #{dealPrice},
+            </if>
+            <if test="dealBalance != null">
+                deal_balance = #{dealBalance},
+            </if>
+            <if test="dealTime != null">
+                deal_time = #{dealTime},
+            </if>
+            <if test="operatorNo != null">
+                operator_no = #{operatorNo},
+            </if>
+            <if test="timeStamp != null">
+                time_stamp = #{timeStamp},
+            </if>
+            <if test="dealNo != null and dealNo != ''">
+                deal_no = #{dealNo},
+            </if>
+            <if test="totalFee != null">
+                total_fee = #{totalFee},
+            </if>
+            <if test="feeJy != null">
+                fee_jy = #{feeJy},
+            </if>
+            <if test="feeYh != null">
+                fee_yh = #{feeYh},
+            </if>
+            <if test="feeGh != null">
+                fee_gh = #{feeGh},
+            </if>
+            <if test="feeCommission != null">
+                fee_commission = #{feeCommission},
+            </if>
+            <if test="feeJs != null">
+                fee_js = #{feeJs},
+            </if>
+            <if test="feeZg != null">
+                fee_zg = #{feeZg},
+            </if>
+            <if test="feeQt != null">
+                fee_qt = #{feeQt},
+            </if>
+            <if test="feeSx != null">
+                fee_sx = #{feeSx},
+            </if>
+            <if test="feeRisk != null">
+                fee_risk = #{feeRisk},
+            </if>
+            <if test="feeJsfw != null">
+                fee_jsfw = #{feeJsfw},
+            </if>
+            <if test="feeJg != null">
+                fee_jg = #{feeJg},
+            </if>
+            <if test="tradePlatformId != null">
+                trade_platform_id = #{tradePlatformId},
+            </if>
+            <if test="schemeCode != null and schemeCode != ''">
+                scheme_code = #{schemeCode},
+            </if>
+            <if test="capitalAccountNo != null and capitalAccountNo != ''">
+                capital_account_no = #{capitalAccountNo},
+            </if>
+            <if test="tradeInterfaceType != null">
+                trade_interface_type = #{tradeInterfaceType},
+            </if>
+            <if test="insId != null">
+                ins_id = #{insId},
+            </if>
+            <if test="indexDailyModify != null">
+                index_daily_modify = #{indexDailyModify},
+            </if>
+            <if test="externalOrdid != null">
+                external_ordid = #{externalOrdid},
+            </if>
+            <if test="thirdRemark != null and thirdRemark != ''">
+                third_remark = #{thirdRemark},
+            </if>
+            <if test="stockName != null and stockName != ''">
+                stock_name = #{stockName},
+            </if>
+            <if test="fundName != null and fundName != ''">
+                fund_name = #{fundName},
+            </if>
+            <if test="assetName != null and assetName != ''">
+                asset_name = #{assetName},
+            </if>
+            <if test="combiName != null and combiName != ''">
+                combi_name = #{combiName},
+            </if>
+            <if test="tradeCurrencyNo != null and tradeCurrencyNo != ''">
+                trade_currency_no = #{tradeCurrencyNo},
+            </if>
+            <if test="rivalTradercode != null and rivalTradercode != ''">
+                rival_tradercode = #{rivalTradercode},
+            </if>
+            <if test="closeType != null and closeType != ''">
+                close_type = #{closeType},
+            </if>
+            <if test="capitalAccountType != null and capitalAccountType != ''">
+                capital_account_type = #{capitalAccountType},
+            </if>
+            <if test="positionStr != null and positionStr != ''">
+                position_str = #{positionStr},
+            </if>
+            <if test="contractNo != null and contractNo != ''">
+                contract_no = #{contractNo},
+            </if>
+            <if test="hgcontinueFlag != null and hgcontinueFlag != ''">
+                hgcontinue_flag = #{hgcontinueFlag},
+            </if>
+            <if test="hgDays != null">
+                hg_days = #{hgDays},
+            </if>
+            <if test="useDays != null">
+                use_days = #{useDays},
+            </if>
+            <if test="firstSettleDate != null">
+                first_settle_date = #{firstSettleDate},
+            </if>
+            <if test="expireSettleDate != null">
+                expire_settle_date = #{expireSettleDate},
+            </if>
+            <if test="expireSettleBalance != null">
+                expire_settle_balance = #{expireSettleBalance},
+            </if>
+            <if test="legalGhDate != null">
+                legal_gh_date = #{legalGhDate},
+            </if>
+            <if test="tradeRivalNo != null">
+                trade_rival_no = #{tradeRivalNo},
+            </if>
+            <if test="contactId != null">
+                contact_id = #{contactId},
+            </if>
+            <if test="bondInterest != null">
+                bond_interest = #{bondInterest},
+            </if>
+            <if test="optionCoveredFlag != null and optionCoveredFlag != ''">
+                option_covered_flag = #{optionCoveredFlag},
+            </if>
+            <if test="boardType != null and boardType != ''">
+                board_type = #{boardType},
+            </if>
+            <if test="msgSendStatus != null">
+                msg_send_status = #{msgSendStatus},
+            </if>
+            <if test="mxddbh != null and mxddbh != ''">
+                mxddbh = #{mxddbh},
+            </if>
+            <if test="cashSettleDate != null">
+                cash_settle_date = #{cashSettleDate},
+            </if>
+            <if test="stockSettleDate != null">
+                stock_settle_date = #{stockSettleDate},
+            </if>
+            <if test="isinCode != null and isinCode != ''">
+                isin_code = #{isinCode},
+            </if>
+            <if test="engName != null and engName != ''">
+                eng_name = #{engName},
+            </if>
+            <if test="reportDirection != null and reportDirection != ''">
+                report_direction = #{reportDirection},
+            </if>
+            <if test="foreignOrgFlag != null and foreignOrgFlag != ''">
+                foreign_org_flag = #{foreignOrgFlag},
+            </if>
+            <if test="bankSubAccount != null and bankSubAccount != ''">
+                bank_sub_account = #{bankSubAccount},
+            </if>
+            <if test="bankSerialNo != null">
+                bank_serial_no = #{bankSerialNo},
+            </if>
+            <if test="bankName != null and bankName != ''">
+                bank_name = #{bankName},
+            </if>
+            <if test="qfiiSubAccountTag != null and qfiiSubAccountTag != ''">
+                qfii_sub_account_tag = #{qfiiSubAccountTag},
+            </if>
+            <if test="validFlag != null and validFlag != ''">
+                valid_flag = #{validFlag},
+            </if>
+            <if test="blockId != null">
+                block_id = #{blockId},
+            </if>
+            <if test="cashgroupProp != null and cashgroupProp != ''">
+                cashgroup_prop = #{cashgroupProp},
+            </if>
+            <if test="compactId != null and compactId != ''">
+                compact_id = #{compactId},
+            </if>
+            <if test="stockType != null">
+                stock_type = #{stockType},
+            </if>
+            <if test="midPrice != null">
+                mid_price = #{midPrice},
+            </if>
+            <if test="inReportCode != null and inReportCode != ''">
+                in_report_code = #{inReportCode},
+            </if>
+            <if test="inStockName != null and inStockName != ''">
+                in_stock_name = #{inStockName},
+            </if>
+            <if test="nicked != null and nicked != ''">
+                nicked = #{nicked},
+            </if>
+            <if test="szBondTradeMethod != null">
+                sz_bond_trade_method = #{szBondTradeMethod},
+            </if>
+            <if test="operFlag != null and operFlag != ''">
+                oper_flag = #{operFlag},
+            </if>
+            <if test="rivalTradeParty != null and rivalTradeParty != ''">
+                rival_trade_party = #{rivalTradeParty},
+            </if>
+            <if test="entrustTableType != null">
+                entrust_table_type = #{entrustTableType},
+            </if>
+            <if test="bonusType != null and bonusType != ''">
+                bonus_type = #{bonusType},
+            </if>
+            <if test="openfundExceedType != null and openfundExceedType != ''">
+                openfund_exceed_type = #{openfundExceedType},
+            </if>
+            <if test="rivalTradePartyType != null and rivalTradePartyType != ''">
+                rival_trade_party_type = #{rivalTradePartyType},
+            </if>
+            <if test="rivalCompanycode != null and rivalCompanycode != ''">
+                rival_companycode = #{rivalCompanycode},
+            </if>
+            <if test="assetType != null and assetType != ''">
+                asset_type = #{assetType},
+            </if>
+            <if test="applyDescribe != null and applyDescribe != ''">
+                apply_describe = #{applyDescribe},
+            </if>
+            <if test="fixedCompanyName != null and fixedCompanyName != ''">
+                fixed_company_name = #{fixedCompanyName},
+            </if>
+            <if test="entrustLaunchType != null and entrustLaunchType != ''">
+                entrust_launch_type = #{entrustLaunchType},
+            </if>
+        </set>
+        where business_date = #{businessDate}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from hisjy_trealdeal
+        where business_date = #{businessDate}
+    </delete>
+
+</mapper>
+

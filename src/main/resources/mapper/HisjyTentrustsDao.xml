@@ -573,25 +573,7 @@
         limit #{pageable.offset}, #{pageable.pageSize}
     </select>
 
-    <!--通过实体作为筛选条件查询-->
-    <select id="queryAll" resultMap="BaseResultMap">
-    select
-    business_date, entrust_serial_no, batch_serial_no, report_serial_no, company_id, fund_id, confirm_codeno, asset_id,
-    combi_id, market_no, report_code, inter_code, bind_seat, stockholder_id, trade_seat, invest_type, entrust_direction,
-    report_direction, entrust_price_type, entrust_price, entrust_amount, entrust_balance, cancel_amount, busin_amount,
-    busin_balance, total_deal_amount, total_deal_balance, prebuy_frozen_balance, entrust_status, entrust_launch_type,
-    busin_times, entrust_time, last_deal_time, operator_no, revoke_cause, report_serial_no_branch, rec_num, tran_reff,
-    trade_platform_id, cancel_flag, cancel_serial_no, append_entrust_xh_flag, mac, ip_address, volserial_no, ws_cpu,
-    scheme_code, scheme_ins_code, algo_ordid, ins_id, index_daily_modify, ins_stock_id, capital_account_no, branch_code,
-    sys_branch_code, trade_interface_type, arbitrage_serial_no, engaged_no, rival_seat, rival_stockholder_id, sys_date,
-    sys_time, external_ordid, third_remark, vote_senate_no, stock_name, trade_currency_no, fund_name, asset_name,
-    combi_name, capital_account_type, position_str, trace_flag, close_direction, option_covered_flag, linkman, phone_no,
-    clear_speed, valid_flag, rival_tradercode, hg_deal_date, quoter_request_no, original_deal_no, contract_no, hg_days,
-    report_flag, legal_gh_date, actual_gh_date, hg_interest, hgcontinue_flag, third_flag, first_settle_date, use_days,
-    board_type, terminal_info_slit_ext, order_id, dfd_status, auto_drop_flag, report_status, bulkunderweight_flag,
-    cashgroup_prop, min_volume, compact_id, stock_type, restricted_flag, in_report_code, in_stock_name
-    from dbtrade.hisjy_tentrusts
-    </select>
+
     <!--统计总行数-->
     <select id="count" resultType="java.lang.Long">
         select count(1)

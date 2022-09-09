@@ -1,0 +1,672 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leon.dbbatchdeal.dao.JyTrealdealDao">
+
+    <resultMap id="BaseResultMap" type="com.leon.dbbatchdeal.entity.JyTrealdeal">
+        <!--@Table jy_trealdeal-->
+        <result property="businessDate" column="business_date" jdbcType="INTEGER"/>
+        <result property="companyId" column="company_id" jdbcType="INTEGER"/>
+        <result property="realdealSerialNo" column="realdeal_serial_no" jdbcType="INTEGER"/>
+        <result property="entrustSerialNo" column="entrust_serial_no" jdbcType="INTEGER"/>
+        <result property="batchSerialNo" column="batch_serial_no" jdbcType="INTEGER"/>
+        <result property="reportSerialNo" column="report_serial_no" jdbcType="INTEGER"/>
+        <result property="fundId" column="fund_id" jdbcType="INTEGER"/>
+        <result property="assetId" column="asset_id" jdbcType="INTEGER"/>
+        <result property="combiId" column="combi_id" jdbcType="INTEGER"/>
+        <result property="marketNo" column="market_no" jdbcType="INTEGER"/>
+        <result property="reportCode" column="report_code" jdbcType="VARCHAR"/>
+        <result property="interCode" column="inter_code" jdbcType="INTEGER"/>
+        <result property="stockholderId" column="stockholder_id" jdbcType="VARCHAR"/>
+        <result property="tradeSeat" column="trade_seat" jdbcType="VARCHAR"/>
+        <result property="investType" column="invest_type" jdbcType="VARCHAR"/>
+        <result property="entrustDirection" column="entrust_direction" jdbcType="INTEGER"/>
+        <result property="dealAmount" column="deal_amount" jdbcType="NUMERIC"/>
+        <result property="dealPrice" column="deal_price" jdbcType="NUMERIC"/>
+        <result property="dealBalance" column="deal_balance" jdbcType="NUMERIC"/>
+        <result property="dealTime" column="deal_time" jdbcType="INTEGER"/>
+        <result property="operatorNo" column="operator_no" jdbcType="INTEGER"/>
+        <result property="timeStamp" column="time_stamp" jdbcType="TIMESTAMP"/>
+        <result property="dealNo" column="deal_no" jdbcType="VARCHAR"/>
+        <result property="totalFee" column="total_fee" jdbcType="NUMERIC"/>
+        <result property="feeJy" column="fee_jy" jdbcType="NUMERIC"/>
+        <result property="feeYh" column="fee_yh" jdbcType="NUMERIC"/>
+        <result property="feeGh" column="fee_gh" jdbcType="NUMERIC"/>
+        <result property="feeCommission" column="fee_commission" jdbcType="NUMERIC"/>
+        <result property="feeJs" column="fee_js" jdbcType="NUMERIC"/>
+        <result property="feeZg" column="fee_zg" jdbcType="NUMERIC"/>
+        <result property="feeQt" column="fee_qt" jdbcType="NUMERIC"/>
+        <result property="feeSx" column="fee_sx" jdbcType="NUMERIC"/>
+        <result property="feeRisk" column="fee_risk" jdbcType="NUMERIC"/>
+        <result property="feeJsfw" column="fee_jsfw" jdbcType="NUMERIC"/>
+        <result property="feeJg" column="fee_jg" jdbcType="NUMERIC"/>
+        <result property="tradePlatformId" column="trade_platform_id" jdbcType="INTEGER"/>
+        <result property="schemeCode" column="scheme_code" jdbcType="VARCHAR"/>
+        <result property="capitalAccountNo" column="capital_account_no" jdbcType="VARCHAR"/>
+        <result property="tradeInterfaceType" column="trade_interface_type" jdbcType="INTEGER"/>
+        <result property="insId" column="ins_id" jdbcType="INTEGER"/>
+        <result property="indexDailyModify" column="index_daily_modify" jdbcType="INTEGER"/>
+        <result property="externalOrdid" column="external_ordid" jdbcType="INTEGER"/>
+        <result property="thirdRemark" column="third_remark" jdbcType="VARCHAR"/>
+        <result property="msgSendStatus" column="msg_send_status" jdbcType="INTEGER"/>
+        <result property="validFlag" column="valid_flag" jdbcType="VARCHAR"/>
+        <result property="blockId" column="block_id" jdbcType="INTEGER"/>
+    </resultMap>
+
+    <!--查询单个-->
+    <select id="queryById" resultMap="BaseResultMap">
+        select business_date,
+               company_id,
+               realdeal_serial_no,
+               entrust_serial_no,
+               batch_serial_no,
+               report_serial_no,
+               fund_id,
+               asset_id,
+               combi_id,
+               market_no,
+               report_code,
+               inter_code,
+               stockholder_id,
+               trade_seat,
+               invest_type,
+               entrust_direction,
+               deal_amount,
+               deal_price,
+               deal_balance,
+               deal_time,
+               operator_no,
+               time_stamp,
+               deal_no,
+               total_fee,
+               fee_jy,
+               fee_yh,
+               fee_gh,
+               fee_commission,
+               fee_js,
+               fee_zg,
+               fee_qt,
+               fee_sx,
+               fee_risk,
+               fee_jsfw,
+               fee_jg,
+               trade_platform_id,
+               scheme_code,
+               capital_account_no,
+               trade_interface_type,
+               ins_id,
+               index_daily_modify,
+               external_ordid,
+               third_remark,
+               msg_send_status,
+               valid_flag,
+               block_id
+        from jy_trealdeal
+        where realdeal_serial_no = #{realdealSerialNo}
+    </select>
+
+    <!--查询指定行数据-->
+    <select id="queryAllByLimit" resultMap="BaseResultMap">
+        select
+        business_date, company_id, realdeal_serial_no, entrust_serial_no, batch_serial_no, report_serial_no, fund_id,
+        asset_id, combi_id, market_no, report_code, inter_code, stockholder_id, trade_seat, invest_type,
+        entrust_direction, deal_amount, deal_price, deal_balance, deal_time, operator_no, time_stamp, deal_no,
+        total_fee, fee_jy, fee_yh, fee_gh, fee_commission, fee_js, fee_zg, fee_qt, fee_sx, fee_risk, fee_jsfw, fee_jg,
+        trade_platform_id, scheme_code, capital_account_no, trade_interface_type, ins_id, index_daily_modify,
+        external_ordid, third_remark, msg_send_status, valid_flag, block_id
+        from jy_trealdeal
+        <where>
+            <if test="jyTrealdeal.businessDate != null">
+                and business_date = #{jyTrealdeal.businessDate}
+            </if>
+            <if test="jyTrealdeal.companyId != null">
+                and company_id = #{jyTrealdeal.companyId}
+            </if>
+            <if test="jyTrealdeal.realdealSerialNo != null">
+                and realdeal_serial_no = #{jyTrealdeal.realdealSerialNo}
+            </if>
+            <if test="jyTrealdeal.entrustSerialNo != null">
+                and entrust_serial_no = #{jyTrealdeal.entrustSerialNo}
+            </if>
+            <if test="jyTrealdeal.batchSerialNo != null">
+                and batch_serial_no = #{jyTrealdeal.batchSerialNo}
+            </if>
+            <if test="jyTrealdeal.reportSerialNo != null">
+                and report_serial_no = #{jyTrealdeal.reportSerialNo}
+            </if>
+            <if test="jyTrealdeal.fundId != null">
+                and fund_id = #{jyTrealdeal.fundId}
+            </if>
+            <if test="jyTrealdeal.assetId != null">
+                and asset_id = #{jyTrealdeal.assetId}
+            </if>
+            <if test="jyTrealdeal.combiId != null">
+                and combi_id = #{jyTrealdeal.combiId}
+            </if>
+            <if test="jyTrealdeal.marketNo != null">
+                and market_no = #{jyTrealdeal.marketNo}
+            </if>
+            <if test="jyTrealdeal.reportCode != null and reportCode != ''">
+                and report_code = #{jyTrealdeal.reportCode}
+            </if>
+            <if test="jyTrealdeal.interCode != null">
+                and inter_code = #{jyTrealdeal.interCode}
+            </if>
+            <if test="jyTrealdeal.stockholderId != null and stockholderId != ''">
+                and stockholder_id = #{jyTrealdeal.stockholderId}
+            </if>
+            <if test="jyTrealdeal.tradeSeat != null and tradeSeat != ''">
+                and trade_seat = #{jyTrealdeal.tradeSeat}
+            </if>
+            <if test="jyTrealdeal.investType != null and investType != ''">
+                and invest_type = #{jyTrealdeal.investType}
+            </if>
+            <if test="jyTrealdeal.entrustDirection != null">
+                and entrust_direction = #{jyTrealdeal.entrustDirection}
+            </if>
+            <if test="jyTrealdeal.dealAmount != null">
+                and deal_amount = #{jyTrealdeal.dealAmount}
+            </if>
+            <if test="jyTrealdeal.dealPrice != null">
+                and deal_price = #{jyTrealdeal.dealPrice}
+            </if>
+            <if test="jyTrealdeal.dealBalance != null">
+                and deal_balance = #{jyTrealdeal.dealBalance}
+            </if>
+            <if test="jyTrealdeal.dealTime != null">
+                and deal_time = #{jyTrealdeal.dealTime}
+            </if>
+            <if test="jyTrealdeal.operatorNo != null">
+                and operator_no = #{jyTrealdeal.operatorNo}
+            </if>
+            <if test="jyTrealdeal.timeStamp != null">
+                and time_stamp = #{jyTrealdeal.timeStamp}
+            </if>
+            <if test="jyTrealdeal.dealNo != null and dealNo != ''">
+                and deal_no = #{jyTrealdeal.dealNo}
+            </if>
+            <if test="jyTrealdeal.totalFee != null">
+                and total_fee = #{jyTrealdeal.totalFee}
+            </if>
+            <if test="jyTrealdeal.feeJy != null">
+                and fee_jy = #{jyTrealdeal.feeJy}
+            </if>
+            <if test="jyTrealdeal.feeYh != null">
+                and fee_yh = #{jyTrealdeal.feeYh}
+            </if>
+            <if test="jyTrealdeal.feeGh != null">
+                and fee_gh = #{jyTrealdeal.feeGh}
+            </if>
+            <if test="jyTrealdeal.feeCommission != null">
+                and fee_commission = #{jyTrealdeal.feeCommission}
+            </if>
+            <if test="jyTrealdeal.feeJs != null">
+                and fee_js = #{jyTrealdeal.feeJs}
+            </if>
+            <if test="jyTrealdeal.feeZg != null">
+                and fee_zg = #{jyTrealdeal.feeZg}
+            </if>
+            <if test="jyTrealdeal.feeQt != null">
+                and fee_qt = #{jyTrealdeal.feeQt}
+            </if>
+            <if test="jyTrealdeal.feeSx != null">
+                and fee_sx = #{jyTrealdeal.feeSx}
+            </if>
+            <if test="jyTrealdeal.feeRisk != null">
+                and fee_risk = #{jyTrealdeal.feeRisk}
+            </if>
+            <if test="jyTrealdeal.feeJsfw != null">
+                and fee_jsfw = #{jyTrealdeal.feeJsfw}
+            </if>
+            <if test="jyTrealdeal.feeJg != null">
+                and fee_jg = #{jyTrealdeal.feeJg}
+            </if>
+            <if test="jyTrealdeal.tradePlatformId != null">
+                and trade_platform_id = #{jyTrealdeal.tradePlatformId}
+            </if>
+            <if test="jyTrealdeal.schemeCode != null and schemeCode != ''">
+                and scheme_code = #{jyTrealdeal.schemeCode}
+            </if>
+            <if test="jyTrealdeal.capitalAccountNo != null and capitalAccountNo != ''">
+                and capital_account_no = #{jyTrealdeal.capitalAccountNo}
+            </if>
+            <if test="jyTrealdeal.tradeInterfaceType != null">
+                and trade_interface_type = #{jyTrealdeal.tradeInterfaceType}
+            </if>
+            <if test="jyTrealdeal.insId != null">
+                and ins_id = #{jyTrealdeal.insId}
+            </if>
+            <if test="jyTrealdeal.indexDailyModify != null">
+                and index_daily_modify = #{jyTrealdeal.indexDailyModify}
+            </if>
+            <if test="jyTrealdeal.externalOrdid != null">
+                and external_ordid = #{jyTrealdeal.externalOrdid}
+            </if>
+            <if test="jyTrealdeal.thirdRemark != null and thirdRemark != ''">
+                and third_remark = #{jyTrealdeal.thirdRemark}
+            </if>
+            <if test="jyTrealdeal.msgSendStatus != null">
+                and msg_send_status = #{jyTrealdeal.msgSendStatus}
+            </if>
+            <if test="jyTrealdeal.validFlag != null and validFlag != ''">
+                and valid_flag = #{jyTrealdeal.validFlag}
+            </if>
+            <if test="jyTrealdeal.blockId != null">
+                and block_id = #{jyTrealdeal.blockId}
+            </if>
+        </where>
+        <if test="pageable!=null">
+            limit#{pageable.offset}, #{pageable.pageSize}
+        </if>
+    </select>
+
+
+    <!--统计总行数-->
+    <select id="count" resultType="java.lang.Long">
+        select count(1)
+        from jy_trealdeal
+        <where>
+            <if test="businessDate != null">
+                and business_date = #{businessDate}
+            </if>
+            <if test="companyId != null">
+                and company_id = #{companyId}
+            </if>
+            <if test="realdealSerialNo != null">
+                and realdeal_serial_no = #{realdealSerialNo}
+            </if>
+            <if test="entrustSerialNo != null">
+                and entrust_serial_no = #{entrustSerialNo}
+            </if>
+            <if test="batchSerialNo != null">
+                and batch_serial_no = #{batchSerialNo}
+            </if>
+            <if test="reportSerialNo != null">
+                and report_serial_no = #{reportSerialNo}
+            </if>
+            <if test="fundId != null">
+                and fund_id = #{fundId}
+            </if>
+            <if test="assetId != null">
+                and asset_id = #{assetId}
+            </if>
+            <if test="combiId != null">
+                and combi_id = #{combiId}
+            </if>
+            <if test="marketNo != null">
+                and market_no = #{marketNo}
+            </if>
+            <if test="reportCode != null and reportCode != ''">
+                and report_code = #{reportCode}
+            </if>
+            <if test="interCode != null">
+                and inter_code = #{interCode}
+            </if>
+            <if test="stockholderId != null and stockholderId != ''">
+                and stockholder_id = #{stockholderId}
+            </if>
+            <if test="tradeSeat != null and tradeSeat != ''">
+                and trade_seat = #{tradeSeat}
+            </if>
+            <if test="investType != null and investType != ''">
+                and invest_type = #{investType}
+            </if>
+            <if test="entrustDirection != null">
+                and entrust_direction = #{entrustDirection}
+            </if>
+            <if test="dealAmount != null">
+                and deal_amount = #{dealAmount}
+            </if>
+            <if test="dealPrice != null">
+                and deal_price = #{dealPrice}
+            </if>
+            <if test="dealBalance != null">
+                and deal_balance = #{dealBalance}
+            </if>
+            <if test="dealTime != null">
+                and deal_time = #{dealTime}
+            </if>
+            <if test="operatorNo != null">
+                and operator_no = #{operatorNo}
+            </if>
+            <if test="timeStamp != null">
+                and time_stamp = #{timeStamp}
+            </if>
+            <if test="dealNo != null and dealNo != ''">
+                and deal_no = #{dealNo}
+            </if>
+            <if test="totalFee != null">
+                and total_fee = #{totalFee}
+            </if>
+            <if test="feeJy != null">
+                and fee_jy = #{feeJy}
+            </if>
+            <if test="feeYh != null">
+                and fee_yh = #{feeYh}
+            </if>
+            <if test="feeGh != null">
+                and fee_gh = #{feeGh}
+            </if>
+            <if test="feeCommission != null">
+                and fee_commission = #{feeCommission}
+            </if>
+            <if test="feeJs != null">
+                and fee_js = #{feeJs}
+            </if>
+            <if test="feeZg != null">
+                and fee_zg = #{feeZg}
+            </if>
+            <if test="feeQt != null">
+                and fee_qt = #{feeQt}
+            </if>
+            <if test="feeSx != null">
+                and fee_sx = #{feeSx}
+            </if>
+            <if test="feeRisk != null">
+                and fee_risk = #{feeRisk}
+            </if>
+            <if test="feeJsfw != null">
+                and fee_jsfw = #{feeJsfw}
+            </if>
+            <if test="feeJg != null">
+                and fee_jg = #{feeJg}
+            </if>
+            <if test="tradePlatformId != null">
+                and trade_platform_id = #{tradePlatformId}
+            </if>
+            <if test="schemeCode != null and schemeCode != ''">
+                and scheme_code = #{schemeCode}
+            </if>
+            <if test="capitalAccountNo != null and capitalAccountNo != ''">
+                and capital_account_no = #{capitalAccountNo}
+            </if>
+            <if test="tradeInterfaceType != null">
+                and trade_interface_type = #{tradeInterfaceType}
+            </if>
+            <if test="insId != null">
+                and ins_id = #{insId}
+            </if>
+            <if test="indexDailyModify != null">
+                and index_daily_modify = #{indexDailyModify}
+            </if>
+            <if test="externalOrdid != null">
+                and external_ordid = #{externalOrdid}
+            </if>
+            <if test="thirdRemark != null and thirdRemark != ''">
+                and third_remark = #{thirdRemark}
+            </if>
+            <if test="msgSendStatus != null">
+                and msg_send_status = #{msgSendStatus}
+            </if>
+            <if test="validFlag != null and validFlag != ''">
+                and valid_flag = #{validFlag}
+            </if>
+            <if test="blockId != null">
+                and block_id = #{blockId}
+            </if>
+        </where>
+    </select>
+    <select id="getMaxrealdeal_serial_no" resultType="java.lang.Integer">
+        select max(realdeal_serial_no) from jy_trealdeal;
+    </select>
+
+    <!--新增所有列-->
+    <insert id="insert" keyProperty="realdealSerialNo" useGeneratedKeys="true">
+        insert into jy_trealdeal(business_date, company_id, entrust_serial_no, batch_serial_no, report_serial_no,
+                                 fund_id, asset_id, combi_id, market_no, report_code, inter_code, stockholder_id,
+                                 trade_seat, invest_type, entrust_direction, deal_amount, deal_price, deal_balance,
+                                 deal_time, operator_no, time_stamp, deal_no, total_fee, fee_jy, fee_yh, fee_gh,
+                                 fee_commission, fee_js, fee_zg, fee_qt, fee_sx, fee_risk, fee_jsfw, fee_jg,
+                                 trade_platform_id, scheme_code, capital_account_no, trade_interface_type, ins_id,
+                                 index_daily_modify, external_ordid, third_remark, msg_send_status, valid_flag,
+                                 block_id)
+        values (#{businessDate}, #{companyId}, #{entrustSerialNo}, #{batchSerialNo}, #{reportSerialNo}, #{fundId},
+                #{assetId}, #{combiId}, #{marketNo}, #{reportCode}, #{interCode}, #{stockholderId}, #{tradeSeat},
+                #{investType}, #{entrustDirection}, #{dealAmount}, #{dealPrice}, #{dealBalance}, #{dealTime},
+                #{operatorNo}, #{timeStamp}, #{dealNo}, #{totalFee}, #{feeJy}, #{feeYh}, #{feeGh}, #{feeCommission},
+                #{feeJs}, #{feeZg}, #{feeQt}, #{feeSx}, #{feeRisk}, #{feeJsfw}, #{feeJg}, #{tradePlatformId},
+                #{schemeCode}, #{capitalAccountNo}, #{tradeInterfaceType}, #{insId}, #{indexDailyModify},
+                #{externalOrdid}, #{thirdRemark}, #{msgSendStatus}, #{validFlag}, #{blockId})
+    </insert>
+
+    <insert id="insertBatch" >
+        insert into jy_trealdeal(business_date,realdeal_serial_no,company_id, entrust_serial_no, batch_serial_no, report_serial_no,
+        fund_id, asset_id, combi_id, market_no, report_code, inter_code, stockholder_id, trade_seat, invest_type,
+        entrust_direction, deal_amount, deal_price, deal_balance, deal_time, operator_no, time_stamp, deal_no,
+        total_fee, fee_jy, fee_yh, fee_gh, fee_commission, fee_js, fee_zg, fee_qt, fee_sx, fee_risk, fee_jsfw, fee_jg,
+        trade_platform_id, scheme_code, capital_account_no, trade_interface_type, ins_id, index_daily_modify,
+        external_ordid, third_remark, msg_send_status, valid_flag, block_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.businessDate},#{entity.realdealSerialNo}, #{entity.companyId}, #{entity.entrustSerialNo}, #{entity.batchSerialNo},
+            #{entity.reportSerialNo}, #{entity.fundId}, #{entity.assetId}, #{entity.combiId}, #{entity.marketNo},
+            #{entity.reportCode}, #{entity.interCode}, #{entity.stockholderId}, #{entity.tradeSeat},
+            #{entity.investType}, #{entity.entrustDirection}, #{entity.dealAmount}, #{entity.dealPrice},
+            #{entity.dealBalance}, #{entity.dealTime}, #{entity.operatorNo}, #{entity.timeStamp}, #{entity.dealNo},
+            #{entity.totalFee}, #{entity.feeJy}, #{entity.feeYh}, #{entity.feeGh}, #{entity.feeCommission},
+            #{entity.feeJs}, #{entity.feeZg}, #{entity.feeQt}, #{entity.feeSx}, #{entity.feeRisk}, #{entity.feeJsfw},
+            #{entity.feeJg}, #{entity.tradePlatformId}, #{entity.schemeCode}, #{entity.capitalAccountNo},
+            #{entity.tradeInterfaceType}, #{entity.insId}, #{entity.indexDailyModify}, #{entity.externalOrdid},
+            #{entity.thirdRemark}, #{entity.msgSendStatus}, #{entity.validFlag}, #{entity.blockId})
+        </foreach>
+    </insert>
+
+    <insert id="insertOrUpdateBatch" keyProperty="realdealSerialNo" useGeneratedKeys="true">
+        insert into jy_trealdeal(business_date, company_id, entrust_serial_no, batch_serial_no, report_serial_no,
+        fund_id, asset_id, combi_id, market_no, report_code, inter_code, stockholder_id, trade_seat, invest_type,
+        entrust_direction, deal_amount, deal_price, deal_balance, deal_time, operator_no, time_stamp, deal_no,
+        total_fee, fee_jy, fee_yh, fee_gh, fee_commission, fee_js, fee_zg, fee_qt, fee_sx, fee_risk, fee_jsfw, fee_jg,
+        trade_platform_id, scheme_code, capital_account_no, trade_interface_type, ins_id, index_daily_modify,
+        external_ordid, third_remark, msg_send_status, valid_flag, block_id)
+        values
+        <foreach collection="entities" item="entity" separator=",">
+            (#{entity.businessDate}, #{entity.companyId}, #{entity.entrustSerialNo}, #{entity.batchSerialNo},
+            #{entity.reportSerialNo}, #{entity.fundId}, #{entity.assetId}, #{entity.combiId}, #{entity.marketNo},
+            #{entity.reportCode}, #{entity.interCode}, #{entity.stockholderId}, #{entity.tradeSeat},
+            #{entity.investType}, #{entity.entrustDirection}, #{entity.dealAmount}, #{entity.dealPrice},
+            #{entity.dealBalance}, #{entity.dealTime}, #{entity.operatorNo}, #{entity.timeStamp}, #{entity.dealNo},
+            #{entity.totalFee}, #{entity.feeJy}, #{entity.feeYh}, #{entity.feeGh}, #{entity.feeCommission},
+            #{entity.feeJs}, #{entity.feeZg}, #{entity.feeQt}, #{entity.feeSx}, #{entity.feeRisk}, #{entity.feeJsfw},
+            #{entity.feeJg}, #{entity.tradePlatformId}, #{entity.schemeCode}, #{entity.capitalAccountNo},
+            #{entity.tradeInterfaceType}, #{entity.insId}, #{entity.indexDailyModify}, #{entity.externalOrdid},
+            #{entity.thirdRemark}, #{entity.msgSendStatus}, #{entity.validFlag}, #{entity.blockId})
+        </foreach>
+        on duplicate key update
+        business_date = values(business_date),
+        company_id = values(company_id),
+        entrust_serial_no = values(entrust_serial_no),
+        batch_serial_no = values(batch_serial_no),
+        report_serial_no = values(report_serial_no),
+        fund_id = values(fund_id),
+        asset_id = values(asset_id),
+        combi_id = values(combi_id),
+        market_no = values(market_no),
+        report_code = values(report_code),
+        inter_code = values(inter_code),
+        stockholder_id = values(stockholder_id),
+        trade_seat = values(trade_seat),
+        invest_type = values(invest_type),
+        entrust_direction = values(entrust_direction),
+        deal_amount = values(deal_amount),
+        deal_price = values(deal_price),
+        deal_balance = values(deal_balance),
+        deal_time = values(deal_time),
+        operator_no = values(operator_no),
+        time_stamp = values(time_stamp),
+        deal_no = values(deal_no),
+        total_fee = values(total_fee),
+        fee_jy = values(fee_jy),
+        fee_yh = values(fee_yh),
+        fee_gh = values(fee_gh),
+        fee_commission = values(fee_commission),
+        fee_js = values(fee_js),
+        fee_zg = values(fee_zg),
+        fee_qt = values(fee_qt),
+        fee_sx = values(fee_sx),
+        fee_risk = values(fee_risk),
+        fee_jsfw = values(fee_jsfw),
+        fee_jg = values(fee_jg),
+        trade_platform_id = values(trade_platform_id),
+        scheme_code = values(scheme_code),
+        capital_account_no = values(capital_account_no),
+        trade_interface_type = values(trade_interface_type),
+        ins_id = values(ins_id),
+        index_daily_modify = values(index_daily_modify),
+        external_ordid = values(external_ordid),
+        third_remark = values(third_remark),
+        msg_send_status = values(msg_send_status),
+        valid_flag = values(valid_flag),
+        block_id = values(block_id)
+    </insert>
+
+    <!--通过主键修改数据-->
+    <update id="update">
+        update jy_trealdeal
+        <set>
+            <if test="businessDate != null">
+                business_date = #{businessDate},
+            </if>
+            <if test="companyId != null">
+                company_id = #{companyId},
+            </if>
+            <if test="entrustSerialNo != null">
+                entrust_serial_no = #{entrustSerialNo},
+            </if>
+            <if test="batchSerialNo != null">
+                batch_serial_no = #{batchSerialNo},
+            </if>
+            <if test="reportSerialNo != null">
+                report_serial_no = #{reportSerialNo},
+            </if>
+            <if test="fundId != null">
+                fund_id = #{fundId},
+            </if>
+            <if test="assetId != null">
+                asset_id = #{assetId},
+            </if>
+            <if test="combiId != null">
+                combi_id = #{combiId},
+            </if>
+            <if test="marketNo != null">
+                market_no = #{marketNo},
+            </if>
+            <if test="reportCode != null and reportCode != ''">
+                report_code = #{reportCode},
+            </if>
+            <if test="interCode != null">
+                inter_code = #{interCode},
+            </if>
+            <if test="stockholderId != null and stockholderId != ''">
+                stockholder_id = #{stockholderId},
+            </if>
+            <if test="tradeSeat != null and tradeSeat != ''">
+                trade_seat = #{tradeSeat},
+            </if>
+            <if test="investType != null and investType != ''">
+                invest_type = #{investType},
+            </if>
+            <if test="entrustDirection != null">
+                entrust_direction = #{entrustDirection},
+            </if>
+            <if test="dealAmount != null">
+                deal_amount = #{dealAmount},
+            </if>
+            <if test="dealPrice != null">
+                deal_price = #{dealPrice},
+            </if>
+            <if test="dealBalance != null">
+                deal_balance = #{dealBalance},
+            </if>
+            <if test="dealTime != null">
+                deal_time = #{dealTime},
+            </if>
+            <if test="operatorNo != null">
+                operator_no = #{operatorNo},
+            </if>
+            <if test="timeStamp != null">
+                time_stamp = #{timeStamp},
+            </if>
+            <if test="dealNo != null and dealNo != ''">
+                deal_no = #{dealNo},
+            </if>
+            <if test="totalFee != null">
+                total_fee = #{totalFee},
+            </if>
+            <if test="feeJy != null">
+                fee_jy = #{feeJy},
+            </if>
+            <if test="feeYh != null">
+                fee_yh = #{feeYh},
+            </if>
+            <if test="feeGh != null">
+                fee_gh = #{feeGh},
+            </if>
+            <if test="feeCommission != null">
+                fee_commission = #{feeCommission},
+            </if>
+            <if test="feeJs != null">
+                fee_js = #{feeJs},
+            </if>
+            <if test="feeZg != null">
+                fee_zg = #{feeZg},
+            </if>
+            <if test="feeQt != null">
+                fee_qt = #{feeQt},
+            </if>
+            <if test="feeSx != null">
+                fee_sx = #{feeSx},
+            </if>
+            <if test="feeRisk != null">
+                fee_risk = #{feeRisk},
+            </if>
+            <if test="feeJsfw != null">
+                fee_jsfw = #{feeJsfw},
+            </if>
+            <if test="feeJg != null">
+                fee_jg = #{feeJg},
+            </if>
+            <if test="tradePlatformId != null">
+                trade_platform_id = #{tradePlatformId},
+            </if>
+            <if test="schemeCode != null and schemeCode != ''">
+                scheme_code = #{schemeCode},
+            </if>
+            <if test="capitalAccountNo != null and capitalAccountNo != ''">
+                capital_account_no = #{capitalAccountNo},
+            </if>
+            <if test="tradeInterfaceType != null">
+                trade_interface_type = #{tradeInterfaceType},
+            </if>
+            <if test="insId != null">
+                ins_id = #{insId},
+            </if>
+            <if test="indexDailyModify != null">
+                index_daily_modify = #{indexDailyModify},
+            </if>
+            <if test="externalOrdid != null">
+                external_ordid = #{externalOrdid},
+            </if>
+            <if test="thirdRemark != null and thirdRemark != ''">
+                third_remark = #{thirdRemark},
+            </if>
+            <if test="msgSendStatus != null">
+                msg_send_status = #{msgSendStatus},
+            </if>
+            <if test="validFlag != null and validFlag != ''">
+                valid_flag = #{validFlag},
+            </if>
+            <if test="blockId != null">
+                block_id = #{blockId},
+            </if>
+        </set>
+        where realdeal_serial_no = #{realdealSerialNo}
+    </update>
+
+    <!--通过主键删除-->
+    <delete id="deleteById">
+        delete
+        from jy_trealdeal
+        where realdeal_serial_no = #{realdealSerialNo}
+    </delete>
+
+</mapper>
+
