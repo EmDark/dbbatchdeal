@@ -43,6 +43,8 @@ public class JyTrealdealController {
         }
         long e = System.currentTimeMillis();
         log.info("cost :{} ms", e - s);
+        response.setMessage("ok");
+        response.setSuccess(0);
         return response;
     }
 

@@ -32,7 +32,8 @@ public class HisjyTentrustsServiceImpl implements HisjyTentrustsService {
     @Resource
     private HisjyTentrustsDao hisjyTentrustsDao;
     DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
-
+    @Resource(name = "SpExecutor")
+    private ThreadPoolExecutor executorService;
 
     @Override
     public void insertDatas(Integer threadSize, Integer batchNum, Integer num) {
@@ -146,11 +147,10 @@ public class HisjyTentrustsServiceImpl implements HisjyTentrustsService {
                 "            \"inStockName\": \"-\"\n" +
                 "        }";
 
-        Integer max=hisjyTentrustsDao.getMaxEntrustSerialNo();
-        ThreadPoolExecutor executorService = new ThreadPoolExecutor(threadSize,threadSize,60, TimeUnit.SECONDS,new LinkedBlockingQueue<>(1000));
+        Integer max = hisjyTentrustsDao.getMaxEntrustSerialNo();
         List<HisjyTentrusts> datas = new ArrayList<>();
 
-        Integer entrust_serial_no = max+1;
+        Integer entrust_serial_no = max + 1;
         Integer dateInt = 20220315;
         Integer company_id = 100008;
         Integer fund_id = 15;
@@ -169,17 +169,17 @@ public class HisjyTentrustsServiceImpl implements HisjyTentrustsService {
             hisjyTentrusts.setEntrustSerialNo(entrust_serial_no);
             hisjyTentrusts.setBusinessDate(dateInt);
             datas.add(hisjyTentrusts);
-            entrust_serial_no+=1;
+            entrust_serial_no += 1;
             if (i % 1000 == 0) {
-                fund_id+=1;
-                asset_id+=1;
-                combi_id+=1;
+                fund_id += 1;
+                asset_id += 1;
+                combi_id += 1;
             }
             if (i % 10000 == 0) {
                 LocalDate localDateTime = LocalDate.parse(dateInt.toString(), dateTimeFormatter);
                 localDateTime = localDateTime.minusDays(1L);
                 dateInt = Integer.valueOf(localDateTime.format(dateTimeFormatter));
-                company_id+=1;
+                company_id += 1;
             }
             if (datas.size() >= batchNum) {
                 //list.add(new ThreadInsertDataDto(hisjyTentrustsDao, datas));
@@ -189,16 +189,17 @@ public class HisjyTentrustsServiceImpl implements HisjyTentrustsService {
             }
         }
         if (datas.size() > 0) {
-                //list.add(new ThreadInsertDataDto(hisjyTentrustsDao, datas));
+            //list.add(new ThreadInsertDataDto(hisjyTentrustsDao, datas));
             executorService.submit(new ThreadInsertDataDto(hisjyTentrustsDao, datas));
-            logger.info("submit last size:{}",datas.size());
+            logger.info("submit last size:{}", datas.size());
         }
         //try {
         //    executorService.invokeAll(list);
         //} catch (InterruptedException e) {
         //    throw new RuntimeException(e);
         //}
-        logger.info("task done :{} ",executorService.getCompletedTaskCount());;
+        logger.info("task done :{} ", executorService.getCompletedTaskCount());
+        ;
 
     }
 

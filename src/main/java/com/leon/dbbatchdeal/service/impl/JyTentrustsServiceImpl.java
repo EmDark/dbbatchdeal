@@ -35,7 +35,8 @@ import java.util.concurrent.TimeUnit;
 public class JyTentrustsServiceImpl implements JyTentrustsService {
     @Resource
     private JyTentrustsDao jyTentrustsDao;
-
+    @Resource(name = "SpExecutor")
+    private ThreadPoolExecutor executorService;
     DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
     @Override
     public void insertDatas(Integer threadSize, Integer batchNum, Integer num) {
@@ -150,7 +151,6 @@ public class JyTentrustsServiceImpl implements JyTentrustsService {
                 "        }";
 
         Integer max=jyTentrustsDao.getMaxEntrustSerialNo();
-        ThreadPoolExecutor executorService = new ThreadPoolExecutor(threadSize,threadSize,60, TimeUnit.SECONDS,new LinkedBlockingQueue<>(100),new ThreadPoolExecutor.CallerRunsPolicy());
         List<JyTentrusts> datas = new ArrayList<>();
 
         Integer entrust_serial_no = max+1;

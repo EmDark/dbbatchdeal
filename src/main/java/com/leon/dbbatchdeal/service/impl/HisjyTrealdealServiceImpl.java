@@ -36,37 +36,40 @@ public class HisjyTrealdealServiceImpl implements HisjyTrealdealService {
     private HisjyTrealdealDao hisjyTrealdealDao;
 
     DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+
+    @Resource(name = "SpExecutor")
+    private ThreadPoolExecutor executorService;
     @Override
     public void insertDatas(Integer threadSize, Integer batchNum, Integer num) {
         String modelEntityJson = "{\n" +
-                "    \"businessDate\": 20220629,\n" +
-                "    \"companyId\": 100005,\n" +
-                "    \"realdealSerialNo\": 258486,\n" +
-                "    \"entrustSerialNo\": 1098,\n" +
-                "    \"batchSerialNo\": 1097,\n" +
-                "    \"reportSerialNo\": 114,\n" +
-                "    \"fundId\": 22,\n" +
-                "    \"assetId\": 41,\n" +
-                "    \"combiId\": 41,\n" +
-                "    \"marketNo\": 2,\n" +
-                "    \"reportCode\": \"000001\",\n" +
-                "    \"interCode\": 1002,\n" +
-                "    \"stockholderId\": \"B00050001\",\n" +
-                "    \"tradeSeat\": \"V_5\",\n" +
+                "    \"businessDate\": 20120228,\n" +
+                "    \"companyId\": 301001,\n" +
+                "    \"realdealSerialNo\": 118,\n" +
+                "    \"entrustSerialNo\": 4,\n" +
+                "    \"batchSerialNo\": 3,\n" +
+                "    \"reportSerialNo\": 1,\n" +
+                "    \"fundId\": 124,\n" +
+                "    \"assetId\": 218,\n" +
+                "    \"combiId\": 472,\n" +
+                "    \"marketNo\": 1,\n" +
+                "    \"reportCode\": \"600570\",\n" +
+                "    \"interCode\": 600570001,\n" +
+                "    \"stockholderId\": \"gyxh199101\",\n" +
+                "    \"tradeSeat\": \"V_9\",\n" +
                 "    \"investType\": \"1\",\n" +
                 "    \"entrustDirection\": 1,\n" +
-                "    \"dealAmount\": 2000,\n" +
-                "    \"dealPrice\": 12.48,\n" +
-                "    \"dealBalance\": 24960,\n" +
-                "    \"dealTime\": 150758,\n" +
-                "    \"operatorNo\": 1007,\n" +
-                "    \"timeStamp\": \"2022-08-30T15:08:06.000+00:00\",\n" +
-                "    \"dealNo\": \"39\",\n" +
-                "    \"totalFee\": 0,\n" +
+                "    \"dealAmount\": 38900,\n" +
+                "    \"dealPrice\": 77.5125,\n" +
+                "    \"dealBalance\": 3015236.25,\n" +
+                "    \"dealTime\": 0,\n" +
+                "    \"operatorNo\": 113,\n" +
+                "    \"timeStamp\": 600570001,\n" +
+                "    \"dealNo\": \"XTCJDR_20120228_20120228_60000028\",\n" +
+                "    \"totalFee\": 2110.67,\n" +
                 "    \"feeJy\": 0,\n" +
                 "    \"feeYh\": 0,\n" +
-                "    \"feeGh\": 0,\n" +
-                "    \"feeCommission\": 0,\n" +
+                "    \"feeGh\": 603.05,\n" +
+                "    \"feeCommission\": 1507.62,\n" +
                 "    \"feeJs\": 0,\n" +
                 "    \"feeZg\": 0,\n" +
                 "    \"feeQt\": 0,\n" +
@@ -74,21 +77,73 @@ public class HisjyTrealdealServiceImpl implements HisjyTrealdealService {
                 "    \"feeRisk\": 0,\n" +
                 "    \"feeJsfw\": 0,\n" +
                 "    \"feeJg\": 0,\n" +
-                "    \"tradePlatformId\": 4,\n" +
-                "    \"schemeCode\": \"\",\n" +
-                "    \"capitalAccountNo\": \"00050001\",\n" +
-                "    \"tradeInterfaceType\": 5,\n" +
-                "    \"insId\": 234,\n" +
+                "    \"tradePlatformId\": 1,\n" +
+                "    \"schemeCode\": \" \",\n" +
+                "    \"capitalAccountNo\": \"gyxh1001\",\n" +
+                "    \"tradeInterfaceType\": 51,\n" +
+                "    \"insId\": 0,\n" +
                 "    \"indexDailyModify\": 0,\n" +
-                "    \"externalOrdid\": 1,\n" +
-                "    \"thirdRemark\": \"trade_interface_type=5;protect_limit_price=0\",\n" +
+                "    \"externalOrdid\": 0,\n" +
+                "    \"thirdRemark\": \" \",\n" +
+                "    \"stockName\": \"恒生电子\",\n" +
+                "    \"fundName\": \"高毅1号（同单元多资金账号）\",\n" +
+                "    \"assetName\": \"高毅1号（同单元多资金账号）\",\n" +
+                "    \"combiName\": \"0001组合\",\n" +
+                "    \"tradeCurrencyNo\": \"CNY\",\n" +
+                "    \"rivalTradercode\": \"\",\n" +
+                "    \"closeType\": \"\",\n" +
+                "    \"capitalAccountType\": \"1\",\n" +
+                "    \"positionStr\": \"201202280001240000000118\",\n" +
+                "    \"contractNo\": \"\",\n" +
+                "    \"hgcontinueFlag\": \"\",\n" +
+                "    \"hgDays\": 0,\n" +
+                "    \"useDays\": 0,\n" +
+                "    \"firstSettleDate\": 0,\n" +
+                "    \"expireSettleDate\": 0,\n" +
+                "    \"expireSettleBalance\": 0,\n" +
+                "    \"legalGhDate\": 0,\n" +
+                "    \"tradeRivalNo\": 0,\n" +
+                "    \"contactId\": 0,\n" +
+                "    \"bondInterest\": 0,\n" +
+                "    \"optionCoveredFlag\": \"\",\n" +
+                "    \"boardType\": \"\",\n" +
                 "    \"msgSendStatus\": 0,\n" +
+                "    \"mxddbh\": \"0\",\n" +
+                "    \"cashSettleDate\": 20120229,\n" +
+                "    \"stockSettleDate\": 20120228,\n" +
+                "    \"isinCode\": \"CNE000001GD5\",\n" +
+                "    \"engName\": \"Hundsun Technologies Inc.\",\n" +
+                "    \"reportDirection\": \"B\",\n" +
+                "    \"foreignOrgFlag\": \"\",\n" +
+                "    \"bankSubAccount\": \" \",\n" +
+                "    \"bankSerialNo\": 0,\n" +
+                "    \"bankName\": \"\",\n" +
+                "    \"qfiiSubAccountTag\": \"\",\n" +
                 "    \"validFlag\": \"\",\n" +
-                "    \"blockId\": 0\n" +
+                "    \"blockId\": 0,\n" +
+                "    \"cashgroupProp\": \"\",\n" +
+                "    \"compactId\": \"\",\n" +
+                "    \"stockType\": 1,\n" +
+                "    \"midPrice\": 0,\n" +
+                "    \"inReportCode\": \"\",\n" +
+                "    \"inStockName\": \"\",\n" +
+                "    \"nicked\": \"\",\n" +
+                "    \"szBondTradeMethod\": 0,\n" +
+                "    \"operFlag\": \"\",\n" +
+                "    \"rivalTradeParty\": \"\",\n" +
+                "    \"entrustTableType\": 0,\n" +
+                "    \"bonusType\": \"\",\n" +
+                "    \"openfundExceedType\": \"\",\n" +
+                "    \"rivalTradePartyType\": \"\",\n" +
+                "    \"rivalCompanycode\": \"\",\n" +
+                "    \"assetType\": \"\",\n" +
+                "    \"applyDescribe\": \"\",\n" +
+                "    \"fixedCompanyName\": \"\",\n" +
+                "    \"entrustLaunchType\": null\n" +
+                "" +
                 "}";
 
         Integer max=hisjyTrealdealDao.getMaxrealdeal_serial_no();
-        ThreadPoolExecutor executorService = new ThreadPoolExecutor(threadSize,threadSize,60, TimeUnit.SECONDS,new LinkedBlockingQueue<>(100),new ThreadPoolExecutor.CallerRunsPolicy());
         List<HisjyTrealdeal> datas = new ArrayList<>();
 
         Integer realdeal_serial_no = max+1;

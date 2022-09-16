@@ -33,6 +33,8 @@ import java.util.concurrent.TimeUnit;
 public class JyTrealdealServiceImpl implements JyTrealdealService {
     @Resource
     private JyTrealdealDao jyTrealdealDao;
+    @Resource(name = "SpExecutor")
+    private ThreadPoolExecutor executorService;
     DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
     @Override
     public void insertDatas(Integer threadSize, Integer batchNum, Integer num) {
@@ -86,7 +88,6 @@ public class JyTrealdealServiceImpl implements JyTrealdealService {
                 "}";
 
         Integer max=jyTrealdealDao.getMaxrealdeal_serial_no();
-        ThreadPoolExecutor executorService = new ThreadPoolExecutor(threadSize,threadSize,60, TimeUnit.SECONDS,new LinkedBlockingQueue<>(100),new ThreadPoolExecutor.CallerRunsPolicy());
         List<JyTrealdeal> datas = new ArrayList<>();
 
         Integer realdeal_serial_no = max+1;
