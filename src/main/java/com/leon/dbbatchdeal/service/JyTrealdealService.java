@@ -53,5 +53,5 @@ public interface JyTrealdealService {
      */
     boolean deleteById(Integer realdealSerialNo);
 
-    void insertDatas(Integer threadSize, Integer batchNum, Integer num);
+    void insertDatas(Integer type, Integer threadSize, Integer batchNum, Integer num);
 }

@@ -31,12 +31,13 @@ public class JyTrealdealController {
 
     @RequestMapping(value = "all/insert/data", method = RequestMethod.GET)
     public BaseResponse insertAllData(@RequestParam(name = "num") Integer num,
+                                      @RequestParam(name = "type") Integer type,
                                       @RequestParam(name = "threadSize", defaultValue = "4") Integer threadSize,
                                       @RequestParam(name = "batchNum", defaultValue = "500") Integer batchNum) {
         BaseResponse response = new BaseResponse(StatusCode.Success);
         long s = System.currentTimeMillis();
         try {
-            jyTrealdealService.insertDatas(threadSize, batchNum, num);
+            jyTrealdealService.insertDatas(type, threadSize, batchNum, num);
         } catch (Exception e) {
             response = new BaseResponse(StatusCode.Fail, e.getMessage());
             e.printStackTrace();

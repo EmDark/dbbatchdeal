@@ -47,6 +47,8 @@ public interface JyTrealdealDao {
      */
     int insert(JyTrealdeal jyTrealdeal);
 
+    int insertNoKey(JyTrealdeal jyTrealdeal);
+
     /**
      * 批量新增数据（MyBatis原生foreach方法）
      *

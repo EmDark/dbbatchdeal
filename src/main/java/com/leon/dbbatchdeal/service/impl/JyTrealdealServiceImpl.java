@@ -2,25 +2,26 @@ package com.leon.dbbatchdeal.service.impl;
 
 import com.alibaba.fastjson.JSON;
 import com.google.common.collect.Lists;
-import com.leon.dbbatchdeal.dto.ThreadInsertDataDto;
-import com.leon.dbbatchdeal.entity.JyTentrusts;
-import com.leon.dbbatchdeal.entity.JyTrealdeal;
 import com.leon.dbbatchdeal.dao.JyTrealdealDao;
+import com.leon.dbbatchdeal.dto.ThreadInsertDataDto;
+import com.leon.dbbatchdeal.entity.JyTrealdeal;
 import com.leon.dbbatchdeal.service.JyTrealdealService;
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.stereotype.Service;
+import org.apache.ibatis.session.ExecutorType;
+import org.apache.ibatis.session.SqlSession;
+import org.apache.ibatis.session.SqlSessionFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageImpl;
 import org.springframework.data.domain.PageRequest;
+import org.springframework.stereotype.Service;
 
 import javax.annotation.Resource;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.ThreadPoolExecutor;
-import java.util.concurrent.TimeUnit;
 
 /**
  * (JyTrealdeal)表服务实现类
@@ -36,8 +37,120 @@ public class JyTrealdealServiceImpl implements JyTrealdealService {
     @Resource(name = "SpExecutor")
     private ThreadPoolExecutor executorService;
     DateTimeFormatter dateTimeFormatter = DateTimeFormatter.ofPattern("yyyyMMdd");
+
     @Override
-    public void insertDatas(Integer threadSize, Integer batchNum, Integer num) {
+    public void insertDatas(Integer type, Integer threadSize, Integer batchNum, Integer num) {
+        if (type == 0) {
+            mothedOne(batchNum, num);
+        }
+        if (type == 1) {
+            mothedTwo(num);
+        }
+    }
+
+    @Autowired
+    SqlSessionFactory sqlSessionFactory;
+
+    private void mothedTwo(int num) {
+        SqlSession session = sqlSessionFactory.openSession(ExecutorType.BATCH);
+        try {
+            JyTrealdealDao mapper = session.getMapper(JyTrealdealDao.class);
+            List<JyTrealdeal> records = getRecordsToInsert(num); // not shown
+            mapper.insertBatch(records);
+            session.commit();
+        } finally {
+            session.close();
+        }
+    }
+
+    private List<JyTrealdeal> getRecordsToInsert(int num) {
+        String modelEntityJson = "{\n" +
+                "    \"businessDate\": 20220629,\n" +
+                "    \"companyId\": 100005,\n" +
+                "    \"realdealSerialNo\": 258486,\n" +
+                "    \"entrustSerialNo\": 1098,\n" +
+                "    \"batchSerialNo\": 1097,\n" +
+                "    \"reportSerialNo\": 114,\n" +
+                "    \"fundId\": 22,\n" +
+                "    \"assetId\": 41,\n" +
+                "    \"combiId\": 41,\n" +
+                "    \"marketNo\": 2,\n" +
+                "    \"reportCode\": \"000001\",\n" +
+                "    \"interCode\": 1002,\n" +
+                "    \"stockholderId\": \"B00050001\",\n" +
+                "    \"tradeSeat\": \"V_5\",\n" +
+                "    \"investType\": \"1\",\n" +
+                "    \"entrustDirection\": 1,\n" +
+                "    \"dealAmount\": 2000,\n" +
+                "    \"dealPrice\": 12.48,\n" +
+                "    \"dealBalance\": 24960,\n" +
+                "    \"dealTime\": 150758,\n" +
+                "    \"operatorNo\": 1007,\n" +
+                "    \"timeStamp\": \"2022-08-30T15:08:06.000+00:00\",\n" +
+                "    \"dealNo\": \"39\",\n" +
+                "    \"totalFee\": 0,\n" +
+                "    \"feeJy\": 0,\n" +
+                "    \"feeYh\": 0,\n" +
+                "    \"feeGh\": 0,\n" +
+                "    \"feeCommission\": 0,\n" +
+                "    \"feeJs\": 0,\n" +
+                "    \"feeZg\": 0,\n" +
+                "    \"feeQt\": 0,\n" +
+                "    \"feeSx\": 0,\n" +
+                "    \"feeRisk\": 0,\n" +
+                "    \"feeJsfw\": 0,\n" +
+                "    \"feeJg\": 0,\n" +
+                "    \"tradePlatformId\": 4,\n" +
+                "    \"schemeCode\": \"\",\n" +
+                "    \"capitalAccountNo\": \"00050001\",\n" +
+                "    \"tradeInterfaceType\": 5,\n" +
+                "    \"insId\": 234,\n" +
+                "    \"indexDailyModify\": 0,\n" +
+                "    \"externalOrdid\": 1,\n" +
+                "    \"thirdRemark\": \"trade_interface_type=5;protect_limit_price=0\",\n" +
+                "    \"msgSendStatus\": 0,\n" +
+                "    \"validFlag\": \"\",\n" +
+                "    \"blockId\": 0\n" +
+                "}";
+
+        Integer max = jyTrealdealDao.getMaxrealdeal_serial_no();
+        List<JyTrealdeal> datas = new ArrayList<>();
+
+        Integer realdeal_serial_no = max + 1;
+        Integer dateInt = 20220315;
+        Integer company_id = 100008;
+        Integer fund_id = 15;
+        Integer asset_id = 34;
+        Integer combi_id = 34;
+
+        for (int i = 0; i < num; i++) {
+            JyTrealdeal hisjyTentrusts = JSON.parseObject(modelEntityJson, JyTrealdeal.class);
+            hisjyTentrusts.setAssetId(asset_id);
+            hisjyTentrusts.setCombiId(combi_id);
+            hisjyTentrusts.setFundId(fund_id);
+            hisjyTentrusts.setCompanyId(company_id);
+            hisjyTentrusts.setBatchSerialNo(realdeal_serial_no);
+            hisjyTentrusts.setRealdealSerialNo(realdeal_serial_no);
+            hisjyTentrusts.setBusinessDate(dateInt);
+            datas.add(hisjyTentrusts);
+            realdeal_serial_no += 1;
+            if (i % 1000 == 0) {
+                fund_id += 1;
+                asset_id += 1;
+                combi_id += 1;
+            }
+            if (i % 10000 == 0) {
+                LocalDate localDateTime = LocalDate.parse(dateInt.toString(), dateTimeFormatter);
+                localDateTime = localDateTime.minusDays(1L);
+                dateInt = Integer.valueOf(localDateTime.format(dateTimeFormatter));
+                company_id += 1;
+            }
+
+        }
+        return datas;
+    }
+
+    private void mothedOne(Integer batchNum, Integer num) {
         String modelEntityJson = "{\n" +
                 "    \"businessDate\": 20220629,\n" +
                 "    \"companyId\": 100005,\n" +
@@ -132,7 +245,7 @@ public class JyTrealdealServiceImpl implements JyTrealdealService {
             log.info("submit last size:{}",datas.size());
         }
 
-        log.info("task done :{} ",executorService.getCompletedTaskCount());;
+        log.info("task done :{} ", executorService.getCompletedTaskCount());
     }
 
     /**
