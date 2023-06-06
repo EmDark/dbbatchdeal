@@ -1,0 +1,1015 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.leon.dbbatchdeal.dao.JyTunitstockDao">
+
+  <resultMap id="BaseResultMap" type="com.leon.dbbatchdeal.dto.JyTunitstock">
+    <!--@Table jy_tunitstock-->
+    <result property="businessDate" column="business_date" jdbcType="INTEGER"/>
+    <result property="companyId" column="company_id" jdbcType="INTEGER"/>
+    <result property="fundId" column="fund_id" jdbcType="INTEGER"/>
+    <result property="assetId" column="asset_id" jdbcType="INTEGER"/>
+    <result property="combiId" column="combi_id" jdbcType="INTEGER"/>
+    <result property="investType" column="invest_type" jdbcType="VARCHAR"/>
+    <result property="positionType" column="position_type" jdbcType="VARCHAR"/>
+    <result property="marketNo" column="market_no" jdbcType="INTEGER"/>
+    <result property="bindSeat" column="bind_seat" jdbcType="VARCHAR"/>
+    <result property="stockholderId" column="stockholder_id" jdbcType="VARCHAR"/>
+    <result property="interCode" column="inter_code" jdbcType="INTEGER"/>
+    <result property="beginAmount" column="begin_amount" jdbcType="VARCHAR"/>
+    <result property="currentAmount" column="current_amount" jdbcType="VARCHAR"/>
+    <result property="enableAmount" column="enable_amount" jdbcType="VARCHAR"/>
+    <result property="uncirculatedAmount" column="uncirculated_amount" jdbcType="VARCHAR"/>
+    <result property="dividendRightAmount" column="dividend_right_amount" jdbcType="VARCHAR"/>
+    <result property="yjuncirculatedAmount" column="yjuncirculated_amount" jdbcType="VARCHAR"/>
+    <result property="totalShareout" column="total_shareout" jdbcType="VARCHAR"/>
+    <result property="prebuyAmount" column="prebuy_amount" jdbcType="VARCHAR"/>
+    <result property="presaleAmount" column="presale_amount" jdbcType="VARCHAR"/>
+    <result property="buyAmount" column="buy_amount" jdbcType="VARCHAR"/>
+    <result property="saleAmount" column="sale_amount" jdbcType="VARCHAR"/>
+    <result property="buyBalance" column="buy_balance" jdbcType="VARCHAR"/>
+    <result property="saleBalance" column="sale_balance" jdbcType="VARCHAR"/>
+    <result property="buyFee" column="buy_fee" jdbcType="VARCHAR"/>
+    <result property="saleFee" column="sale_fee" jdbcType="VARCHAR"/>
+    <result property="realBuyFee" column="real_buy_fee" jdbcType="VARCHAR"/>
+    <result property="realSaleFee" column="real_sale_fee" jdbcType="VARCHAR"/>
+    <result property="beginOriginalCost" column="begin_original_cost" jdbcType="VARCHAR"/>
+    <result property="beginCarryoverCost" column="begin_carryover_cost" jdbcType="VARCHAR"/>
+    <result property="beginOriginalInterestCost" column="begin_original_interest_cost"
+      jdbcType="VARCHAR"/>
+    <result property="beginCarryoverInterestCost" column="begin_carryover_interest_cost"
+      jdbcType="VARCHAR"/>
+    <result property="beginCarryoverRealCost" column="begin_carryover_real_cost"
+      jdbcType="VARCHAR"/>
+    <result property="beginOriginalRealCost" column="begin_original_real_cost" jdbcType="VARCHAR"/>
+    <result property="originalCost" column="original_cost" jdbcType="VARCHAR"/>
+    <result property="carryoverCost" column="carryover_cost" jdbcType="VARCHAR"/>
+    <result property="originalInterestCost" column="original_interest_cost" jdbcType="VARCHAR"/>
+    <result property="carryoverInterestCost" column="carryover_interest_cost" jdbcType="VARCHAR"/>
+    <result property="carryoverRealCost" column="carryover_real_cost" jdbcType="VARCHAR"/>
+    <result property="originalRealCost" column="original_real_cost" jdbcType="VARCHAR"/>
+    <result property="beginOriginalProfit" column="begin_original_profit" jdbcType="VARCHAR"/>
+    <result property="beginCarryoverProfit" column="begin_carryover_profit" jdbcType="VARCHAR"/>
+    <result property="beginOriginalRealProfit" column="begin_original_real_profit"
+      jdbcType="VARCHAR"/>
+    <result property="beginCarryoverRealProfit" column="begin_carryover_real_profit"
+      jdbcType="VARCHAR"/>
+    <result property="beginOriginalIntProfit" column="begin_original_int_profit"
+      jdbcType="VARCHAR"/>
+    <result property="beginCarryoverIntProfit" column="begin_carryover_int_profit"
+      jdbcType="VARCHAR"/>
+    <result property="originalProfit" column="original_profit" jdbcType="VARCHAR"/>
+    <result property="carryoverProfit" column="carryover_profit" jdbcType="VARCHAR"/>
+    <result property="originalRealProfit" column="original_real_profit" jdbcType="VARCHAR"/>
+    <result property="carryoverRealProfit" column="carryover_real_profit" jdbcType="VARCHAR"/>
+    <result property="originalInterestProfit" column="original_interest_profit" jdbcType="VARCHAR"/>
+    <result property="carryoverInterestProfit" column="carryover_interest_profit"
+      jdbcType="VARCHAR"/>
+    <result property="onthewayDividend" column="ontheway_dividend" jdbcType="VARCHAR"/>
+    <result property="uncarryoverDividend" column="uncarryover_dividend" jdbcType="VARCHAR"/>
+    <result property="dividend" column="dividend" jdbcType="VARCHAR"/>
+    <result property="assetType" column="asset_type" jdbcType="VARCHAR"/>
+    <result property="optionOccupyDeposit" column="option_occupy_deposit" jdbcType="VARCHAR"/>
+    <result property="releasableAmount" column="releasable_amount" jdbcType="VARCHAR"/>
+    <result property="lockableAmount" column="lockable_amount" jdbcType="VARCHAR"/>
+    <result property="originalCostTrade" column="original_cost_trade" jdbcType="VARCHAR"/>
+    <result property="carryoverCostTrade" column="carryover_cost_trade" jdbcType="VARCHAR"/>
+    <result property="originalProfitTrade" column="original_profit_trade" jdbcType="VARCHAR"/>
+    <result property="carryoverProfitTrade" column="carryover_profit_trade" jdbcType="VARCHAR"/>
+    <result property="originalRealCostTrade" column="original_real_cost_trade" jdbcType="VARCHAR"/>
+    <result property="carryoverRealCostTrade" column="carryover_real_cost_trade"
+      jdbcType="VARCHAR"/>
+    <result property="originalRealProfitTrade" column="original_real_profit_trade"
+      jdbcType="VARCHAR"/>
+    <result property="carryoverRealProfitTrade" column="carryover_real_profit_trade"
+      jdbcType="VARCHAR"/>
+    <result property="strategyPlacingAmount" column="strategy_placing_amount" jdbcType="VARCHAR"/>
+    <result property="straPlacFrzAmt" column="stra_plac_frz_amt" jdbcType="VARCHAR"/>
+  </resultMap>
+
+  <!--查询单个-->
+  <select id="queryByPk" resultMap="BaseResultMap">
+    select business_date,
+           company_id,
+           fund_id,
+           asset_id,
+           combi_id,
+           invest_type,
+           position_type,
+           market_no,
+           bind_seat,
+           stockholder_id,
+           inter_code,
+           begin_amount,
+           current_amount,
+           enable_amount,
+           uncirculated_amount,
+           dividend_right_amount,
+           yjuncirculated_amount,
+           total_shareout,
+           prebuy_amount,
+           presale_amount,
+           buy_amount,
+           sale_amount,
+           buy_balance,
+           sale_balance,
+           buy_fee,
+           sale_fee,
+           real_buy_fee,
+           real_sale_fee,
+           begin_original_cost,
+           begin_carryover_cost,
+           begin_original_interest_cost,
+           begin_carryover_interest_cost,
+           begin_carryover_real_cost,
+           begin_original_real_cost,
+           original_cost,
+           carryover_cost,
+           original_interest_cost,
+           carryover_interest_cost,
+           carryover_real_cost,
+           original_real_cost,
+           begin_original_profit,
+           begin_carryover_profit,
+           begin_original_real_profit,
+           begin_carryover_real_profit,
+           begin_original_int_profit,
+           begin_carryover_int_profit,
+           original_profit,
+           carryover_profit,
+           original_real_profit,
+           carryover_real_profit,
+           original_interest_profit,
+           carryover_interest_profit,
+           ontheway_dividend,
+           uncarryover_dividend,
+           dividend,
+           asset_type,
+           option_occupy_deposit,
+           releasable_amount,
+           lockable_amount,
+           original_cost_trade,
+           carryover_cost_trade,
+           original_profit_trade,
+           carryover_profit_trade,
+           original_real_cost_trade,
+           carryover_real_cost_trade,
+           original_real_profit_trade,
+           carryover_real_profit_trade,
+           strategy_placing_amount,
+           stra_plac_frz_amt
+    from jy_tunitstock
+    where combi_id = #{combiId}
+  </select>
+
+  <!--查询指定行数据-->
+  <select id="queryAllByLimit" resultMap="BaseResultMap">
+    select
+    business_date, company_id, fund_id, asset_id, combi_id, invest_type, position_type, market_no,
+    bind_seat, stockholder_id, inter_code, begin_amount, current_amount, enable_amount,
+    uncirculated_amount, dividend_right_amount, yjuncirculated_amount, total_shareout,
+    prebuy_amount, presale_amount, buy_amount, sale_amount, buy_balance, sale_balance, buy_fee,
+    sale_fee, real_buy_fee, real_sale_fee, begin_original_cost, begin_carryover_cost,
+    begin_original_interest_cost, begin_carryover_interest_cost, begin_carryover_real_cost,
+    begin_original_real_cost, original_cost, carryover_cost, original_interest_cost,
+    carryover_interest_cost, carryover_real_cost, original_real_cost, begin_original_profit,
+    begin_carryover_profit, begin_original_real_profit, begin_carryover_real_profit,
+    begin_original_int_profit, begin_carryover_int_profit, original_profit, carryover_profit,
+    original_real_profit, carryover_real_profit, original_interest_profit,
+    carryover_interest_profit, ontheway_dividend, uncarryover_dividend, dividend, asset_type,
+    option_occupy_deposit, releasable_amount, lockable_amount, original_cost_trade,
+    carryover_cost_trade, original_profit_trade, carryover_profit_trade, original_real_cost_trade,
+    carryover_real_cost_trade, original_real_profit_trade, carryover_real_profit_trade,
+    strategy_placing_amount, stra_plac_frz_amt
+    from jy_tunitstock
+    <where>
+      <if test="jyTunitstock.businessDate != null">
+        and business_date = #{jyTunitstock.businessDate}
+      </if>
+      <if test="jyTunitstock.companyId != null">
+        and company_id = #{jyTunitstock.companyId}
+      </if>
+      <if test="jyTunitstock.fundId != null">
+        and fund_id = #{jyTunitstock.fundId}
+      </if>
+      <if test="jyTunitstock.assetId != null">
+        and asset_id = #{jyTunitstock.assetId}
+      </if>
+      <if test="jyTunitstock.combiId != null">
+        and combi_id = #{jyTunitstock.combiId}
+      </if>
+      <if test="jyTunitstock.investType != null and investType != ''">
+        and invest_type = #{jyTunitstock.investType}
+      </if>
+      <if test="jyTunitstock.positionType != null and positionType != ''">
+        and position_type = #{jyTunitstock.positionType}
+      </if>
+      <if test="jyTunitstock.marketNo != null">
+        and market_no = #{jyTunitstock.marketNo}
+      </if>
+      <if test="jyTunitstock.bindSeat != null and bindSeat != ''">
+        and bind_seat = #{jyTunitstock.bindSeat}
+      </if>
+      <if test="jyTunitstock.stockholderId != null and stockholderId != ''">
+        and stockholder_id = #{jyTunitstock.stockholderId}
+      </if>
+      <if test="jyTunitstock.interCode != null">
+        and inter_code = #{jyTunitstock.interCode}
+      </if>
+      <if test="jyTunitstock.beginAmount != null">
+        and begin_amount = #{jyTunitstock.beginAmount}
+      </if>
+      <if test="jyTunitstock.currentAmount != null">
+        and current_amount = #{jyTunitstock.currentAmount}
+      </if>
+      <if test="jyTunitstock.enableAmount != null">
+        and enable_amount = #{jyTunitstock.enableAmount}
+      </if>
+      <if test="jyTunitstock.uncirculatedAmount != null">
+        and uncirculated_amount = #{jyTunitstock.uncirculatedAmount}
+      </if>
+      <if test="jyTunitstock.dividendRightAmount != null">
+        and dividend_right_amount = #{jyTunitstock.dividendRightAmount}
+      </if>
+      <if test="jyTunitstock.yjuncirculatedAmount != null">
+        and yjuncirculated_amount = #{jyTunitstock.yjuncirculatedAmount}
+      </if>
+      <if test="jyTunitstock.totalShareout != null">
+        and total_shareout = #{jyTunitstock.totalShareout}
+      </if>
+      <if test="jyTunitstock.prebuyAmount != null">
+        and prebuy_amount = #{jyTunitstock.prebuyAmount}
+      </if>
+      <if test="jyTunitstock.presaleAmount != null">
+        and presale_amount = #{jyTunitstock.presaleAmount}
+      </if>
+      <if test="jyTunitstock.buyAmount != null">
+        and buy_amount = #{jyTunitstock.buyAmount}
+      </if>
+      <if test="jyTunitstock.saleAmount != null">
+        and sale_amount = #{jyTunitstock.saleAmount}
+      </if>
+      <if test="jyTunitstock.buyBalance != null">
+        and buy_balance = #{jyTunitstock.buyBalance}
+      </if>
+      <if test="jyTunitstock.saleBalance != null">
+        and sale_balance = #{jyTunitstock.saleBalance}
+      </if>
+      <if test="jyTunitstock.buyFee != null">
+        and buy_fee = #{jyTunitstock.buyFee}
+      </if>
+      <if test="jyTunitstock.saleFee != null">
+        and sale_fee = #{jyTunitstock.saleFee}
+      </if>
+      <if test="jyTunitstock.realBuyFee != null">
+        and real_buy_fee = #{jyTunitstock.realBuyFee}
+      </if>
+      <if test="jyTunitstock.realSaleFee != null">
+        and real_sale_fee = #{jyTunitstock.realSaleFee}
+      </if>
+      <if test="jyTunitstock.beginOriginalCost != null">
+        and begin_original_cost = #{jyTunitstock.beginOriginalCost}
+      </if>
+      <if test="jyTunitstock.beginCarryoverCost != null">
+        and begin_carryover_cost = #{jyTunitstock.beginCarryoverCost}
+      </if>
+      <if test="jyTunitstock.beginOriginalInterestCost != null">
+        and begin_original_interest_cost = #{jyTunitstock.beginOriginalInterestCost}
+      </if>
+      <if test="jyTunitstock.beginCarryoverInterestCost != null">
+        and begin_carryover_interest_cost = #{jyTunitstock.beginCarryoverInterestCost}
+      </if>
+      <if test="jyTunitstock.beginCarryoverRealCost != null">
+        and begin_carryover_real_cost = #{jyTunitstock.beginCarryoverRealCost}
+      </if>
+      <if test="jyTunitstock.beginOriginalRealCost != null">
+        and begin_original_real_cost = #{jyTunitstock.beginOriginalRealCost}
+      </if>
+      <if test="jyTunitstock.originalCost != null">
+        and original_cost = #{jyTunitstock.originalCost}
+      </if>
+      <if test="jyTunitstock.carryoverCost != null">
+        and carryover_cost = #{jyTunitstock.carryoverCost}
+      </if>
+      <if test="jyTunitstock.originalInterestCost != null">
+        and original_interest_cost = #{jyTunitstock.originalInterestCost}
+      </if>
+      <if test="jyTunitstock.carryoverInterestCost != null">
+        and carryover_interest_cost = #{jyTunitstock.carryoverInterestCost}
+      </if>
+      <if test="jyTunitstock.carryoverRealCost != null">
+        and carryover_real_cost = #{jyTunitstock.carryoverRealCost}
+      </if>
+      <if test="jyTunitstock.originalRealCost != null">
+        and original_real_cost = #{jyTunitstock.originalRealCost}
+      </if>
+      <if test="jyTunitstock.beginOriginalProfit != null">
+        and begin_original_profit = #{jyTunitstock.beginOriginalProfit}
+      </if>
+      <if test="jyTunitstock.beginCarryoverProfit != null">
+        and begin_carryover_profit = #{jyTunitstock.beginCarryoverProfit}
+      </if>
+      <if test="jyTunitstock.beginOriginalRealProfit != null">
+        and begin_original_real_profit = #{jyTunitstock.beginOriginalRealProfit}
+      </if>
+      <if test="jyTunitstock.beginCarryoverRealProfit != null">
+        and begin_carryover_real_profit = #{jyTunitstock.beginCarryoverRealProfit}
+      </if>
+      <if test="jyTunitstock.beginOriginalIntProfit != null">
+        and begin_original_int_profit = #{jyTunitstock.beginOriginalIntProfit}
+      </if>
+      <if test="jyTunitstock.beginCarryoverIntProfit != null">
+        and begin_carryover_int_profit = #{jyTunitstock.beginCarryoverIntProfit}
+      </if>
+      <if test="jyTunitstock.originalProfit != null">
+        and original_profit = #{jyTunitstock.originalProfit}
+      </if>
+      <if test="jyTunitstock.carryoverProfit != null">
+        and carryover_profit = #{jyTunitstock.carryoverProfit}
+      </if>
+      <if test="jyTunitstock.originalRealProfit != null">
+        and original_real_profit = #{jyTunitstock.originalRealProfit}
+      </if>
+      <if test="jyTunitstock.carryoverRealProfit != null">
+        and carryover_real_profit = #{jyTunitstock.carryoverRealProfit}
+      </if>
+      <if test="jyTunitstock.originalInterestProfit != null">
+        and original_interest_profit = #{jyTunitstock.originalInterestProfit}
+      </if>
+      <if test="jyTunitstock.carryoverInterestProfit != null">
+        and carryover_interest_profit = #{jyTunitstock.carryoverInterestProfit}
+      </if>
+      <if test="jyTunitstock.onthewayDividend != null">
+        and ontheway_dividend = #{jyTunitstock.onthewayDividend}
+      </if>
+      <if test="jyTunitstock.uncarryoverDividend != null">
+        and uncarryover_dividend = #{jyTunitstock.uncarryoverDividend}
+      </if>
+      <if test="jyTunitstock.dividend != null">
+        and dividend = #{jyTunitstock.dividend}
+      </if>
+      <if test="jyTunitstock.assetType != null and assetType != ''">
+        and asset_type = #{jyTunitstock.assetType}
+      </if>
+      <if test="jyTunitstock.optionOccupyDeposit != null">
+        and option_occupy_deposit = #{jyTunitstock.optionOccupyDeposit}
+      </if>
+      <if test="jyTunitstock.releasableAmount != null">
+        and releasable_amount = #{jyTunitstock.releasableAmount}
+      </if>
+      <if test="jyTunitstock.lockableAmount != null">
+        and lockable_amount = #{jyTunitstock.lockableAmount}
+      </if>
+      <if test="jyTunitstock.originalCostTrade != null">
+        and original_cost_trade = #{jyTunitstock.originalCostTrade}
+      </if>
+      <if test="jyTunitstock.carryoverCostTrade != null">
+        and carryover_cost_trade = #{jyTunitstock.carryoverCostTrade}
+      </if>
+      <if test="jyTunitstock.originalProfitTrade != null">
+        and original_profit_trade = #{jyTunitstock.originalProfitTrade}
+      </if>
+      <if test="jyTunitstock.carryoverProfitTrade != null">
+        and carryover_profit_trade = #{jyTunitstock.carryoverProfitTrade}
+      </if>
+      <if test="jyTunitstock.originalRealCostTrade != null">
+        and original_real_cost_trade = #{jyTunitstock.originalRealCostTrade}
+      </if>
+      <if test="jyTunitstock.carryoverRealCostTrade != null">
+        and carryover_real_cost_trade = #{jyTunitstock.carryoverRealCostTrade}
+      </if>
+      <if test="jyTunitstock.originalRealProfitTrade != null">
+        and original_real_profit_trade = #{jyTunitstock.originalRealProfitTrade}
+      </if>
+      <if test="jyTunitstock.carryoverRealProfitTrade != null">
+        and carryover_real_profit_trade = #{jyTunitstock.carryoverRealProfitTrade}
+      </if>
+      <if test="jyTunitstock.strategyPlacingAmount != null">
+        and strategy_placing_amount = #{jyTunitstock.strategyPlacingAmount}
+      </if>
+      <if test="jyTunitstock.straPlacFrzAmt != null">
+        and stra_plac_frz_amt = #{jyTunitstock.straPlacFrzAmt}
+      </if>
+    </where>
+    limit #{offset}, #{pageSize}
+  </select>
+  <!--统计总行数-->
+  <select id="count" resultType="java.lang.Long">
+    select count(1)
+    from jy_tunitstock
+    <where>
+      <if test="businessDate != null">
+        and business_date = #{businessDate}
+      </if>
+      <if test="companyId != null">
+        and company_id = #{companyId}
+      </if>
+      <if test="fundId != null">
+        and fund_id = #{fundId}
+      </if>
+      <if test="assetId != null">
+        and asset_id = #{assetId}
+      </if>
+      <if test="combiId != null">
+        and combi_id = #{combiId}
+      </if>
+      <if test="investType != null and investType != ''">
+        and invest_type = #{investType}
+      </if>
+      <if test="positionType != null and positionType != ''">
+        and position_type = #{positionType}
+      </if>
+      <if test="marketNo != null">
+        and market_no = #{marketNo}
+      </if>
+      <if test="bindSeat != null and bindSeat != ''">
+        and bind_seat = #{bindSeat}
+      </if>
+      <if test="stockholderId != null and stockholderId != ''">
+        and stockholder_id = #{stockholderId}
+      </if>
+      <if test="interCode != null">
+        and inter_code = #{interCode}
+      </if>
+      <if test="beginAmount != null">
+        and begin_amount = #{beginAmount}
+      </if>
+      <if test="currentAmount != null">
+        and current_amount = #{currentAmount}
+      </if>
+      <if test="enableAmount != null">
+        and enable_amount = #{enableAmount}
+      </if>
+      <if test="uncirculatedAmount != null">
+        and uncirculated_amount = #{uncirculatedAmount}
+      </if>
+      <if test="dividendRightAmount != null">
+        and dividend_right_amount = #{dividendRightAmount}
+      </if>
+      <if test="yjuncirculatedAmount != null">
+        and yjuncirculated_amount = #{yjuncirculatedAmount}
+      </if>
+      <if test="totalShareout != null">
+        and total_shareout = #{totalShareout}
+      </if>
+      <if test="prebuyAmount != null">
+        and prebuy_amount = #{prebuyAmount}
+      </if>
+      <if test="presaleAmount != null">
+        and presale_amount = #{presaleAmount}
+      </if>
+      <if test="buyAmount != null">
+        and buy_amount = #{buyAmount}
+      </if>
+      <if test="saleAmount != null">
+        and sale_amount = #{saleAmount}
+      </if>
+      <if test="buyBalance != null">
+        and buy_balance = #{buyBalance}
+      </if>
+      <if test="saleBalance != null">
+        and sale_balance = #{saleBalance}
+      </if>
+      <if test="buyFee != null">
+        and buy_fee = #{buyFee}
+      </if>
+      <if test="saleFee != null">
+        and sale_fee = #{saleFee}
+      </if>
+      <if test="realBuyFee != null">
+        and real_buy_fee = #{realBuyFee}
+      </if>
+      <if test="realSaleFee != null">
+        and real_sale_fee = #{realSaleFee}
+      </if>
+      <if test="beginOriginalCost != null">
+        and begin_original_cost = #{beginOriginalCost}
+      </if>
+      <if test="beginCarryoverCost != null">
+        and begin_carryover_cost = #{beginCarryoverCost}
+      </if>
+      <if test="beginOriginalInterestCost != null">
+        and begin_original_interest_cost = #{beginOriginalInterestCost}
+      </if>
+      <if test="beginCarryoverInterestCost != null">
+        and begin_carryover_interest_cost = #{beginCarryoverInterestCost}
+      </if>
+      <if test="beginCarryoverRealCost != null">
+        and begin_carryover_real_cost = #{beginCarryoverRealCost}
+      </if>
+      <if test="beginOriginalRealCost != null">
+        and begin_original_real_cost = #{beginOriginalRealCost}
+      </if>
+      <if test="originalCost != null">
+        and original_cost = #{originalCost}
+      </if>
+      <if test="carryoverCost != null">
+        and carryover_cost = #{carryoverCost}
+      </if>
+      <if test="originalInterestCost != null">
+        and original_interest_cost = #{originalInterestCost}
+      </if>
+      <if test="carryoverInterestCost != null">
+        and carryover_interest_cost = #{carryoverInterestCost}
+      </if>
+      <if test="carryoverRealCost != null">
+        and carryover_real_cost = #{carryoverRealCost}
+      </if>
+      <if test="originalRealCost != null">
+        and original_real_cost = #{originalRealCost}
+      </if>
+      <if test="beginOriginalProfit != null">
+        and begin_original_profit = #{beginOriginalProfit}
+      </if>
+      <if test="beginCarryoverProfit != null">
+        and begin_carryover_profit = #{beginCarryoverProfit}
+      </if>
+      <if test="beginOriginalRealProfit != null">
+        and begin_original_real_profit = #{beginOriginalRealProfit}
+      </if>
+      <if test="beginCarryoverRealProfit != null">
+        and begin_carryover_real_profit = #{beginCarryoverRealProfit}
+      </if>
+      <if test="beginOriginalIntProfit != null">
+        and begin_original_int_profit = #{beginOriginalIntProfit}
+      </if>
+      <if test="beginCarryoverIntProfit != null">
+        and begin_carryover_int_profit = #{beginCarryoverIntProfit}
+      </if>
+      <if test="originalProfit != null">
+        and original_profit = #{originalProfit}
+      </if>
+      <if test="carryoverProfit != null">
+        and carryover_profit = #{carryoverProfit}
+      </if>
+      <if test="originalRealProfit != null">
+        and original_real_profit = #{originalRealProfit}
+      </if>
+      <if test="carryoverRealProfit != null">
+        and carryover_real_profit = #{carryoverRealProfit}
+      </if>
+      <if test="originalInterestProfit != null">
+        and original_interest_profit = #{originalInterestProfit}
+      </if>
+      <if test="carryoverInterestProfit != null">
+        and carryover_interest_profit = #{carryoverInterestProfit}
+      </if>
+      <if test="onthewayDividend != null">
+        and ontheway_dividend = #{onthewayDividend}
+      </if>
+      <if test="uncarryoverDividend != null">
+        and uncarryover_dividend = #{uncarryoverDividend}
+      </if>
+      <if test="dividend != null">
+        and dividend = #{dividend}
+      </if>
+      <if test="assetType != null and assetType != ''">
+        and asset_type = #{assetType}
+      </if>
+      <if test="optionOccupyDeposit != null">
+        and option_occupy_deposit = #{optionOccupyDeposit}
+      </if>
+      <if test="releasableAmount != null">
+        and releasable_amount = #{releasableAmount}
+      </if>
+      <if test="lockableAmount != null">
+        and lockable_amount = #{lockableAmount}
+      </if>
+      <if test="originalCostTrade != null">
+        and original_cost_trade = #{originalCostTrade}
+      </if>
+      <if test="carryoverCostTrade != null">
+        and carryover_cost_trade = #{carryoverCostTrade}
+      </if>
+      <if test="originalProfitTrade != null">
+        and original_profit_trade = #{originalProfitTrade}
+      </if>
+      <if test="carryoverProfitTrade != null">
+        and carryover_profit_trade = #{carryoverProfitTrade}
+      </if>
+      <if test="originalRealCostTrade != null">
+        and original_real_cost_trade = #{originalRealCostTrade}
+      </if>
+      <if test="carryoverRealCostTrade != null">
+        and carryover_real_cost_trade = #{carryoverRealCostTrade}
+      </if>
+      <if test="originalRealProfitTrade != null">
+        and original_real_profit_trade = #{originalRealProfitTrade}
+      </if>
+      <if test="carryoverRealProfitTrade != null">
+        and carryover_real_profit_trade = #{carryoverRealProfitTrade}
+      </if>
+      <if test="strategyPlacingAmount != null">
+        and strategy_placing_amount = #{strategyPlacingAmount}
+      </if>
+      <if test="straPlacFrzAmt != null">
+        and stra_plac_frz_amt = #{straPlacFrzAmt}
+      </if>
+    </where>
+  </select>
+  <select id="getCombiId" resultType="java.lang.Integer">
+    select max(combi_id)
+    from jy_tunitstock;
+  </select>
+
+  <!--新增所有列-->
+  <insert id="insert" keyProperty="combiId" useGeneratedKeys="true">
+    insert into jy_tunitstock(business_date, company_id, fund_id, asset_id, market_no, begin_amount,
+                              current_amount, enable_amount, uncirculated_amount,
+                              dividend_right_amount, yjuncirculated_amount, total_shareout,
+                              prebuy_amount, presale_amount, buy_amount, sale_amount, buy_balance,
+                              sale_balance, buy_fee, sale_fee, real_buy_fee, real_sale_fee,
+                              begin_original_cost, begin_carryover_cost,
+                              begin_original_interest_cost, begin_carryover_interest_cost,
+                              begin_carryover_real_cost, begin_original_real_cost, original_cost,
+                              carryover_cost, original_interest_cost, carryover_interest_cost,
+                              carryover_real_cost, original_real_cost, begin_original_profit,
+                              begin_carryover_profit, begin_original_real_profit,
+                              begin_carryover_real_profit, begin_original_int_profit,
+                              begin_carryover_int_profit, original_profit, carryover_profit,
+                              original_real_profit, carryover_real_profit, original_interest_profit,
+                              carryover_interest_profit, ontheway_dividend, uncarryover_dividend,
+                              dividend, asset_type, option_occupy_deposit, releasable_amount,
+                              lockable_amount, original_cost_trade, carryover_cost_trade,
+                              original_profit_trade, carryover_profit_trade,
+                              original_real_cost_trade, carryover_real_cost_trade,
+                              original_real_profit_trade, carryover_real_profit_trade,
+                              strategy_placing_amount, stra_plac_frz_amt)
+    values (#{businessDate}, #{companyId}, #{fundId}, #{assetId}, #{marketNo}, #{beginAmount},
+            #{currentAmount}, #{enableAmount}, #{uncirculatedAmount}, #{dividendRightAmount},
+            #{yjuncirculatedAmount}, #{totalShareout}, #{prebuyAmount}, #{presaleAmount},
+            #{buyAmount}, #{saleAmount}, #{buyBalance}, #{saleBalance}, #{buyFee}, #{saleFee},
+            #{realBuyFee}, #{realSaleFee}, #{beginOriginalCost}, #{beginCarryoverCost},
+            #{beginOriginalInterestCost}, #{beginCarryoverInterestCost}, #{beginCarryoverRealCost},
+            #{beginOriginalRealCost}, #{originalCost}, #{carryoverCost}, #{originalInterestCost},
+            #{carryoverInterestCost}, #{carryoverRealCost}, #{originalRealCost},
+            #{beginOriginalProfit}, #{beginCarryoverProfit}, #{beginOriginalRealProfit},
+            #{beginCarryoverRealProfit}, #{beginOriginalIntProfit}, #{beginCarryoverIntProfit},
+            #{originalProfit}, #{carryoverProfit}, #{originalRealProfit}, #{carryoverRealProfit},
+            #{originalInterestProfit}, #{carryoverInterestProfit}, #{onthewayDividend},
+            #{uncarryoverDividend}, #{dividend}, #{assetType}, #{optionOccupyDeposit},
+            #{releasableAmount}, #{lockableAmount}, #{originalCostTrade}, #{carryoverCostTrade},
+            #{originalProfitTrade}, #{carryoverProfitTrade}, #{originalRealCostTrade},
+            #{carryoverRealCostTrade}, #{originalRealProfitTrade}, #{carryoverRealProfitTrade},
+            #{strategyPlacingAmount}, #{straPlacFrzAmt})
+  </insert>
+
+  <insert id="insertBatch">
+    insert into jy_tunitstock(combi_id,business_date, company_id, fund_id, asset_id, market_no,
+    begin_amount,
+    current_amount, enable_amount, uncirculated_amount, dividend_right_amount,
+    yjuncirculated_amount, total_shareout, prebuy_amount, presale_amount, buy_amount, sale_amount,
+    buy_balance, sale_balance, buy_fee, sale_fee, real_buy_fee, real_sale_fee, begin_original_cost,
+    begin_carryover_cost, begin_original_interest_cost, begin_carryover_interest_cost,
+    begin_carryover_real_cost, begin_original_real_cost, original_cost, carryover_cost,
+    original_interest_cost, carryover_interest_cost, carryover_real_cost, original_real_cost,
+    begin_original_profit, begin_carryover_profit, begin_original_real_profit,
+    begin_carryover_real_profit, begin_original_int_profit, begin_carryover_int_profit,
+    original_profit, carryover_profit, original_real_profit, carryover_real_profit,
+    original_interest_profit, carryover_interest_profit, ontheway_dividend, uncarryover_dividend,
+    dividend, asset_type, option_occupy_deposit, releasable_amount, lockable_amount,
+    original_cost_trade, carryover_cost_trade, original_profit_trade, carryover_profit_trade,
+    original_real_cost_trade, carryover_real_cost_trade, original_real_profit_trade,
+    carryover_real_profit_trade, strategy_placing_amount, stra_plac_frz_amt)
+    values
+    <foreach collection="entities" item="entity" separator=",">
+      (#{entity.combiId},#{entity.businessDate}, #{entity.companyId}, #{entity.fundId},
+      #{entity.assetId},
+      #{entity.marketNo}, #{entity.beginAmount}, #{entity.currentAmount}, #{entity.enableAmount},
+      #{entity.uncirculatedAmount}, #{entity.dividendRightAmount}, #{entity.yjuncirculatedAmount},
+      #{entity.totalShareout}, #{entity.prebuyAmount}, #{entity.presaleAmount}, #{entity.buyAmount},
+      #{entity.saleAmount}, #{entity.buyBalance}, #{entity.saleBalance}, #{entity.buyFee},
+      #{entity.saleFee}, #{entity.realBuyFee}, #{entity.realSaleFee}, #{entity.beginOriginalCost},
+      #{entity.beginCarryoverCost}, #{entity.beginOriginalInterestCost},
+      #{entity.beginCarryoverInterestCost}, #{entity.beginCarryoverRealCost},
+      #{entity.beginOriginalRealCost}, #{entity.originalCost}, #{entity.carryoverCost},
+      #{entity.originalInterestCost}, #{entity.carryoverInterestCost}, #{entity.carryoverRealCost},
+      #{entity.originalRealCost}, #{entity.beginOriginalProfit}, #{entity.beginCarryoverProfit},
+      #{entity.beginOriginalRealProfit}, #{entity.beginCarryoverRealProfit},
+      #{entity.beginOriginalIntProfit}, #{entity.beginCarryoverIntProfit}, #{entity.originalProfit},
+      #{entity.carryoverProfit}, #{entity.originalRealProfit}, #{entity.carryoverRealProfit},
+      #{entity.originalInterestProfit}, #{entity.carryoverInterestProfit},
+      #{entity.onthewayDividend}, #{entity.uncarryoverDividend}, #{entity.dividend},
+      #{entity.assetType}, #{entity.optionOccupyDeposit}, #{entity.releasableAmount},
+      #{entity.lockableAmount}, #{entity.originalCostTrade}, #{entity.carryoverCostTrade},
+      #{entity.originalProfitTrade}, #{entity.carryoverProfitTrade},
+      #{entity.originalRealCostTrade}, #{entity.carryoverRealCostTrade},
+      #{entity.originalRealProfitTrade}, #{entity.carryoverRealProfitTrade},
+      #{entity.strategyPlacingAmount}, #{entity.straPlacFrzAmt})
+    </foreach>
+  </insert>
+
+  <insert id="insertOrUpdateBatch">
+    insert into jy_tunitstock(comb_id,business_date, company_id, fund_id, asset_id, market_no,
+    begin_amount,
+    current_amount, enable_amount, uncirculated_amount, dividend_right_amount,
+    yjuncirculated_amount, total_shareout, prebuy_amount, presale_amount, buy_amount, sale_amount,
+    buy_balance, sale_balance, buy_fee, sale_fee, real_buy_fee, real_sale_fee, begin_original_cost,
+    begin_carryover_cost, begin_original_interest_cost, begin_carryover_interest_cost,
+    begin_carryover_real_cost, begin_original_real_cost, original_cost, carryover_cost,
+    original_interest_cost, carryover_interest_cost, carryover_real_cost, original_real_cost,
+    begin_original_profit, begin_carryover_profit, begin_original_real_profit,
+    begin_carryover_real_profit, begin_original_int_profit, begin_carryover_int_profit,
+    original_profit, carryover_profit, original_real_profit, carryover_real_profit,
+    original_interest_profit, carryover_interest_profit, ontheway_dividend, uncarryover_dividend,
+    dividend, asset_type, option_occupy_deposit, releasable_amount, lockable_amount,
+    original_cost_trade, carryover_cost_trade, original_profit_trade, carryover_profit_trade,
+    original_real_cost_trade, carryover_real_cost_trade, original_real_profit_trade,
+    carryover_real_profit_trade, strategy_placing_amount, stra_plac_frz_amt)
+    values
+    <foreach collection="entities" item="entity" separator=",">
+      (#{entity.businessDate}, #{entity.companyId}, #{entity.fundId}, #{entity.assetId},
+      #{entity.marketNo}, #{entity.beginAmount}, #{entity.currentAmount}, #{entity.enableAmount},
+      #{entity.uncirculatedAmount}, #{entity.dividendRightAmount}, #{entity.yjuncirculatedAmount},
+      #{entity.totalShareout}, #{entity.prebuyAmount}, #{entity.presaleAmount}, #{entity.buyAmount},
+      #{entity.saleAmount}, #{entity.buyBalance}, #{entity.saleBalance}, #{entity.buyFee},
+      #{entity.saleFee}, #{entity.realBuyFee}, #{entity.realSaleFee}, #{entity.beginOriginalCost},
+      #{entity.beginCarryoverCost}, #{entity.beginOriginalInterestCost},
+      #{entity.beginCarryoverInterestCost}, #{entity.beginCarryoverRealCost},
+      #{entity.beginOriginalRealCost}, #{entity.originalCost}, #{entity.carryoverCost},
+      #{entity.originalInterestCost}, #{entity.carryoverInterestCost}, #{entity.carryoverRealCost},
+      #{entity.originalRealCost}, #{entity.beginOriginalProfit}, #{entity.beginCarryoverProfit},
+      #{entity.beginOriginalRealProfit}, #{entity.beginCarryoverRealProfit},
+      #{entity.beginOriginalIntProfit}, #{entity.beginCarryoverIntProfit}, #{entity.originalProfit},
+      #{entity.carryoverProfit}, #{entity.originalRealProfit}, #{entity.carryoverRealProfit},
+      #{entity.originalInterestProfit}, #{entity.carryoverInterestProfit},
+      #{entity.onthewayDividend}, #{entity.uncarryoverDividend}, #{entity.dividend},
+      #{entity.assetType}, #{entity.optionOccupyDeposit}, #{entity.releasableAmount},
+      #{entity.lockableAmount}, #{entity.originalCostTrade}, #{entity.carryoverCostTrade},
+      #{entity.originalProfitTrade}, #{entity.carryoverProfitTrade},
+      #{entity.originalRealCostTrade}, #{entity.carryoverRealCostTrade},
+      #{entity.originalRealProfitTrade}, #{entity.carryoverRealProfitTrade},
+      #{entity.strategyPlacingAmount}, #{entity.straPlacFrzAmt})
+    </foreach>
+    on duplicate key update
+    business_date = values(business_date),
+    company_id = values(company_id),
+    fund_id = values(fund_id),
+    asset_id = values(asset_id),
+    market_no = values(market_no),
+    begin_amount = values(begin_amount),
+    current_amount = values(current_amount),
+    enable_amount = values(enable_amount),
+    uncirculated_amount = values(uncirculated_amount),
+    dividend_right_amount = values(dividend_right_amount),
+    yjuncirculated_amount = values(yjuncirculated_amount),
+    total_shareout = values(total_shareout),
+    prebuy_amount = values(prebuy_amount),
+    presale_amount = values(presale_amount),
+    buy_amount = values(buy_amount),
+    sale_amount = values(sale_amount),
+    buy_balance = values(buy_balance),
+    sale_balance = values(sale_balance),
+    buy_fee = values(buy_fee),
+    sale_fee = values(sale_fee),
+    real_buy_fee = values(real_buy_fee),
+    real_sale_fee = values(real_sale_fee),
+    begin_original_cost = values(begin_original_cost),
+    begin_carryover_cost = values(begin_carryover_cost),
+    begin_original_interest_cost = values(begin_original_interest_cost),
+    begin_carryover_interest_cost = values(begin_carryover_interest_cost),
+    begin_carryover_real_cost = values(begin_carryover_real_cost),
+    begin_original_real_cost = values(begin_original_real_cost),
+    original_cost = values(original_cost),
+    carryover_cost = values(carryover_cost),
+    original_interest_cost = values(original_interest_cost),
+    carryover_interest_cost = values(carryover_interest_cost),
+    carryover_real_cost = values(carryover_real_cost),
+    original_real_cost = values(original_real_cost),
+    begin_original_profit = values(begin_original_profit),
+    begin_carryover_profit = values(begin_carryover_profit),
+    begin_original_real_profit = values(begin_original_real_profit),
+    begin_carryover_real_profit = values(begin_carryover_real_profit),
+    begin_original_int_profit = values(begin_original_int_profit),
+    begin_carryover_int_profit = values(begin_carryover_int_profit),
+    original_profit = values(original_profit),
+    carryover_profit = values(carryover_profit),
+    original_real_profit = values(original_real_profit),
+    carryover_real_profit = values(carryover_real_profit),
+    original_interest_profit = values(original_interest_profit),
+    carryover_interest_profit = values(carryover_interest_profit),
+    ontheway_dividend = values(ontheway_dividend),
+    uncarryover_dividend = values(uncarryover_dividend),
+    dividend = values(dividend),
+    asset_type = values(asset_type),
+    option_occupy_deposit = values(option_occupy_deposit),
+    releasable_amount = values(releasable_amount),
+    lockable_amount = values(lockable_amount),
+    original_cost_trade = values(original_cost_trade),
+    carryover_cost_trade = values(carryover_cost_trade),
+    original_profit_trade = values(original_profit_trade),
+    carryover_profit_trade = values(carryover_profit_trade),
+    original_real_cost_trade = values(original_real_cost_trade),
+    carryover_real_cost_trade = values(carryover_real_cost_trade),
+    original_real_profit_trade = values(original_real_profit_trade),
+    carryover_real_profit_trade = values(carryover_real_profit_trade),
+    strategy_placing_amount = values(strategy_placing_amount),
+    stra_plac_frz_amt = values(stra_plac_frz_amt)
+  </insert>
+
+  <!--通过主键修改数据-->
+  <update id="update">
+    update jy_tunitstock
+    <set>
+      <if test="businessDate != null">
+        business_date = #{businessDate},
+      </if>
+      <if test="companyId != null">
+        company_id = #{companyId},
+      </if>
+      <if test="fundId != null">
+        fund_id = #{fundId},
+      </if>
+      <if test="assetId != null">
+        asset_id = #{assetId},
+      </if>
+      <if test="marketNo != null">
+        market_no = #{marketNo},
+      </if>
+      <if test="beginAmount != null">
+        begin_amount = #{beginAmount},
+      </if>
+      <if test="currentAmount != null">
+        current_amount = #{currentAmount},
+      </if>
+      <if test="enableAmount != null">
+        enable_amount = #{enableAmount},
+      </if>
+      <if test="uncirculatedAmount != null">
+        uncirculated_amount = #{uncirculatedAmount},
+      </if>
+      <if test="dividendRightAmount != null">
+        dividend_right_amount = #{dividendRightAmount},
+      </if>
+      <if test="yjuncirculatedAmount != null">
+        yjuncirculated_amount = #{yjuncirculatedAmount},
+      </if>
+      <if test="totalShareout != null">
+        total_shareout = #{totalShareout},
+      </if>
+      <if test="prebuyAmount != null">
+        prebuy_amount = #{prebuyAmount},
+      </if>
+      <if test="presaleAmount != null">
+        presale_amount = #{presaleAmount},
+      </if>
+      <if test="buyAmount != null">
+        buy_amount = #{buyAmount},
+      </if>
+      <if test="saleAmount != null">
+        sale_amount = #{saleAmount},
+      </if>
+      <if test="buyBalance != null">
+        buy_balance = #{buyBalance},
+      </if>
+      <if test="saleBalance != null">
+        sale_balance = #{saleBalance},
+      </if>
+      <if test="buyFee != null">
+        buy_fee = #{buyFee},
+      </if>
+      <if test="saleFee != null">
+        sale_fee = #{saleFee},
+      </if>
+      <if test="realBuyFee != null">
+        real_buy_fee = #{realBuyFee},
+      </if>
+      <if test="realSaleFee != null">
+        real_sale_fee = #{realSaleFee},
+      </if>
+      <if test="beginOriginalCost != null">
+        begin_original_cost = #{beginOriginalCost},
+      </if>
+      <if test="beginCarryoverCost != null">
+        begin_carryover_cost = #{beginCarryoverCost},
+      </if>
+      <if test="beginOriginalInterestCost != null">
+        begin_original_interest_cost = #{beginOriginalInterestCost},
+      </if>
+      <if test="beginCarryoverInterestCost != null">
+        begin_carryover_interest_cost = #{beginCarryoverInterestCost},
+      </if>
+      <if test="beginCarryoverRealCost != null">
+        begin_carryover_real_cost = #{beginCarryoverRealCost},
+      </if>
+      <if test="beginOriginalRealCost != null">
+        begin_original_real_cost = #{beginOriginalRealCost},
+      </if>
+      <if test="originalCost != null">
+        original_cost = #{originalCost},
+      </if>
+      <if test="carryoverCost != null">
+        carryover_cost = #{carryoverCost},
+      </if>
+      <if test="originalInterestCost != null">
+        original_interest_cost = #{originalInterestCost},
+      </if>
+      <if test="carryoverInterestCost != null">
+        carryover_interest_cost = #{carryoverInterestCost},
+      </if>
+      <if test="carryoverRealCost != null">
+        carryover_real_cost = #{carryoverRealCost},
+      </if>
+      <if test="originalRealCost != null">
+        original_real_cost = #{originalRealCost},
+      </if>
+      <if test="beginOriginalProfit != null">
+        begin_original_profit = #{beginOriginalProfit},
+      </if>
+      <if test="beginCarryoverProfit != null">
+        begin_carryover_profit = #{beginCarryoverProfit},
+      </if>
+      <if test="beginOriginalRealProfit != null">
+        begin_original_real_profit = #{beginOriginalRealProfit},
+      </if>
+      <if test="beginCarryoverRealProfit != null">
+        begin_carryover_real_profit = #{beginCarryoverRealProfit},
+      </if>
+      <if test="beginOriginalIntProfit != null">
+        begin_original_int_profit = #{beginOriginalIntProfit},
+      </if>
+      <if test="beginCarryoverIntProfit != null">
+        begin_carryover_int_profit = #{beginCarryoverIntProfit},
+      </if>
+      <if test="originalProfit != null">
+        original_profit = #{originalProfit},
+      </if>
+      <if test="carryoverProfit != null">
+        carryover_profit = #{carryoverProfit},
+      </if>
+      <if test="originalRealProfit != null">
+        original_real_profit = #{originalRealProfit},
+      </if>
+      <if test="carryoverRealProfit != null">
+        carryover_real_profit = #{carryoverRealProfit},
+      </if>
+      <if test="originalInterestProfit != null">
+        original_interest_profit = #{originalInterestProfit},
+      </if>
+      <if test="carryoverInterestProfit != null">
+        carryover_interest_profit = #{carryoverInterestProfit},
+      </if>
+      <if test="onthewayDividend != null">
+        ontheway_dividend = #{onthewayDividend},
+      </if>
+      <if test="uncarryoverDividend != null">
+        uncarryover_dividend = #{uncarryoverDividend},
+      </if>
+      <if test="dividend != null">
+        dividend = #{dividend},
+      </if>
+      <if test="assetType != null and assetType != ''">
+        asset_type = #{assetType},
+      </if>
+      <if test="optionOccupyDeposit != null">
+        option_occupy_deposit = #{optionOccupyDeposit},
+      </if>
+      <if test="releasableAmount != null">
+        releasable_amount = #{releasableAmount},
+      </if>
+      <if test="lockableAmount != null">
+        lockable_amount = #{lockableAmount},
+      </if>
+      <if test="originalCostTrade != null">
+        original_cost_trade = #{originalCostTrade},
+      </if>
+      <if test="carryoverCostTrade != null">
+        carryover_cost_trade = #{carryoverCostTrade},
+      </if>
+      <if test="originalProfitTrade != null">
+        original_profit_trade = #{originalProfitTrade},
+      </if>
+      <if test="carryoverProfitTrade != null">
+        carryover_profit_trade = #{carryoverProfitTrade},
+      </if>
+      <if test="originalRealCostTrade != null">
+        original_real_cost_trade = #{originalRealCostTrade},
+      </if>
+      <if test="carryoverRealCostTrade != null">
+        carryover_real_cost_trade = #{carryoverRealCostTrade},
+      </if>
+      <if test="originalRealProfitTrade != null">
+        original_real_profit_trade = #{originalRealProfitTrade},
+      </if>
+      <if test="carryoverRealProfitTrade != null">
+        carryover_real_profit_trade = #{carryoverRealProfitTrade},
+      </if>
+      <if test="strategyPlacingAmount != null">
+        strategy_placing_amount = #{strategyPlacingAmount},
+      </if>
+      <if test="straPlacFrzAmt != null">
+        stra_plac_frz_amt = #{straPlacFrzAmt},
+      </if>
+    </set>
+    where combi_id = #{combiId}
+  </update>
+
+  <!--通过主键删除-->
+  <delete id="deleteByPk">
+    delete
+    from jy_tunitstock
+    where combi_id = #{combiId}
+  </delete>
+
+</mapper>
+

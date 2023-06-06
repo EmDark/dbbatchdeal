@@ -4,14 +4,14 @@ import com.leon.dbbatchdeal.dao.HisjyTentrustsDao;
 import com.leon.dbbatchdeal.dao.HisjyTrealdealDao;
 import com.leon.dbbatchdeal.dao.JyTentrustsDao;
 import com.leon.dbbatchdeal.dao.JyTrealdealDao;
+import com.leon.dbbatchdeal.dao.JyTunitstockDao;
 import com.leon.dbbatchdeal.entity.HisjyTentrusts;
 import com.leon.dbbatchdeal.entity.HisjyTrealdeal;
 import com.leon.dbbatchdeal.entity.JyTentrusts;
 import com.leon.dbbatchdeal.entity.JyTrealdeal;
-import lombok.extern.slf4j.Slf4j;
-
 import java.util.List;
 import java.util.concurrent.Callable;
+import lombok.extern.slf4j.Slf4j;
 
 /**
  * 文件描述
@@ -29,20 +29,29 @@ import java.util.concurrent.Callable;
  */
 @Slf4j
 public class ThreadInsertDataDto implements Callable<Boolean> {
+
     private HisjyTentrustsDao hisjyTentrustsDao;
     private JyTentrustsDao jyTentrustsDao;
     private JyTrealdealDao jyTrealdealDao;
     private HisjyTrealdealDao hisjyTrealdealDao;
+
+    private JyTunitstockDao jyTunitstockDao;
     private List<HisjyTentrusts> set;
     private List<JyTentrusts> jyset;
     private List<JyTrealdeal> jyTrealdealList;
     private List<HisjyTrealdeal> hisjyTrealdealList;
+    private List<JyTunitstock> jyTunitstockList;
 
+    public ThreadInsertDataDto(JyTunitstockDao dataService, List<JyTunitstock> set) {
+        this.jyTunitstockDao = dataService;
+        this.jyTunitstockList = set;
+    }
 
     public ThreadInsertDataDto(HisjyTentrustsDao dataService, List<HisjyTentrusts> set) {
         this.hisjyTentrustsDao = dataService;
         this.set = set;
     }
+
     public ThreadInsertDataDto(JyTentrustsDao dataService, List<JyTentrusts> jyset) {
         this.jyTentrustsDao = dataService;
         this.jyset = jyset;
@@ -61,22 +70,25 @@ public class ThreadInsertDataDto implements Callable<Boolean> {
 
     @Override
     public Boolean call() throws Exception {
-        long s=System.currentTimeMillis();
+        long s = System.currentTimeMillis();
+        Integer count = 0;
         try {
             if (hisjyTentrustsDao != null) {
-                hisjyTentrustsDao.insertBatch(set);
+                count = hisjyTentrustsDao.insertBatch(set);
             } else if (jyTentrustsDao != null) {
-                jyTentrustsDao.insertBatch(jyset);
+                count = jyTentrustsDao.insertBatch(jyset);
             } else if (hisjyTrealdealDao != null) {
-                hisjyTrealdealDao.insertBatch(hisjyTrealdealList);
-            } else if (jyTrealdealDao!=null) {
-                jyTrealdealDao.insertBatch(jyTrealdealList);
+                count = hisjyTrealdealDao.insertBatch(hisjyTrealdealList);
+            } else if (jyTrealdealDao != null) {
+                count = jyTrealdealDao.insertBatch(jyTrealdealList);
+            } else if (jyTunitstockDao != null) {
+                count = jyTunitstockDao.insertBatch(jyTunitstockList);
             }
         } catch (Exception e) {
             e.printStackTrace();
         }
         long e=System.currentTimeMillis();
-        log.info("end cost:{} ms",e-s);
+        log.info("end insert num :{} cost:{} ms", count, e - s);
         return true;
     }
 }
